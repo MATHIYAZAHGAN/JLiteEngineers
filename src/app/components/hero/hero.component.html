@@ -1,0 +1,103 @@
+﻿<section class="relative min-h-screen flex items-center overflow-hidden pt-[72px]" style="background:var(--grad-hero);">
+
+  <!-- Rich layered background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0 hero-grid"></div>
+    <!-- Gold glow top right -->
+    <div class="absolute rounded-full" style="width:900px;height:900px;top:-350px;right:-250px;background:radial-gradient(circle,rgba(184,134,11,0.08) 0%,transparent 60%);filter:blur(60px);"></div>
+    <!-- Blue glow bottom left -->
+    <div class="absolute rounded-full" style="width:700px;height:700px;bottom:-200px;left:-200px;background:radial-gradient(circle,rgba(29,95,219,0.1) 0%,transparent 60%);filter:blur(60px);"></div>
+    <!-- Center subtle glow -->
+    <div class="absolute rounded-full" style="width:500px;height:500px;top:30%;left:35%;background:radial-gradient(circle,rgba(255,255,255,0.03) 0%,transparent 65%);"></div>
+    <!-- Gold bottom line -->
+    <div class="absolute bottom-0 left-0 right-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(184,134,11,0.4),rgba(240,192,64,0.4),transparent);"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-28 relative z-10">
+
+    <!-- LEFT -->
+    <div class="flex flex-col gap-8">
+
+      <!-- Gold overline -->
+      <div appScrollReveal class="flex items-center gap-3">
+        <div class="h-px w-10" style="background:var(--grad-gold);"></div>
+        <span class="font-body font-semibold tracking-[0.18em] uppercase" style="font-size:0.65rem;color:var(--gold-3);">Premium Electrical Solutions</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 appScrollReveal [stagger]="80" class="font-heading font-bold leading-[1.06]"
+          style="font-size:clamp(3rem,5.5vw,5rem);color:#ffffff;letter-spacing:-0.02em;">
+        Power Your World<br>
+        <span style="background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+          Safely &amp; Smartly
+        </span>
+      </h1>
+
+      <!-- Sub -->
+      <p appScrollReveal [stagger]="160" class="font-body leading-[1.9] max-w-[500px]"
+         style="font-size:1.05rem;color:rgba(255,255,255,0.55);">
+        JJ Electronics supplies certified electrical components &mdash; MCBs, smart LED lighting,
+        switchgear, and wiring accessories &mdash; trusted by 50,000+ contractors across 40+ countries.
+      </p>
+
+      <!-- Trust badges -->
+      <div appScrollReveal [stagger]="220" class="flex flex-wrap gap-2">
+        <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.75);backdrop-filter:blur(8px);">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          ISI &amp; CE Certified
+        </span>
+        <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.75);backdrop-filter:blur(8px);">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          5-Year Warranty
+        </span>
+        <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.75);backdrop-filter:blur(8px);">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          24h Dispatch
+        </span>
+      </div>
+
+      <!-- CTAs -->
+      <div appScrollReveal [stagger]="280" class="flex flex-wrap gap-3">
+        <a href="#products" class="btn-gold press" style="font-size:0.9rem;padding:0.9rem 2rem;">
+          Browse Catalogue
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="#about" class="press" style="display:inline-flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-weight:500;font-size:0.9rem;padding:0.9rem 2rem;border-radius:12px;border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);text-decoration:none;transition:all 240ms ease;backdrop-filter:blur(8px);"
+           onmouseenter="this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(255,255,255,0.08)';"
+           onmouseleave="this.style.borderColor='rgba(255,255,255,0.2)';this.style.background='transparent';">
+          Our Story
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div appScrollReveal [stagger]="340" class="grid grid-cols-3 gap-6 pt-8 mt-2"
+           style="border-top:1px solid rgba(255,255,255,0.1);">
+        <div *ngFor="let s of stats" class="flex flex-col gap-1.5">
+          <span class="font-heading font-bold" style="font-size:2.4rem;line-height:1;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">{{ s.value }}</span>
+          <span class="font-body text-xs tracking-wide" style="color:rgba(255,255,255,0.45);">{{ s.label }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="relative flex items-center justify-center">
+      <!-- Glow rings -->
+      <div class="absolute rounded-full pointer-events-none" style="width:520px;height:520px;background:radial-gradient(circle,rgba(184,134,11,0.12) 0%,transparent 65%);"></div>
+      <div class="absolute rounded-full pointer-events-none" style="width:380px;height:380px;border:1px solid rgba(184,134,11,0.2);animation:pulse-ring 4s ease-out infinite;"></div>
+      <div class="absolute rounded-full pointer-events-none" style="width:500px;height:500px;border:1px solid rgba(255,255,255,0.05);"></div>
+      <!-- Image -->
+      <div class="relative z-10 animate-float hero-panel-wrap"
+           style="filter:drop-shadow(0 48px 96px rgba(0,0,0,0.6)) drop-shadow(0 12px 40px rgba(29,95,219,0.3)) drop-shadow(0 0 40px rgba(184,134,11,0.15));cursor:pointer;"
+           (mouseenter)="onPanelHover($event)">
+        <img src="assets/Picture41.png" alt="JJ Electronics Smart Distribution Board"
+             class="w-[300px] sm:w-[390px] lg:w-[480px] object-contain hero-panel-img" #panelImg />
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none" style="opacity:0.4;">
+    <span class="font-body" style="font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Scroll</span>
+    <div class="w-px h-8" style="background:linear-gradient(to bottom,rgba(184,134,11,0.6),transparent);"></div>
+  </div>
+</section>

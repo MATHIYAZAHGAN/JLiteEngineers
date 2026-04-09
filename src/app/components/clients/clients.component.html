@@ -1,0 +1,77 @@
+﻿<section id="clients" class="py-32 px-6 relative overflow-hidden" style="background:var(--white);">
+  <div class="absolute inset-0 dot-pattern pointer-events-none" style="opacity:0.5;"></div>
+  <div class="max-w-7xl mx-auto flex flex-col gap-20 relative z-10">
+
+    <div class="text-center max-w-2xl mx-auto">
+      <div appScrollReveal class="flex items-center justify-center gap-3 mb-5">
+        <div class="gold-line"></div>
+        <span class="label-pill label-pill-gold">Clients &amp; Consultants</span>
+        <div class="gold-line"></div>
+      </div>
+      <h2 appScrollReveal [stagger]="100" class="font-heading font-bold leading-tight mt-2"
+          style="font-size:clamp(2.4rem,4vw,3.4rem);color:var(--navy);letter-spacing:-0.02em;">
+        Trusted by <span class="elec-text">Industry Leaders</span>
+      </h2>
+      <p appScrollReveal [stagger]="200" class="font-body mt-5 leading-[1.85] max-w-xl mx-auto"
+         style="color:var(--slate-2);font-size:1rem;">
+        We are proud to associate with leading companies, architects &amp; consultants across Tamilnadu and beyond.
+      </p>
+    </div>
+
+    <div>
+      <div class="flex items-center gap-3 mb-8">
+        <div class="gold-line"></div>
+        <h3 appScrollReveal class="font-heading font-bold text-[1.5rem]" style="color:var(--navy);">Our Clients</h3>
+      </div>
+      <div appScrollReveal class="flex flex-wrap gap-2 mb-8">
+        <button *ngFor="let cat of categories" (click)="setCategory(cat)"
+                class="font-body text-[0.8rem] font-semibold px-5 py-2 rounded-full transition-all duration-200 press"
+                [style]="cat === activeCategory
+                  ? 'background:var(--grad-navy);color:white;box-shadow:var(--sh-md);border:none;'
+                  : 'background:var(--ivory);border:1.5px solid rgba(11,29,58,0.12);color:var(--slate);'">
+          {{ cat }}
+        </button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div *ngFor="let client of filteredClients; let i = index" appScrollReveal [stagger]="i * 60"
+             class="card p-5 flex items-center gap-4 group">
+          <div [class]="'w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 ' + avatarColor(i)"
+               style="box-shadow:var(--sh-sm);">
+            <span class="font-heading font-bold text-white text-xs tracking-wide">{{ client.abbr.slice(0,3) }}</span>
+          </div>
+          <div class="flex flex-col gap-0.5 min-w-0">
+            <p class="font-heading font-semibold text-[0.92rem] leading-tight truncate" style="color:var(--navy);">{{ client.name }}</p>
+            <span class="font-body text-[0.68rem] font-semibold px-2.5 py-0.5 rounded-full w-fit"
+                  style="color:var(--gold);background:var(--gold-light);border:1px solid rgba(184,134,11,0.2);">{{ client.category }}</span>
+          </div>
+          <div class="ml-auto flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-px" style="background:linear-gradient(90deg,transparent,rgba(11,29,58,0.1),transparent);"></div>
+
+    <div>
+      <div class="flex items-center gap-3 mb-8">
+        <div class="gold-line"></div>
+        <h3 appScrollReveal class="font-heading font-bold text-[1.5rem]" style="color:var(--navy);">Our Consultants</h3>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div *ngFor="let c of consultants; let i = index" appScrollReveal [stagger]="i * 60"
+             class="card p-5 flex items-center gap-4 group">
+          <div class="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-gold"
+               style="background:var(--grad-navy);">
+            <span class="font-heading font-bold text-white text-xs tracking-wide">{{ c.abbr }}</span>
+          </div>
+          <div class="flex flex-col gap-0.5 min-w-0">
+            <p class="font-heading font-semibold text-[0.92rem] leading-tight truncate" style="color:var(--navy);">{{ c.name }}</p>
+            <span class="font-body text-[0.68rem] font-semibold px-2.5 py-0.5 rounded-full w-fit"
+                  style="color:var(--slate);background:var(--ivory-2);border:1px solid rgba(11,29,58,0.1);">{{ c.type }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

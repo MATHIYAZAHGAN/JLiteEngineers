@@ -1,0 +1,59 @@
+﻿<section id="features" class="py-32 px-6 relative overflow-hidden section-stripe">
+  <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+  <div class="absolute rounded-full pointer-events-none" style="width:800px;height:800px;top:-300px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(184,134,11,0.07) 0%,transparent 60%);filter:blur(80px);"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(184,134,11,0.3),transparent);"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-18">
+      <div appScrollReveal class="flex items-center justify-center gap-3 mb-5">
+        <div class="h-px w-8" style="background:var(--grad-gold);"></div>
+        <span class="label-pill label-pill-white">Why JJ Electronics</span>
+        <div class="h-px w-8" style="background:var(--grad-gold);"></div>
+      </div>
+      <h2 appScrollReveal [stagger]="100" class="font-heading font-bold leading-tight mt-3"
+          style="font-size:clamp(2.4rem,4vw,3.4rem);color:#ffffff;letter-spacing:-0.02em;">
+        Built for <span style="background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Professionals</span>
+      </h2>
+      <p appScrollReveal [stagger]="200" class="font-body mt-4 max-w-lg mx-auto leading-[1.85]"
+         style="color:rgba(255,255,255,0.5);font-size:1rem;">
+        Trusted by electrical contractors, MEP engineers, and facility managers across 40+ countries.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+      <div *ngFor="let f of features; let i = index" appScrollReveal [stagger]="i * 80"
+           class="feat-card p-8 flex flex-col gap-6 group press">
+        <div class="w-13 h-13 rounded-2xl flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform duration-300 relative z-10 flex-shrink-0"
+             style="width:52px;height:52px;background:var(--grad-gold);">
+          <svg *ngIf="f.icon === 'certified'" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <svg *ngIf="f.icon === 'smart'" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          <svg *ngIf="f.icon === 'warranty'" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <svg *ngIf="f.icon === 'delivery'" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="relative z-10">
+          <h3 class="font-heading font-bold text-[1.05rem] mb-3 text-white">{{ f.title }}</h3>
+          <p class="font-body text-sm leading-relaxed" style="color:rgba(255,255,255,0.48);">{{ f.desc }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust bar -->
+    <div appScrollReveal [stagger]="200" class="mt-18 pt-10 flex flex-wrap items-center justify-center gap-8"
+         style="border-top:1px solid rgba(255,255,255,0.08);margin-top:4rem;">
+      <div *ngFor="let t of trustItems" class="flex items-center gap-2.5" style="color:rgba(255,255,255,0.45);">
+        <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:var(--grad-gold);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="font-body text-sm">{{ t }}</span>
+      </div>
+    </div>
+
+    <!-- Photo strip -->
+    <div appScrollReveal [stagger]="300" class="mt-14 grid grid-cols-4 gap-3 rounded-2xl overflow-hidden">
+      <div *ngFor="let n of [34,35,36,37]" class="group relative overflow-hidden" style="aspect-ratio:4/3;">
+        <img [src]="'assets/Picture' + n + '.jpg'" alt="Site photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(184,134,11,0.2);"></div>
+      </div>
+    </div>
+  </div>
+</section>

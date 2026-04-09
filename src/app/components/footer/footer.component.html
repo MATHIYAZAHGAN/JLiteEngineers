@@ -1,0 +1,101 @@
+﻿<footer class="relative overflow-hidden pt-20 pb-8 px-6" style="background:var(--grad-hero);">
+  <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+  <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:var(--grad-gold);"></div>
+  <div class="absolute rounded-full pointer-events-none" style="width:600px;height:600px;bottom:-200px;right:-200px;background:radial-gradient(circle,rgba(184,134,11,0.06) 0%,transparent 65%);filter:blur(60px);"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pb-14"
+         style="border-bottom:1px solid rgba(255,255,255,0.08);">
+
+      <div class="flex flex-col gap-6 lg:col-span-1">
+        <a href="#" class="flex items-center gap-3 press w-fit group">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-gold" style="background:var(--grad-gold);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="flex flex-col leading-none">
+            <span class="font-heading font-bold text-[1.05rem] text-white">JJ Electronics</span>
+            <span class="font-body text-[0.58rem] font-semibold tracking-[0.15em] uppercase" style="color:var(--gold-3);">Certified &bull; Trusted</span>
+          </div>
+        </a>
+        <p class="font-body text-sm leading-relaxed max-w-[220px]" style="color:rgba(255,255,255,0.4);">
+          Certified electrical components for professionals. Trusted in 40+ countries since 2012.
+        </p>
+        <div class="flex gap-2.5">
+          <a *ngFor="let s of socials" [href]="s.href" [attr.aria-label]="s.label"
+             class="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 press"
+             style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);"
+             onmouseenter="this.style.background='var(--grad-gold)';this.style.borderColor='transparent';"
+             onmouseleave="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.1)';">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path *ngIf="s.icon === 'linkedin'" d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect *ngIf="s.icon === 'linkedin'" x="2" y="9" width="4" height="12"/><circle *ngIf="s.icon === 'linkedin'" cx="4" cy="4" r="2"/>
+              <path *ngIf="s.icon === 'twitter'" d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              <rect *ngIf="s.icon === 'youtube'" x="2" y="7" width="20" height="15" rx="2" ry="2"/><polygon *ngIf="s.icon === 'youtube'" points="10 15 15 12 10 9 10 15"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center gap-2 mb-6">
+          <div class="w-4 h-px" style="background:var(--grad-gold);"></div>
+          <h4 class="font-body font-semibold text-xs uppercase tracking-[0.14em] text-white">Products</h4>
+        </div>
+        <ul class="flex flex-col gap-3">
+          <li *ngFor="let item of footerProducts">
+            <a href="#products" class="font-body text-sm transition-colors duration-200"
+               style="color:rgba(255,255,255,0.4);"
+               onmouseenter="this.style.color='var(--gold-3)';"
+               onmouseleave="this.style.color='rgba(255,255,255,0.4)';">{{ item }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="flex items-center gap-2 mb-6">
+          <div class="w-4 h-px" style="background:var(--grad-gold);"></div>
+          <h4 class="font-body font-semibold text-xs uppercase tracking-[0.14em] text-white">Company</h4>
+        </div>
+        <ul class="flex flex-col gap-3">
+          <li *ngFor="let link of links">
+            <a [href]="'#' + link.toLowerCase()" class="font-body text-sm transition-colors duration-200"
+               style="color:rgba(255,255,255,0.4);"
+               onmouseenter="this.style.color='var(--gold-3)';"
+               onmouseleave="this.style.color='rgba(255,255,255,0.4)';">{{ link }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="flex items-center gap-2 mb-6">
+          <div class="w-4 h-px" style="background:var(--grad-gold);"></div>
+          <h4 class="font-body font-semibold text-xs uppercase tracking-[0.14em] text-white">Contact</h4>
+        </div>
+        <ul class="flex flex-col gap-3">
+          <li class="font-body text-sm" style="color:rgba(255,255,255,0.4);">sales&#64;jjelectronics.com</li>
+          <li class="font-body text-sm" style="color:rgba(255,255,255,0.4);">+91 44 XXXX XXXX</li>
+          <li class="font-body text-sm" style="color:rgba(255,255,255,0.4);">Chennai, Tamilnadu</li>
+          <li class="font-body text-sm" style="color:rgba(255,255,255,0.4);">Mon&ndash;Sat, 9am&ndash;6pm IST</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-5">
+          <span *ngFor="let c of ['ISI','CE','RoHS','ISO 9001']"
+                class="font-body text-[0.62rem] font-bold px-2.5 py-1 rounded-lg tracking-wide"
+                style="color:var(--gold-3);border:1px solid rgba(184,134,11,0.25);background:rgba(184,134,11,0.08);">
+            {{ c }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-body text-xs" style="color:rgba(255,255,255,0.25);">&copy; {{ year }} JJ Electronics Pvt. Ltd. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="font-body text-xs transition-colors duration-200" style="color:rgba(255,255,255,0.25);"
+           onmouseenter="this.style.color='var(--gold-3)';" onmouseleave="this.style.color='rgba(255,255,255,0.25)';">Privacy Policy</a>
+        <a href="#" class="font-body text-xs transition-colors duration-200" style="color:rgba(255,255,255,0.25);"
+           onmouseenter="this.style.color='var(--gold-3)';" onmouseleave="this.style.color='rgba(255,255,255,0.25)';">Terms of Service</a>
+        <a href="#" class="font-body text-xs transition-colors duration-200" style="color:rgba(255,255,255,0.25);"
+           onmouseenter="this.style.color='var(--gold-3)';" onmouseleave="this.style.color='rgba(255,255,255,0.25)';">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,98 @@
+﻿<section id="contact" class="py-32 px-6 relative overflow-hidden" style="background:var(--ivory);">
+  <div class="absolute inset-0 dot-pattern pointer-events-none" style="opacity:0.5;"></div>
+  <div class="absolute top-0 left-0 right-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(184,134,11,0.3),transparent);"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center max-w-xl mx-auto mb-16">
+      <div appScrollReveal class="flex items-center justify-center gap-3 mb-5">
+        <div class="gold-line"></div>
+        <span class="label-pill label-pill-gold">Get in Touch</span>
+        <div class="gold-line"></div>
+      </div>
+      <h2 appScrollReveal [stagger]="100" class="font-heading font-bold leading-tight mt-2"
+          style="font-size:clamp(2.4rem,4vw,3.4rem);color:var(--navy);letter-spacing:-0.02em;">
+        Let's <span class="elec-text">Work Together</span>
+      </h2>
+      <p appScrollReveal [stagger]="200" class="font-body mt-4 leading-[1.85]"
+         style="color:var(--slate-2);font-size:1rem;">
+        Whether you need a single component or a full project supply &mdash; our team responds within 2 hours.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+      <!-- Info -->
+      <div class="lg:col-span-2 flex flex-col gap-4">
+        <div *ngFor="let info of contactInfo; let i = index" appScrollReveal [stagger]="i * 80"
+             class="card p-5 flex items-center gap-4 group">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 shadow-gold group-hover:scale-105 transition-transform duration-300"
+               style="background:var(--grad-gold);">
+            <svg *ngIf="info.icon === 'mail'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg *ngIf="info.icon === 'phone'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg *ngIf="info.icon === 'map'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg *ngIf="info.icon === 'clock'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <p class="font-body text-[0.62rem] uppercase tracking-[0.12em] font-semibold" style="color:var(--slate-3);">{{ info.label }}</p>
+            <p class="font-body text-sm font-semibold mt-0.5" style="color:var(--navy);">{{ info.value }}</p>
+          </div>
+        </div>
+
+        <div appScrollReveal [stagger]="400" class="card flex-1 min-h-[130px] flex items-center justify-center overflow-hidden relative"
+             style="background:var(--grad-navy);">
+          <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:var(--grad-gold);"></div>
+          <div class="flex flex-col items-center gap-3 text-center px-4 relative z-10">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center shadow-gold" style="background:var(--grad-gold);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <p class="font-heading font-bold text-sm text-white">Chennai, Tamilnadu</p>
+            <p class="font-body text-xs" style="color:rgba(255,255,255,0.5);">Serving 4 States across South India</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div appScrollReveal [stagger]="150" class="lg:col-span-3 card p-9">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center shadow-gold" style="background:var(--grad-gold);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-[1.15rem]" style="color:var(--navy);">Send a Message</h3>
+            <p class="font-body text-xs" style="color:var(--slate-2);">We reply within 2 business hours</p>
+          </div>
+        </div>
+
+        <div *ngIf="submitted" class="mb-6 p-4 rounded-xl font-body text-sm flex items-center gap-2.5"
+             style="background:var(--green-light);border:1px solid rgba(10,107,71,0.2);color:var(--green);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Message sent! We'll get back to you within 2 hours.
+        </div>
+
+        <form (ngSubmit)="onSubmit()" class="flex flex-col gap-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-2">
+              <label class="font-body text-[0.68rem] font-semibold uppercase tracking-[0.12em]" style="color:var(--slate);">Full Name</label>
+              <input [(ngModel)]="form.name" name="name" type="text" placeholder="[name]" class="input-base" required/>
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="font-body text-[0.68rem] font-semibold uppercase tracking-[0.12em]" style="color:var(--slate);">Email Address</label>
+              <input [(ngModel)]="form.email" name="email" type="email" placeholder="[email]" class="input-base" required/>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-body text-[0.68rem] font-semibold uppercase tracking-[0.12em]" style="color:var(--slate);">Subject</label>
+            <input [(ngModel)]="form.subject" name="subject" type="text" placeholder="Product enquiry / Bulk order / Technical support" class="input-base"/>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-body text-[0.68rem] font-semibold uppercase tracking-[0.12em]" style="color:var(--slate);">Message</label>
+            <textarea [(ngModel)]="form.message" name="message" rows="5" placeholder="Tell us about your project requirements..." class="input-base resize-none" required></textarea>
+          </div>
+          <button type="submit" class="btn-gold press justify-center mt-1" style="padding:0.95rem 1.9rem;font-size:0.9rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

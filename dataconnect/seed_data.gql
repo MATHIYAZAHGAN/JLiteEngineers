@@ -1,0 +1,30 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "Populating seed data is an administrative task, safe for authenticated users.") {
+  user_insertMany(data: [
+    {
+      id: "user1-voltx-app",
+      username: "volt-user-one",
+      email: "voltuser1@example.com",
+      createdAt: "2024-01-01T10:00:00Z"
+    },
+    {
+      id: "user2-voltx-app",
+      username: "volt-user-two",
+      email: "voltuser2@example.com",
+      createdAt: "2024-01-02T11:00:00Z"
+    }
+  ])
+  device_insertMany(data: [
+    {
+      id: "device1-alpha",
+      model: "Alpha-X",
+      ownerUid: "user1-voltx-app",
+      registrationDate: "2024-01-05T12:00:00Z"
+    },
+    {
+      id: "device2-beta",
+      model: "Beta-Y",
+      ownerUid: "user2-voltx-app",
+      registrationDate: "2024-01-06T13:00:00Z"
+    }
+  ])
+}

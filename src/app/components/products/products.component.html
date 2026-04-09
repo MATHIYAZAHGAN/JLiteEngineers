@@ -1,0 +1,163 @@
+﻿<section id="products" class="py-32 px-6 relative overflow-hidden" style="background:var(--white);">
+  <div class="absolute inset-0 dot-pattern pointer-events-none" style="opacity:0.5;"></div>
+  <div class="absolute top-0 left-0 right-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(184,134,11,0.3),transparent);"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+      <div>
+        <div appScrollReveal class="flex items-center gap-3 mb-4">
+          <div class="gold-line"></div>
+          <span class="label-pill label-pill-gold">Product Catalogue</span>
+        </div>
+        <h2 appScrollReveal [stagger]="80" class="font-heading font-bold leading-tight"
+            style="font-size:clamp(2.2rem,4vw,3.2rem);color:var(--navy);letter-spacing:-0.02em;">
+          Electrical <span class="elec-text">Components</span>
+        </h2>
+        <p appScrollReveal [stagger]="140" class="font-body mt-2" style="color:var(--slate-2);">
+          ISI &amp; CE certified. Trusted by 50,000+ engineers across India.
+        </p>
+      </div>
+      <button appScrollReveal [stagger]="100" (click)="toggleCart()"
+              class="press relative inline-flex items-center gap-2.5 font-body font-semibold text-sm px-5 py-3 rounded-2xl self-start sm:self-auto transition-all duration-200"
+              style="background:var(--ivory);border:1.5px solid rgba(11,29,58,0.12);color:var(--navy);box-shadow:var(--sh-sm);"
+              onmouseenter="this.style.borderColor='var(--gold-2)';this.style.color='var(--gold)';"
+              onmouseleave="this.style.borderColor='rgba(11,29,58,0.12)';this.style.color='var(--navy)';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        View Cart
+        <span *ngIf="cartCount() > 0" class="absolute -top-2 -right-2 w-5 h-5 rounded-full text-white text-xs font-bold flex items-center justify-center shadow-gold"
+              style="background:var(--grad-gold);color:var(--navy);">{{ cartCount() }}</span>
+      </button>
+    </div>
+
+    <div appScrollReveal class="flex flex-wrap gap-2 mb-12">
+      <button *ngFor="let cat of categories" (click)="setCategory(cat)"
+              class="press font-body font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-200"
+              [style]="activeCategory() === cat
+                ? 'background:var(--grad-navy);color:white;box-shadow:var(--sh-md);border:none;'
+                : 'background:var(--ivory);border:1.5px solid rgba(11,29,58,0.1);color:var(--slate);'">
+        {{ cat }}
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div *ngFor="let p of filteredProducts(); let i = index" appScrollReveal [stagger]="i * 60"
+           class="group relative rounded-3xl overflow-hidden transition-all duration-350 press"
+           style="background:var(--white);border:1px solid rgba(11,29,58,0.08);box-shadow:var(--sh-card);"
+           onmouseenter="this.style.transform='translateY(-6px)';this.style.boxShadow='var(--sh-card-hover)';this.style.borderColor='rgba(184,134,11,0.25)';"
+           onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='var(--sh-card)';this.style.borderColor='rgba(11,29,58,0.08)';">
+        <div class="relative overflow-hidden" style="aspect-ratio:1/1;background:var(--ivory-2);">
+          <span *ngIf="p.tag" class="absolute top-3 left-3 z-10 font-body font-bold text-xs px-3 py-1.5 rounded-full"
+                [style]="p.tagColor === 'elec'
+                  ? 'background:var(--grad-navy);color:white;box-shadow:var(--sh-sm);'
+                  : 'background:var(--grad-gold);color:var(--navy);box-shadow:var(--sh-gold);'">
+            {{ p.tag }}
+          </span>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+               style="background:linear-gradient(180deg,transparent 50%,rgba(11,29,58,0.06) 100%);"></div>
+          <img [src]="p.img" [alt]="p.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+        </div>
+        <div class="p-5 flex flex-col gap-3">
+          <h3 class="font-heading font-bold text-[0.95rem] leading-tight" style="color:var(--navy);">{{ p.name }}</h3>
+          <p class="font-body text-xs leading-relaxed line-clamp-2" style="color:var(--slate-2);">{{ p.desc }}</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span *ngFor="let tag of p.specs" class="spec-tag">{{ tag }}</span>
+          </div>
+          <div class="flex items-center justify-between pt-3 mt-1" style="border-top:1px solid rgba(11,29,58,0.07);">
+            <div class="flex flex-col">
+              <div class="flex items-baseline gap-1">
+                <span class="font-body text-xs font-medium" style="color:var(--slate-3);">&#8377;</span>
+                <span class="font-heading font-bold text-xl" style="color:var(--navy);">{{ p.price | number }}</span>
+              </div>
+              <span class="font-body text-[0.62rem]" style="color:var(--slate-3);">{{ p.unit }} &middot; incl. GST</span>
+            </div>
+            <button (click)="addToCart(p)" class="press inline-flex items-center gap-1.5 font-body font-bold text-xs px-4 py-2.5 rounded-xl transition-all duration-200"
+                    style="background:var(--grad-navy);color:white;box-shadow:var(--sh-sm);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div *ngIf="cartOpen()" class="fixed inset-0 z-50 flex justify-end" (click)="closeCart()">
+  <div class="absolute inset-0 backdrop-blur-sm" style="background:rgba(11,29,58,0.45);"></div>
+  <div class="relative w-full max-w-sm h-full flex flex-col cart-drawer"
+       style="background:var(--white);border-left:1px solid rgba(11,29,58,0.1);box-shadow:var(--sh-xl);"
+       (click)="$event.stopPropagation()">
+    <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:var(--grad-gold);"></div>
+    <div class="flex items-center justify-between px-6 py-5 mt-1" style="border-bottom:1px solid rgba(11,29,58,0.08);">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-gold" style="background:var(--grad-gold);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-base" style="color:var(--navy);">Your Cart</h3>
+          <p class="font-body text-xs" style="color:var(--slate-2);">{{ cartCount() }} item(s)</p>
+        </div>
+      </div>
+      <button (click)="closeCart()" class="press w-9 h-9 rounded-xl flex items-center justify-center transition-colors"
+              style="border:1px solid rgba(11,29,58,0.1);" aria-label="Close"
+              onmouseenter="this.style.background='var(--ivory-2)';"
+              onmouseleave="this.style.background='transparent';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div *ngIf="cart().length === 0" class="flex-1 flex flex-col items-center justify-center gap-4 px-6 text-center">
+      <div class="w-20 h-20 rounded-3xl flex items-center justify-center" style="background:var(--gold-light);border:1px solid rgba(184,134,11,0.2);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      </div>
+      <p class="font-heading font-bold text-lg" style="color:var(--navy);">Cart is empty</p>
+      <p class="font-body text-sm" style="color:var(--slate-2);">Add electrical components to get started.</p>
+      <button (click)="closeCart()" class="press btn-gold text-sm px-6 py-2.5">Browse Products</button>
+    </div>
+
+    <div *ngIf="cart().length > 0" class="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-3">
+      <div *ngFor="let item of cart()" class="flex items-center gap-3 rounded-2xl p-3"
+           style="background:var(--ivory);border:1px solid rgba(11,29,58,0.08);">
+        <img [src]="item.img" [alt]="item.name" class="w-14 h-14 rounded-xl object-cover flex-shrink-0" style="border:1px solid rgba(11,29,58,0.08);"/>
+        <div class="flex-1 min-w-0">
+          <p class="font-body font-semibold text-sm truncate" style="color:var(--navy);">{{ item.name }}</p>
+          <p class="font-body text-xs" style="color:var(--slate-2);">&#8377;{{ item.price | number }}{{ item.unit }}</p>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button (click)="updateQty(item.id, -1)" class="press w-7 h-7 rounded-lg flex items-center justify-center"
+                  style="border:1px solid rgba(11,29,58,0.1);background:var(--white);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <span class="font-heading font-bold text-sm w-5 text-center" style="color:var(--navy);">{{ item.qty }}</span>
+          <button (click)="updateQty(item.id, 1)" class="press w-7 h-7 rounded-lg flex items-center justify-center"
+                  style="border:1px solid rgba(11,29,58,0.1);background:var(--white);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+        <button (click)="removeFromCart(item.id)" class="press p-1.5 rounded-lg transition-colors" style="color:var(--slate-3);"
+                onmouseenter="this.style.color='var(--red)';" onmouseleave="this.style.color='var(--slate-3)';">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="cart().length > 0" class="px-5 py-5 flex flex-col gap-3" style="border-top:1px solid rgba(11,29,58,0.08);">
+      <div class="flex items-center justify-between px-1">
+        <span class="font-body text-sm" style="color:var(--slate-2);">Subtotal</span>
+        <div class="flex items-baseline gap-1">
+          <span class="font-body text-sm font-medium" style="color:var(--slate-2);">&#8377;</span>
+          <span class="font-heading font-bold text-2xl" style="background:var(--grad-navy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">{{ cartTotal() | number }}</span>
+        </div>
+      </div>
+      <p class="font-body text-xs px-1" style="color:var(--slate-3);">Bulk pricing available for orders over 50 units.</p>
+      <button class="press w-full font-body font-bold py-4 rounded-2xl transition-all duration-200 shadow-gold"
+              style="background:var(--grad-gold);color:var(--navy);">
+        Checkout &mdash; &#8377;{{ cartTotal() | number }}
+      </button>
+      <button (click)="closeCart()" class="press w-full font-body text-sm py-3 rounded-2xl transition-all duration-200"
+              style="background:var(--ivory);border:1.5px solid rgba(11,29,58,0.1);color:var(--slate);">
+        Continue Shopping
+      </button>
+    </div>
+  </div>
+</div>

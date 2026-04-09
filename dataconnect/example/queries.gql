@@ -1,0 +1,82 @@
+query ListAllProducts @auth(level: PUBLIC, insecureReason: "Product listing is safe to expose publicly.") {
+  products {
+    id
+    name
+    description
+    price
+    currentStock
+    imageUrl
+    category {
+      id
+      name
+    }
+  }
+}
+
+query GetProductById($id: UUID!) @auth(level: PUBLIC, insecureReason: "Product detail is safe to expose publicly.") {
+  product(id: $id) {
+    id
+    name
+    description
+    price
+    currentStock
+    imageUrl
+    barcode
+    discontinued
+    category {
+      id
+      name
+    }
+  }
+}
+
+mutation CreateProduct(
+  $name: String!,
+  $price: Float!,
+  $currentStock: Int!,
+  $createdAt: Timestamp!,
+  $description: String,
+  $imageUrl: String
+) @auth(level: USER, insecureReason: "Only authenticated users can create products.") {
+  product_insert(data: {
+    name: $name,
+    price: $price,
+    currentStock: $currentStock,
+    createdAt: $createdAt,
+    description: $description,
+    imageUrl: $imageUrl
+  })
+}
+
+mutation UpdateProductStock($id: UUID!, $currentStock: Int!) @auth(level: USER, insecureReason: "Only authenticated users can update stock.") {
+  product_update(id: $id, data: {
+    currentStock: $currentStock
+  })
+}
+
+query ListAllSales @auth(level: USER, insecureReason: "Sales data is restricted to authenticated users.") {
+  sales {
+    id
+    saleDate
+    totalAmount
+    customerName
+    processedBy {
+      id
+      username
+    }
+  }
+}
+
+mutation CreateSale(
+  $saleDate: Date!,
+  $totalAmount: Float!,
+  $createdAt: Timestamp!,
+  $customerName: String
+) @auth(level: USER, insecureReason: "Only authenticated users can create sales.") {
+  sale_insert(data: {
+    saleDate: $saleDate,
+    totalAmount: $totalAmount,
+    createdAt: $createdAt,
+    customerName: $customerName
+  })
+}
