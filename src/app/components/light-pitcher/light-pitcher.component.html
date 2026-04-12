@@ -1,0 +1,191 @@
+<!-- ═══════════════════════════════════════════════════════════
+     LIGHT PITCHER — LIGHTING SHOWCASE SECTION
+═══════════════════════════════════════════════════════════ -->
+<section id="light-pitcher" class="relative py-24 overflow-hidden" style="background: var(--navy);">
+
+  <!-- Ambient glow effects -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-20"
+         style="background: radial-gradient(circle, #f0c040 0%, transparent 70%); filter: blur(60px);"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-15"
+         style="background: radial-gradient(circle, #2d8ef5 0%, transparent 70%); filter: blur(50px);"></div>
+    <div class="absolute top-3/4 left-1/2 w-64 h-64 rounded-full opacity-10"
+         style="background: radial-gradient(circle, #f0c040 0%, transparent 70%); filter: blur(40px);"></div>
+  </div>
+  <div class="absolute inset-0 dot-pattern opacity-5 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <!-- Header -->
+    <div class="text-center mb-14" appScrollReveal>
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 border"
+           style="background: rgba(240,192,64,0.1); border-color: rgba(240,192,64,0.3);">
+        <!-- Lightbulb icon -->
+        <svg class="w-4 h-4" style="color: var(--gold-3);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+        </svg>
+        <span class="text-sm font-semibold tracking-widest uppercase" style="color: var(--gold-3);">Lighting Solutions</span>
+      </div>
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
+        Light <span class="gold-text">Pitcher</span>
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: var(--slate-3);">
+        Premium LED lighting solutions for every application — from industrial high bays to decorative pendants. Energy-efficient, long-lasting, and beautifully designed.
+      </p>
+
+      <!-- Lighting stats strip -->
+      <div class="flex flex-wrap justify-center gap-6 mt-8">
+        <div *ngFor="let s of [
+          {icon:'bolt', val:'Up to 90%', lbl:'Energy Savings'},
+          {icon:'clock', val:'50,000 hrs', lbl:'Avg. Lifespan'},
+          {icon:'shield', val:'IP20–IP67', lbl:'Protection Ratings'},
+          {icon:'sun', val:'2700K–6500K', lbl:'CCT Range'}
+        ]" class="flex items-center gap-2 px-4 py-2 rounded-full border"
+             style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1);">
+          <svg class="w-4 h-4" style="color: var(--gold-3);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path *ngIf="s.icon === 'bolt'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            <path *ngIf="s.icon === 'clock'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path *ngIf="s.icon === 'shield'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            <path *ngIf="s.icon === 'sun'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+          <span class="text-xs font-semibold text-white">{{ s.val }}</span>
+          <span class="text-xs" style="color: var(--slate-3);">{{ s.lbl }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10" appScrollReveal [stagger]="100">
+      <button *ngFor="let cat of categories"
+              (click)="setCategory(cat.id)"
+              class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 border"
+              [style.background]="activeCategory() === cat.id ? 'var(--grad-gold)' : 'rgba(255,255,255,0.05)'"
+              [style.color]="activeCategory() === cat.id ? 'var(--navy)' : 'var(--slate-3)'"
+              [style.border-color]="activeCategory() === cat.id ? 'transparent' : 'rgba(255,255,255,0.1)'"
+              [style.box-shadow]="activeCategory() === cat.id ? 'var(--sh-gold)' : 'none'">
+        {{ cat.label }}
+      </button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      <div *ngFor="let p of filtered; let i = index"
+           appScrollReveal [stagger]="i * 70"
+           class="group rounded-2xl overflow-hidden border transition-all duration-400 hover:-translate-y-2 cursor-pointer"
+           style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);"
+           (click)="openLightbox(p.img, p.name)">
+
+        <!-- Image -->
+        <div class="relative overflow-hidden h-52">
+          <img [src]="p.img" [alt]="p.name"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
+          <!-- Overlay -->
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+               style="background: rgba(11,29,58,0.6);">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center border-2 border-white/50">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+              </svg>
+            </div>
+          </div>
+          <!-- Tag -->
+          <div *ngIf="p.tag" class="absolute top-3 left-3">
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold"
+                  [style.background]="tagBg(p.tagColor)"
+                  [style.color]="tagColor(p.tagColor)">
+              {{ p.tag }}
+            </span>
+          </div>
+          <!-- Badge -->
+          <div class="absolute top-3 right-3">
+            <span class="px-2.5 py-1 rounded-full text-xs font-semibold"
+                  style="background: rgba(11,29,58,0.7); color: var(--slate-3); backdrop-filter: blur(4px);">
+              {{ p.badge }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="p-5">
+          <h3 class="font-semibold text-white mb-1 text-base">{{ p.name }}</h3>
+          <p class="text-xs leading-relaxed mb-4" style="color: var(--slate-3);">{{ p.desc }}</p>
+
+          <!-- Specs row -->
+          <div class="grid grid-cols-4 gap-2">
+            <div *ngFor="let spec of [
+              {lbl:'Power', val: p.wattage},
+              {lbl:'Output', val: p.lumens},
+              {lbl:'IP', val: p.ip},
+              {lbl:'CCT', val: p.cct}
+            ]" class="text-center rounded-lg py-2 px-1"
+                 style="background: rgba(255,255,255,0.06);">
+              <div class="text-xs font-bold text-white">{{ spec.val }}</div>
+              <div class="text-xs mt-0.5" style="color: var(--slate-3); font-size: 10px;">{{ spec.lbl }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="px-5 pb-5">
+          <div class="flex items-center justify-between pt-3 border-t" style="border-color: rgba(255,255,255,0.08);">
+            <div class="flex items-center gap-1.5">
+              <!-- Glow dot -->
+              <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--gold-3);"></span>
+              <span class="text-xs" style="color: var(--slate-3);">In Stock</span>
+            </div>
+            <button class="text-xs font-semibold px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105"
+                    style="background: var(--grad-gold); color: var(--navy);"
+                    (click)="$event.stopPropagation()">
+              Get Quote
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom CTA Banner -->
+    <div appScrollReveal [stagger]="300"
+         class="rounded-2xl p-8 md:p-12 text-center border relative overflow-hidden"
+         style="background: linear-gradient(135deg, rgba(184,134,11,0.15) 0%, rgba(240,192,64,0.08) 100%); border-color: rgba(184,134,11,0.25);">
+      <div class="absolute inset-0 pointer-events-none"
+           style="background: radial-gradient(ellipse at center, rgba(240,192,64,0.08) 0%, transparent 70%);"></div>
+      <svg class="w-12 h-12 mx-auto mb-4" style="color: var(--gold-3);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+      </svg>
+      <h3 class="font-heading text-2xl md:text-3xl font-bold text-white mb-3">
+        Need a Custom Lighting Design?
+      </h3>
+      <p class="mb-6 max-w-xl mx-auto" style="color: var(--slate-3);">
+        Our lighting consultants will design the perfect solution for your space — from lux calculations to fixture selection and energy optimisation.
+      </p>
+      <a href="#contact"
+         class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
+         style="background: var(--grad-gold); color: var(--navy); box-shadow: var(--sh-gold);">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        Request Lighting Consultation
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div *ngIf="lightboxImg()"
+       class="fixed inset-0 z-50 flex items-center justify-center p-4"
+       style="background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);"
+       (click)="closeLightbox()">
+    <div class="relative max-w-3xl w-full" (click)="$event.stopPropagation()">
+      <button class="absolute -top-10 right-0 text-white/70 hover:text-white transition-colors"
+              (click)="closeLightbox()">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <img [src]="lightboxImg()!" [alt]="lightboxTitle()"
+           class="w-full rounded-2xl shadow-2xl object-cover max-h-[75vh]"/>
+      <p class="text-center text-white font-semibold mt-4 text-lg">{{ lightboxTitle() }}</p>
+    </div>
+  </div>
+
+</section>

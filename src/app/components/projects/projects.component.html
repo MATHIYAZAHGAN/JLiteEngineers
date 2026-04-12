@@ -102,28 +102,158 @@
       </div>
     </div>
 
+    <!-- ── WORK GALLERY ── -->
     <div>
-      <div appScrollReveal class="flex items-center gap-3 mb-8">
-        <div class="gold-line"></div>
-        <h3 class="font-heading font-bold text-[1.5rem]" style="color:var(--navy);">Site Gallery</h3>
-        <span class="font-body text-xs font-semibold px-2.5 py-0.5 rounded-full"
-              style="color:var(--slate);background:var(--ivory-3);border:1px solid rgba(11,29,58,0.1);">{{ galleryImages.length }} Photos</span>
-      </div>
-      <div class="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
-        <div *ngFor="let img of galleryImages; let i = index" appScrollReveal [stagger]="i * 30"
-             class="group relative overflow-hidden rounded-2xl cursor-pointer break-inside-avoid"
-             (click)="openLightbox(img.src)"
-             style="transition:transform 0.3s ease;"
-             onmouseenter="this.style.transform='scale(1.02)';"
-             onmouseleave="this.style.transform='scale(1)';">
-          <img [src]="img.src" [alt]="img.label" class="w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-               style="background:rgba(11,29,58,0.45);">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-gold" style="background:var(--grad-gold);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-            </div>
+      <div appScrollReveal class="flex items-center justify-between gap-4 mb-10 flex-wrap">
+        <div class="flex items-center gap-4">
+          <div class="w-1 h-10 rounded-full" style="background:var(--grad-gold);"></div>
+          <div>
+            <h3 class="font-heading font-bold text-[1.6rem]" style="color:var(--navy);">Work Gallery</h3>
+            <p class="text-xs mt-0.5" style="color:var(--slate-2);">Real site photography from our executed projects</p>
           </div>
         </div>
+        <span class="font-body text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-2"
+              style="color:var(--gold);background:var(--gold-light);border:1px solid rgba(184,134,11,0.2);">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          {{ galleryImages.length }} Photos
+        </span>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[180px]">
+
+        <!-- Large feature tile — col 1-2, row 1-2 -->
+        <div appScrollReveal [stagger]="0"
+             class="col-span-2 row-span-2 group relative overflow-hidden rounded-2xl cursor-pointer"
+             style="box-shadow:var(--sh-md);"
+             (click)="openLightbox(galleryImages[0].src)">
+          <img [src]="galleryImages[0].src" [alt]="galleryImages[0].label"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 transition-opacity duration-300"
+               style="background:linear-gradient(180deg,transparent 40%,rgba(11,29,58,0.88) 100%);"></div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+               style="background:rgba(11,29,58,0.25);"></div>
+          <!-- Label -->
+          <div class="absolute bottom-0 left-0 right-0 p-5">
+            <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full mb-2"
+                  style="background:var(--grad-gold);color:var(--navy);">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+              </svg>
+              Featured Work
+            </span>
+            <p class="text-white font-semibold text-base leading-snug">{{ galleryImages[0].label }}</p>
+          </div>
+          <!-- Zoom icon -->
+          <div class="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100"
+               style="background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Small tiles — col 3, row 1 -->
+        <div *ngFor="let img of galleryImages.slice(1, 3); let i = index"
+             appScrollReveal [stagger]="(i+1) * 60"
+             class="col-span-1 row-span-1 group relative overflow-hidden rounded-2xl cursor-pointer"
+             style="box-shadow:var(--sh-sm);"
+             (click)="openLightbox(img.src)">
+          <img [src]="img.src" [alt]="img.label"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+               style="background:rgba(11,29,58,0.5);"></div>
+          <div class="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p class="text-white text-xs font-medium leading-tight">{{ img.label }}</p>
+          </div>
+          <div class="absolute top-2 right-2 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+               style="background:var(--grad-gold);">
+            <svg class="w-3.5 h-3.5" style="color:var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Wide tile — col 3-4, row 3 -->
+        <div appScrollReveal [stagger]="180"
+             class="col-span-2 row-span-1 group relative overflow-hidden rounded-2xl cursor-pointer"
+             style="box-shadow:var(--sh-sm);"
+             (click)="openLightbox(galleryImages[3].src)">
+          <img [src]="galleryImages[3].src" [alt]="galleryImages[3].label"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 transition-opacity duration-300"
+               style="background:linear-gradient(90deg,rgba(11,29,58,0.7) 0%,transparent 60%);"></div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+               style="background:rgba(11,29,58,0.3);"></div>
+          <div class="absolute left-0 top-0 bottom-0 flex items-center p-5">
+            <p class="text-white font-semibold text-sm">{{ galleryImages[3].label }}</p>
+          </div>
+          <div class="absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+               style="background:var(--grad-gold);">
+            <svg class="w-3.5 h-3.5" style="color:var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Bottom row — 4 equal tiles -->
+        <div *ngFor="let img of galleryImages.slice(4, 8); let i = index"
+             appScrollReveal [stagger]="(i+4) * 60"
+             class="col-span-1 row-span-1 group relative overflow-hidden rounded-2xl cursor-pointer"
+             style="box-shadow:var(--sh-sm);"
+             (click)="openLightbox(img.src)">
+          <img [src]="img.src" [alt]="img.label"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+               style="background:rgba(11,29,58,0.55);"></div>
+          <div class="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p class="text-white text-xs font-medium leading-tight">{{ img.label }}</p>
+          </div>
+          <div class="absolute top-2 right-2 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+               style="background:var(--grad-gold);">
+            <svg class="w-3.5 h-3.5" style="color:var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Last row — 1 wide + 1 tall -->
+        <div appScrollReveal [stagger]="480"
+             class="col-span-3 row-span-1 group relative overflow-hidden rounded-2xl cursor-pointer"
+             style="box-shadow:var(--sh-sm);"
+             (click)="openLightbox(galleryImages[8].src)">
+          <img [src]="galleryImages[8].src" [alt]="galleryImages[8].label"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 transition-opacity duration-300"
+               style="background:linear-gradient(90deg,rgba(11,29,58,0.65) 0%,transparent 55%);"></div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+               style="background:rgba(11,29,58,0.3);"></div>
+          <div class="absolute left-0 top-0 bottom-0 flex items-center p-5">
+            <p class="text-white font-semibold text-sm">{{ galleryImages[8].label }}</p>
+          </div>
+        </div>
+
+        <div appScrollReveal [stagger]="540"
+             class="col-span-1 row-span-1 group relative overflow-hidden rounded-2xl cursor-pointer"
+             style="box-shadow:var(--sh-sm);"
+             (click)="openLightbox(galleryImages[9].src)">
+          <img [src]="galleryImages[9].src" [alt]="galleryImages[9].label"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+               style="background:rgba(11,29,58,0.55);"></div>
+          <div class="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p class="text-white text-xs font-medium leading-tight">{{ galleryImages[9].label }}</p>
+          </div>
+          <div class="absolute top-2 right-2 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+               style="background:var(--grad-gold);">
+            <svg class="w-3.5 h-3.5" style="color:var(--navy);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

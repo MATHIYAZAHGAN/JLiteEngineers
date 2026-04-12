@@ -2,7 +2,7 @@
   <div class="absolute inset-0 dot-pattern pointer-events-none" style="opacity:0.6;"></div>
   <div class="max-w-7xl mx-auto flex flex-col gap-24 relative z-10">
 
-    <!-- Heading -->
+    <!-- Section Heading -->
     <div class="text-center max-w-3xl mx-auto">
       <div appScrollReveal class="flex items-center justify-center gap-3 mb-5">
         <div class="gold-line"></div>
@@ -15,7 +15,8 @@
       </h2>
       <p appScrollReveal [stagger]="200" class="font-body mt-5 leading-[1.9] max-w-2xl mx-auto"
          style="color:var(--slate-2);font-size:1.05rem;">
-        Over a decade of delivering safe, certified, and high-quality electrical installations &mdash; from low voltage to 33,000 V high voltage systems.
+        Over a decade of delivering safe, certified, and high-quality electrical installations &mdash;
+        from low voltage to 33,000 V high voltage systems across South India.
       </p>
     </div>
 
@@ -28,40 +29,74 @@
       </div>
     </div>
 
-    <!-- Who We Are -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-      <div class="flex flex-col gap-7">
+    <!-- Main Content: Paragraphs + License Card -->
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-14 items-start">
+
+      <!-- Left: Real company paragraphs -->
+      <div class="lg:col-span-3 flex flex-col gap-7">
         <div class="flex items-center gap-3">
           <div class="gold-line"></div>
           <h3 appScrollReveal class="font-heading font-bold text-[1.8rem]" style="color:var(--navy);">Who We Are</h3>
         </div>
-        <p appScrollReveal [stagger]="80" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
-          We are one of the leading electrical contractors in Tamilnadu with over <span class="font-semibold" style="color:var(--navy);">10 years</span> of hands-on experience. We carry out new electrical installations, additional installations, and operation &amp; maintenance works across Tamilnadu and in states like <span class="font-semibold" style="color:var(--navy);">Kerala, Karnataka, and Andhra Pradesh</span>.
+
+        <p appScrollReveal [stagger]="60" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
+          We introduce ourselves as one of the leading electrical Contractors in Tamilnadu and we are in this field for over
+          <span class="font-semibold" style="color:var(--navy);">10 years</span>. We have been carrying out new electrical installation,
+          additional installation and operation and maintenance works in many establishments throughout Tamilnadu and also in other states like
+          <span class="font-semibold" style="color:var(--navy);">Kerala, Karnataka, Andhra Pradesh</span>.
         </p>
-        <p appScrollReveal [stagger]="160" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
-          Our portfolio spans industrial plants, multistoried buildings, hospitals, star hotels, banks, and software complexes. Every project we complete earns us the trust to be called back for additional works.
+
+        <p appScrollReveal [stagger]="120" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
+          We hold <span class="font-semibold" style="color:var(--navy);">'A' Grade contractor's License</span> issued by the Tamilnadu state
+          authorizing us to carry out all high voltage works, New as well as additions and alterations, up to a rating of
+          <span class="font-semibold" style="color:var(--navy);">33,000 Volts</span>, Medium &amp; Low voltage Installations.
+          We have also sister concerns and associates in other states through whom we can get works done in those states if necessary.
         </p>
-        <blockquote appScrollReveal [stagger]="240" class="pl-6 py-3 mt-2 relative"
-                    style="border-left:3px solid var(--gold-2);">
-          <div class="absolute top-0 left-0 w-1 h-full rounded-full" style="background:var(--grad-gold);"></div>
+
+        <p appScrollReveal [stagger]="180" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
+          We have a varied experience in the electrical field having done jobs in different type of industries, multistoried buildings,
+          hospitals, star Hotels, Banks, Software complexes, etc. We are confident of taking up all kinds of works.
+          We have appreciations of works and the quality of services given by us from all the Clients to whom we have done the works.
+          <span class="font-semibold" style="color:var(--navy);">We are entrusted with additional new works when once we do any works initially</span>
+          &mdash; this speaks about our quality of work and service.
+        </p>
+
+        <p appScrollReveal [stagger]="240" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
+          We have all the necessary testing instruments and all tools and tackles
+          <span class="font-semibold" style="color:var(--navy);">more than 5 sets</span> and we have sufficient number of qualified and
+          experienced engineers, senior electricians and technocrats whose help we could avail of for any special requirements needed.
+        </p>
+
+        <p appScrollReveal [stagger]="300" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
+          We have good relationship with the supply authorities like
+          <span class="font-semibold" style="color:var(--navy);">Electricity Boards</span> and other statutory Authorities like
+          <span class="font-semibold" style="color:var(--navy);">Electrical Inspectorate, Lift Inspectorate</span> etc.
+          We are thorough with their requirements and so can be helpful in getting necessary clearance.
+        </p>
+
+        <!-- Quote -->
+        <blockquote appScrollReveal [stagger]="360" class="pl-6 py-3 mt-2 relative">
+          <div class="absolute top-0 left-0 w-[3px] h-full rounded-full" style="background:var(--grad-gold);"></div>
           <p class="font-heading text-[1.1rem] italic leading-relaxed" style="color:var(--navy-2);">
-            "Entrusted with additional works every time we complete a project &mdash; that's the quality standard we hold ourselves to."
+            "Entrusted with additional new works every time we complete a project &mdash; that's the quality standard we hold ourselves to."
           </p>
         </blockquote>
       </div>
 
-      <!-- License Card -->
-      <div appScrollReveal [stagger]="120" class="relative overflow-hidden rounded-2xl p-8 flex flex-col gap-6"
-           style="background:var(--grad-navy);box-shadow:var(--sh-xl);">
-        <!-- Gold corner accent -->
-        <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none"
+      <!-- Right: License Card -->
+      <div appScrollReveal [stagger]="120" class="lg:col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col gap-6"
+           style="background:var(--grad-hero);box-shadow:var(--sh-xl);">
+        <div class="absolute top-0 right-0 w-40 h-40 pointer-events-none"
              style="background:radial-gradient(circle at top right,rgba(184,134,11,0.2),transparent 70%);"></div>
         <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:var(--grad-gold);"></div>
 
+        <!-- License badge -->
         <div class="flex items-center gap-4 relative z-10">
           <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-gold"
                style="background:var(--grad-gold);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+            </svg>
           </div>
           <div>
             <p class="font-heading font-bold text-[1.1rem] text-white">'A' Grade Contractor's License</p>
@@ -71,6 +106,7 @@
 
         <div class="h-px" style="background:rgba(255,255,255,0.1);"></div>
 
+        <!-- Facts grid -->
         <div class="grid grid-cols-2 gap-5 relative z-10">
           <div *ngFor="let f of companyFacts" class="flex flex-col gap-1.5">
             <span class="font-body text-[0.62rem] uppercase tracking-[0.12em]" style="color:rgba(255,255,255,0.4);">{{ f.label }}</span>
@@ -80,18 +116,32 @@
 
         <div class="h-px" style="background:rgba(255,255,255,0.1);"></div>
 
+        <!-- Voltage highlight -->
         <div class="rounded-xl p-5 relative z-10" style="background:rgba(184,134,11,0.12);border:1px solid rgba(184,134,11,0.25);">
           <p class="font-body text-[0.62rem] uppercase tracking-[0.12em] mb-2" style="color:rgba(255,255,255,0.45);">Authorised Voltage Range</p>
-          <p class="font-heading font-bold text-[1.6rem]" style="background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Up to 33,000 V</p>
+          <p class="font-heading font-bold text-[1.7rem]" style="background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Up to 33,000 V</p>
           <p class="font-body text-xs mt-1" style="color:rgba(255,255,255,0.45);">High Voltage &middot; Medium Voltage &middot; Low Voltage</p>
+          <p class="font-body text-xs mt-1" style="color:rgba(255,255,255,0.45);">New Works &middot; Additions &middot; Alterations</p>
         </div>
 
+        <!-- State tags -->
         <div class="flex flex-wrap gap-2 relative z-10">
           <span *ngFor="let state of ['Tamilnadu','Kerala','Karnataka','Andhra Pradesh']"
                 class="font-body text-[0.7rem] font-semibold px-3 py-1.5 rounded-full"
                 style="color:var(--gold-3);background:rgba(184,134,11,0.12);border:1px solid rgba(184,134,11,0.25);">
             {{ state }}
           </span>
+        </div>
+
+        <!-- Key points -->
+        <div class="flex flex-col gap-3 relative z-10">
+          <div *ngFor="let pt of ['5+ sets of testing instruments & tools','Qualified engineers & senior electricians','Statutory clearances from all authorities','Sister concerns across Kerala, KA & AP']"
+               class="flex items-start gap-2.5">
+            <div class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:var(--grad-gold);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.6);">{{ pt }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -131,23 +181,6 @@
       </div>
     </div>
 
-    <!-- Gallery -->
-    <div>
-      <div class="flex items-center gap-3 mb-7">
-        <div class="gold-line"></div>
-        <h3 appScrollReveal class="font-heading font-bold text-[1.4rem]" style="color:var(--navy);">Work Gallery</h3>
-      </div>
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
-        <div *ngFor="let img of showcaseImages; let i = index" appScrollReveal [stagger]="i * 60"
-             class="group relative overflow-hidden rounded-2xl" [class]="img.span" style="aspect-ratio:4/3;">
-          <img [src]="img.src" [alt]="img.label" class="w-full h-full object-cover transition-transform duration-600 group-hover:scale-108" loading="lazy"/>
-          <div class="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-               style="background:linear-gradient(180deg,transparent 35%,rgba(11,29,58,0.82) 100%);"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-            <span class="font-body text-xs font-semibold text-white">{{ img.label }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 </section>

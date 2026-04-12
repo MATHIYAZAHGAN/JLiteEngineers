@@ -22,32 +22,79 @@
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
       <!-- Info -->
       <div class="lg:col-span-2 flex flex-col gap-4">
-        <div *ngFor="let info of contactInfo; let i = index" appScrollReveal [stagger]="i * 80"
-             class="card p-5 flex items-center gap-4 group">
-          <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 shadow-gold group-hover:scale-105 transition-transform duration-300"
-               style="background:var(--grad-gold);">
-            <svg *ngIf="info.icon === 'mail'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <svg *ngIf="info.icon === 'phone'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <svg *ngIf="info.icon === 'map'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <svg *ngIf="info.icon === 'clock'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <p class="font-body text-[0.62rem] uppercase tracking-[0.12em] font-semibold" style="color:var(--slate-3);">{{ info.label }}</p>
-            <p class="font-body text-sm font-semibold mt-0.5" style="color:var(--navy);">{{ info.value }}</p>
+
+        <!-- Company name card — full width, prominent -->
+        <div appScrollReveal class="relative overflow-hidden rounded-2xl p-6"
+             style="background:var(--grad-navy);box-shadow:var(--sh-lg);">
+          <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:var(--grad-gold);"></div>
+          <div class="absolute top-0 right-0 w-28 h-28 pointer-events-none"
+               style="background:radial-gradient(circle at top right,rgba(184,134,11,0.18),transparent 70%);"></div>
+          <div class="flex items-start gap-4 relative z-10">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-gold mt-0.5"
+                 style="background:var(--grad-gold);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                <line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-body text-[0.6rem] uppercase tracking-[0.14em] font-semibold mb-1" style="color:rgba(255,255,255,0.45);">Company</p>
+              <p class="font-heading font-bold text-white leading-snug" style="font-size:1rem;">M/s. JLITE Electrical Engineer's and Contractor.</p>
+              <p class="font-body text-xs mt-2 leading-relaxed" style="color:rgba(255,255,255,0.5);">Govt. EA Licensed Electrical Engineers &amp; Contractors</p>
+            </div>
           </div>
         </div>
 
-        <div appScrollReveal [stagger]="400" class="card flex-1 min-h-[130px] flex items-center justify-center overflow-hidden relative"
-             style="background:var(--grad-navy);">
-          <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:var(--grad-gold);"></div>
-          <div class="flex flex-col items-center gap-3 text-center px-4 relative z-10">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center shadow-gold" style="background:var(--grad-gold);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <p class="font-heading font-bold text-sm text-white">Chennai, Tamilnadu</p>
-            <p class="font-body text-xs" style="color:rgba(255,255,255,0.5);">Serving 4 States across South India</p>
+        <!-- Address -->
+        <div appScrollReveal [stagger]="80" class="card p-5 flex items-start gap-4 group">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 shadow-gold group-hover:scale-105 transition-transform duration-300 mt-0.5"
+               style="background:var(--grad-gold);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-body text-[0.62rem] uppercase tracking-[0.12em] font-semibold mb-1" style="color:var(--slate-3);">Address</p>
+            <p class="font-body text-sm font-semibold leading-relaxed" style="color:var(--navy);">
+              No.338, Vijaya Nagar, 6th Main Road,<br>Velachery, Chennai &ndash; 600042.
+            </p>
           </div>
         </div>
+
+        <!-- Phone -->
+        <div appScrollReveal [stagger]="160" class="card p-5 flex items-center gap-4 group">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 shadow-gold group-hover:scale-105 transition-transform duration-300"
+               style="background:var(--grad-gold);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-body text-[0.62rem] uppercase tracking-[0.12em] font-semibold mb-0.5" style="color:var(--slate-3);">Phone</p>
+            <a href="tel:+917358178174" class="font-body text-sm font-semibold transition-colors duration-200"
+               style="color:var(--navy);"
+               onmouseenter="this.style.color='var(--gold)';"
+               onmouseleave="this.style.color='var(--navy)';">+91 73581 78174</a>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div appScrollReveal [stagger]="240" class="card p-5 flex items-center gap-4 group">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 shadow-gold group-hover:scale-105 transition-transform duration-300"
+               style="background:var(--grad-gold);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-body text-[0.62rem] uppercase tracking-[0.12em] font-semibold mb-0.5" style="color:var(--slate-3);">Email</p>
+            <a href="mailto:jlite2025@gmail.com" class="font-body text-sm font-semibold transition-colors duration-200"
+               style="color:var(--navy);"
+               onmouseenter="this.style.color='var(--gold)';"
+               onmouseleave="this.style.color='var(--navy)';">jlite2025&#64;gmail.com</a>
+          </div>
+        </div>
+
       </div>
 
       <!-- Form -->

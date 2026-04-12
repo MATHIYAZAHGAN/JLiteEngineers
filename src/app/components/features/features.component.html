@@ -7,7 +7,7 @@
     <div class="text-center mb-18">
       <div appScrollReveal class="flex items-center justify-center gap-3 mb-5">
         <div class="h-px w-8" style="background:var(--grad-gold);"></div>
-        <span class="label-pill label-pill-white">Why JJ Electronics</span>
+        <span class="label-pill label-pill-white">Why JLite Engineers</span>
         <div class="h-px w-8" style="background:var(--grad-gold);"></div>
       </div>
       <h2 appScrollReveal [stagger]="100" class="font-heading font-bold leading-tight mt-3"
@@ -50,10 +50,12 @@
 
     <!-- Photo strip -->
     <div appScrollReveal [stagger]="300" class="mt-14 grid grid-cols-4 gap-3 rounded-2xl overflow-hidden">
-      <div *ngFor="let n of [34,35,36,37]" class="group relative overflow-hidden" style="aspect-ratio:4/3;">
-        <img [src]="'assets/Picture' + n + '.jpg'" alt="Site photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+      <div *ngFor="let img of ['assets/work/Picture37.jpg','assets/work/Picture38.jpg','assets/work/Picture42.jpg','assets/work/Picture43.jpg']"
+           class="group relative overflow-hidden" style="aspect-ratio:4/3;">
+        <img [src]="img" alt="Site photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(184,134,11,0.2);"></div>
       </div>
     </div>
   </div>
 </section>
+

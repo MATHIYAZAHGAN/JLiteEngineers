@@ -8,6 +8,9 @@ import { FeaturesComponent } from './components/features/features.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ElectricalContractorsComponent } from './components/electrical-contractors/electrical-contractors.component';
+import { ConsultancyServicesComponent } from './components/consultancy-services/consultancy-services.component';
+import { LightPitcherComponent } from './components/light-pitcher/light-pitcher.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +23,9 @@ import { FooterComponent } from './components/footer/footer.component';
     ProjectsComponent,
     FeaturesComponent,
     ProductsComponent,
+    ElectricalContractorsComponent,
+    ConsultancyServicesComponent,
+    LightPitcherComponent,
     ContactComponent,
     FooterComponent,
   ],

@@ -1,0 +1,137 @@
+<!-- ═══════════════════════════════════════════════════════════
+     CONSULTANCY & SERVICES SECTION
+═══════════════════════════════════════════════════════════ -->
+<section id="consultancy-services" class="relative py-24 overflow-hidden" style="background: var(--grad-ivory);">
+
+  <!-- Decorative blobs -->
+  <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+       style="background: radial-gradient(circle, rgba(184,134,11,0.06) 0%, transparent 70%); transform: translate(-40%, -40%);"></div>
+  <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+       style="background: radial-gradient(circle, rgba(29,95,219,0.06) 0%, transparent 70%); transform: translate(40%, 40%);"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <!-- Header -->
+    <div class="text-center mb-16" appScrollReveal>
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 border"
+           style="background: var(--gold-light); border-color: rgba(184,134,11,0.25);">
+        <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--gold);"></span>
+        <span class="text-sm font-semibold tracking-widest uppercase" style="color: var(--gold);">Expert Advisory</span>
+      </div>
+      <h2 class="font-heading text-4xl md:text-5xl font-bold mb-4" style="color: var(--navy);">
+        Consultancy <span class="gold-text">&amp; Services</span>
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: var(--slate-2);">
+        From concept design to statutory approvals — our expert consultancy team delivers end-to-end electrical engineering solutions for every project scale.
+      </p>
+    </div>
+
+    <!-- Services Grid (accordion cards) -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+      <div *ngFor="let svc of services; let i = index"
+           appScrollReveal [stagger]="i * 80"
+           class="rounded-2xl border overflow-hidden cursor-pointer transition-all duration-300 group"
+           [class.shadow-lg]="activeService === svc.id"
+           [style.border-color]="activeService === svc.id
+             ? (svc.color === 'gold' ? 'rgba(184,134,11,0.4)' : svc.color === 'blue' ? 'rgba(29,95,219,0.4)' : 'rgba(10,107,71,0.4)')
+             : 'rgba(11,29,58,0.1)'"
+           [style.background]="activeService === svc.id ? 'var(--white)' : 'var(--white)'"
+           (click)="toggleService(svc.id)">
+
+        <!-- Card Header -->
+        <div class="p-6">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <!-- Icon -->
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                   [style.background]="svc.color === 'gold' ? 'var(--gold-light)' : svc.color === 'blue' ? 'var(--blue-light)' : 'var(--green-light)'">
+                <!-- design -->
+                <svg *ngIf="svc.icon === 'design'" class="w-6 h-6"
+                     [style.color]="svc.color === 'gold' ? 'var(--gold)' : svc.color === 'blue' ? 'var(--blue)' : 'var(--green)'"
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
+                </svg>
+                <!-- audit -->
+                <svg *ngIf="svc.icon === 'audit'" class="w-6 h-6"
+                     [style.color]="svc.color === 'blue' ? 'var(--blue)' : 'var(--gold)'"
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+                <!-- safety -->
+                <svg *ngIf="svc.icon === 'safety'" class="w-6 h-6" style="color: var(--green);"
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                <!-- project -->
+                <svg *ngIf="svc.icon === 'project'" class="w-6 h-6" style="color: var(--blue);"
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                </svg>
+                <!-- smart -->
+                <svg *ngIf="svc.icon === 'smart'" class="w-6 h-6" style="color: var(--gold);"
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                <!-- liasion -->
+                <svg *ngIf="svc.icon === 'liasion'" class="w-6 h-6" style="color: var(--green);"
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base leading-snug" style="color: var(--navy);">{{ svc.title }}</h3>
+              </div>
+            </div>
+            <!-- Chevron -->
+            <svg class="w-5 h-5 flex-shrink-0 transition-transform duration-300 mt-1"
+                 [class.rotate-180]="activeService === svc.id"
+                 style="color: var(--slate-3);"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </div>
+          <p class="text-sm mt-3 leading-relaxed" style="color: var(--slate-2);">{{ svc.short }}</p>
+        </div>
+
+        <!-- Expandable Details -->
+        <div *ngIf="activeService === svc.id"
+             class="px-6 pb-6 border-t"
+             [style.border-color]="svc.color === 'gold' ? 'rgba(184,134,11,0.15)' : svc.color === 'blue' ? 'rgba(29,95,219,0.15)' : 'rgba(10,107,71,0.15)'"
+             [style.background]="svc.color === 'gold' ? 'var(--gold-light)' : svc.color === 'blue' ? 'var(--blue-light)' : 'var(--green-light)'">
+          <ul class="space-y-2 pt-4">
+            <li *ngFor="let d of svc.details" class="flex items-center gap-2 text-sm" style="color: var(--navy);">
+              <svg class="w-4 h-4 flex-shrink-0"
+                   [style.color]="svc.color === 'gold' ? 'var(--gold)' : svc.color === 'blue' ? 'var(--blue)' : 'var(--green)'"
+                   fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+              </svg>
+              {{ d }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process Steps -->
+    <div appScrollReveal [stagger]="200">
+      <h3 class="text-center text-2xl font-bold font-heading mb-10" style="color: var(--navy);">
+        Our Consulting <span class="gold-text">Process</span>
+      </h3>
+      <div class="relative">
+        <!-- Connector line (desktop) -->
+        <div class="hidden lg:block absolute top-8 left-0 right-0 h-px" style="background: linear-gradient(to right, transparent, var(--gold-2), transparent); margin: 0 10%;"></div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div *ngFor="let p of process; let i = index" class="relative text-center group">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border-2 transition-all duration-300 group-hover:scale-110"
+                 style="background: var(--white); border-color: var(--gold-2); box-shadow: var(--sh-gold);">
+              <span class="text-lg font-bold font-heading" style="color: var(--gold);">{{ p.step }}</span>
+            </div>
+            <h4 class="font-semibold text-sm mb-2" style="color: var(--navy);">{{ p.title }}</h4>
+            <p class="text-xs leading-relaxed" style="color: var(--slate-2);">{{ p.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
@@ -24,9 +24,10 @@ export class ContactComponent {
   }
 
   contactInfo = [
-    { icon: 'mail',  label: 'Email',        value: 'sales@jjelectronics.com' },
-    { icon: 'phone', label: 'Phone',        value: '+1 (800) 567-8900' },
-    { icon: 'map',   label: 'Address',      value: '123 Industrial Park, San Francisco, CA' },
-    { icon: 'clock', label: 'Working Hours', value: 'Mon–Fri, 8am–6pm PST' },
+    { icon: 'company', label: 'Company',  value: "M/s. JLITE Electrical Engineer's and Contractor." },
+    { icon: 'map',     label: 'Address',  value: 'No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042.' },
+    { icon: 'phone',   label: 'Phone',    value: '+91 73581 78174' },
+    { icon: 'mail',    label: 'Email',    value: 'jlite2025@gmail.com' },
+    { icon: 'license', label: 'License',  value: 'Govt. EA Licensed Electrical Engineers & Contractors' },
   ];
 }
