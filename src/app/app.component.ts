@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ElectricalContractorsComponent } from './components/electrical-contractors/electrical-contractors.component';
 import { ConsultancyServicesComponent } from './components/consultancy-services/consultancy-services.component';
 import { LightPitcherComponent } from './components/light-pitcher/light-pitcher.component';
+import { GetQuoteComponent } from './components/get-quote/get-quote.component';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ import { LightPitcherComponent } from './components/light-pitcher/light-pitcher.
     ElectricalContractorsComponent,
     ConsultancyServicesComponent,
     LightPitcherComponent,
+    GetQuoteComponent,
     ContactComponent,
     FooterComponent,
   ],

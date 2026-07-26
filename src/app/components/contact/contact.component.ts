@@ -2,6 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-contact',
@@ -10,17 +11,37 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
   templateUrl: './contact.component.html',
 })
 export class ContactComponent {
+
   form = { name: '', email: '', subject: '', message: '' };
-  submitted = false;
+  status: 'idle' | 'sending' | 'success' | 'error' = 'idle';
+
+  constructor(private apiService: ApiService) {}
 
   onSubmit() {
-    if (this.form.name && this.form.email && this.form.message) {
-      this.submitted = true;
-      setTimeout(() => {
-        this.submitted = false;
-        this.form = { name: '', email: '', subject: '', message: '' };
-      }, 3000);
-    }
+    if (!this.form.name || !this.form.email || !this.form.message) return;
+
+    this.status = 'sending';
+    
+    this.apiService.submitContact({
+      name: this.form.name,
+      email: this.form.email,
+      subject: this.form.subject,
+      message: this.form.message
+    }).subscribe({
+      next: (response) => {
+        console.log('Contact form submitted:', response);
+        this.status = 'success';
+        setTimeout(() => {
+          this.status = 'idle';
+          this.form = { name: '', email: '', subject: '', message: '' };
+        }, 4000);
+      },
+      error: (error) => {
+        console.error('Contact form error:', error);
+        this.status = 'error';
+        setTimeout(() => { this.status = 'idle'; }, 4000);
+      }
+    });
   }
 
   contactInfo = [

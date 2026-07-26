@@ -501,3 +501,181 @@ body {
 }
 
 .animate-float { animation: float 7s ease-in-out infinite; }
+
+/* ═══════════════════════════════════════════════════════════════
+   WHATSAPP FLOATING ACTION BUTTON — PREMIUM
+═══════════════════════════════════════════════════════════════ */
+
+/* wrapper — anchors the ripple rings */
+.wa-fab-wrap {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ripple rings */
+.wa-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 60px;
+  border: 2px solid rgba(37, 211, 102, 0.55);
+  animation: wa-ripple 2.6s ease-out infinite;
+  pointer-events: none;
+}
+.wa-ring-2 { animation-delay: 1.3s; }
+
+@keyframes wa-ripple {
+  0%   { transform: scale(1);    opacity: 0.7; }
+  100% { transform: scale(1.55); opacity: 0;   }
+}
+
+/* main pill button */
+.wa-fab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #1fbe5a 0%, #25D366 50%, #20c95e 100%);
+  color: white;
+  border-radius: 60px;
+  padding: 11px 18px 11px 12px;
+  text-decoration: none;
+  box-shadow:
+    0 4px 20px rgba(37, 211, 102, 0.5),
+    0 1px 4px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: transform 0.22s cubic-bezier(.34,1.56,.64,1),
+              box-shadow 0.22s ease;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+.wa-fab:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 12px 36px rgba(37, 211, 102, 0.6),
+    0 4px 12px rgba(0,0,0,0.22),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.wa-fab:active {
+  transform: translateY(-1px) scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* icon circle */
+.wa-fab-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: background 0.2s ease;
+}
+
+.wa-fab:hover .wa-fab-icon {
+  background: rgba(0,0,0,0.22);
+}
+
+/* text stack */
+.wa-fab-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 3px;
+}
+
+.wa-fab-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.wa-fab-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.78);
+  letter-spacing: 0.01em;
+}
+
+/* arrow */
+.wa-fab-arrow {
+  display: flex;
+  align-items: center;
+  margin-left: 2px;
+  opacity: 0.7;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.wa-fab:hover .wa-fab-arrow {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+/* tooltip */
+.wa-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  background: rgba(11,29,58,0.92);
+  color: rgba(255,255,255,0.88);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+}
+
+.wa-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 22px;
+  border: 5px solid transparent;
+  border-top-color: rgba(11,29,58,0.92);
+}
+
+.wa-fab-wrap:hover .wa-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* mobile — collapse to icon-only circle */
+@media (max-width: 520px) {
+  .wa-fab {
+    padding: 14px;
+    border-radius: 50%;
+    gap: 0;
+  }
+  .wa-fab-text,
+  .wa-fab-arrow {
+    display: none;
+  }
+  .wa-fab-icon {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+  }
+  .wa-ring {
+    border-radius: 50%;
+  }
+}
