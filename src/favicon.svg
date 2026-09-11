@@ -1,34 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
+    <!-- Premium Navy Gradient - Deep and Professional -->
     <linearGradient id="navyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#001f54;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#003875;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#0a3d80;stop-opacity:1" />
     </linearGradient>
+    
+    <!-- Premium Gold Gradient - Rich and Luxurious -->
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#F0C040;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFED4E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F4A300;stop-opacity:1" />
     </linearGradient>
+    
+    <!-- Subtle Inner Shadow for Depth -->
+    <radialGradient id="innerShadow" cx="50%" cy="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2" />
+    </radialGradient>
   </defs>
   
-  <!-- Premium Navy Background with subtle border -->
+  <!-- Premium Navy Background with Perfect Rounding -->
   <rect width="64" height="64" rx="14" fill="url(#navyGrad)"/>
-  <rect width="64" height="64" rx="14" fill="none" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.3"/>
   
-  <!-- JLITE Brand Mark - Bold JL Letters -->
-  <text x="32" y="44" 
+  <!-- Subtle Inner Glow for Premium Feel -->
+  <rect width="64" height="64" rx="14" fill="url(#innerShadow)" opacity="0.4"/>
+  
+  <!-- Ultra-Subtle Border Glow -->
+  <rect width="64" height="64" rx="14" fill="none" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.15"/>
+  
+  <!-- JLITE Brand Mark - Bold, Modern "JL" -->
+  <text x="32" y="43" 
         font-family="Arial Black, Arial, sans-serif" 
-        font-size="32" 
+        font-size="30" 
         font-weight="900" 
         fill="url(#goldGrad)" 
         text-anchor="middle" 
-        letter-spacing="-2">JL</text>
+        letter-spacing="-1.5"
+        style="paint-order: stroke; stroke: rgba(0,31,84,0.3); stroke-width: 0.5px;">JL</text>
   
-  <!-- Premium Gold Accent Line -->
-  <rect x="10" y="52" width="44" height="3" rx="1.5" fill="url(#goldGrad)" opacity="0.9"/>
-  
-  <!-- Electrical Circuit Element (subtle) -->
-  <circle cx="16" cy="16" r="2.5" fill="#FFD700" opacity="0.4"/>
-  <circle cx="48" cy="16" r="2.5" fill="#FFD700" opacity="0.4"/>
-  <line x1="16" y1="16" x2="48" y2="16" stroke="#FFD700" stroke-width="1" opacity="0.3"/>
+  <!-- Premium Gold Accent Line - Sleek and Refined -->
+  <rect x="14" y="51" width="36" height="2.5" rx="1.25" fill="url(#goldGrad)" opacity="0.95">
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
+  </rect>
 </svg>
