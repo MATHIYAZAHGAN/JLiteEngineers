@@ -19,6 +19,10 @@ else
     builder.Services.AddScoped<IEmailService, EmailService>();
 }
 
+// PhonePe Payment Gateway Service & HttpClient
+builder.Services.AddHttpClient<IPhonePeService, PhonePeService>();
+builder.Services.AddScoped<IPhonePeService, PhonePeService>();
+
 // Configure CORS for Angular frontend
 builder.Services.AddCors(options =>
 {

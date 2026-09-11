@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using JLITE.API.Models;
 
 namespace JLITE.API.Services
@@ -6,5 +7,6 @@ namespace JLITE.API.Services
     {
         Task<bool> SendContactEmailAsync(ContactRequest request);
         Task<bool> SendQuoteEmailAsync(QuoteRequest request);
+        Task<bool> SendOrderConfirmationEmailAsync(OrderRecord order);
     }
 }

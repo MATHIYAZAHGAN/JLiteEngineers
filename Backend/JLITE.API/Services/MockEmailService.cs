@@ -37,5 +37,17 @@ namespace JLITE.API.Services
             
             return Task.FromResult(true);
         }
+
+        public Task<bool> SendOrderConfirmationEmailAsync(OrderRecord order)
+        {
+            _logger.LogInformation("📧 [MOCK] Order Confirmation Email");
+            _logger.LogInformation("   Txn ID: {TxnId}", order.MerchantTransactionId);
+            _logger.LogInformation("   Customer: {Name} <{Email}>", order.CustomerName, order.CustomerEmail);
+            _logger.LogInformation("   Total Amount: ₹{Amount}", order.TotalAmount);
+            _logger.LogInformation("   Items: {Count} item(s)", order.Items.Count);
+            _logger.LogInformation("   ✅ Email would be sent in production");
+
+            return Task.FromResult(true);
+        }
     }
 }

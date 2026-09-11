@@ -1,4 +1,4 @@
-﻿<section id="products" class="py-32 px-6 relative overflow-hidden" style="background:var(--white);">
+<section id="products" class="py-32 px-6 relative overflow-hidden" style="background:var(--white);">
   <div class="absolute inset-0 dot-pattern pointer-events-none" style="opacity:0.5;"></div>
   <div class="absolute top-0 left-0 right-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(184,134,11,0.3),transparent);"></div>
 
@@ -29,6 +29,7 @@
       </button>
     </div>
 
+    <!-- Category Filter Tabs -->
     <div appScrollReveal class="flex flex-wrap gap-2 mb-12">
       <button *ngFor="let cat of categories" (click)="setCategory(cat)"
               class="press font-body font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-200"
@@ -39,6 +40,7 @@
       </button>
     </div>
 
+    <!-- Products Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div *ngFor="let p of filteredProducts(); let i = index" appScrollReveal [stagger]="i * 60"
            class="group relative rounded-3xl overflow-hidden transition-all duration-350 press"
@@ -82,6 +84,7 @@
   </div>
 </section>
 
+<!-- Cart Drawer -->
 <div *ngIf="cartOpen()" class="fixed inset-0 z-50 flex justify-end" (click)="closeCart()">
   <div class="absolute inset-0 backdrop-blur-sm" style="background:rgba(11,29,58,0.45);"></div>
   <div class="relative w-full max-w-sm h-full flex flex-col cart-drawer"
@@ -150,14 +153,359 @@
         </div>
       </div>
       <p class="font-body text-xs px-1" style="color:var(--slate-3);">Bulk pricing available for orders over 50 units.</p>
-      <button class="press w-full font-body font-bold py-4 rounded-2xl transition-all duration-200 shadow-gold"
+      <button (click)="openCheckout()" class="press w-full font-body font-bold py-4 rounded-2xl transition-all duration-200 shadow-gold flex items-center justify-center gap-2"
               style="background:var(--grad-gold);color:var(--navy);">
-        Checkout &mdash; &#8377;{{ cartTotal() | number }}
+        <span>Checkout &mdash; &#8377;{{ cartTotal() | number }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </button>
       <button (click)="closeCart()" class="press w-full font-body text-sm py-3 rounded-2xl transition-all duration-200"
               style="background:var(--ivory);border:1.5px solid rgba(11,29,58,0.1);color:var(--slate);">
         Continue Shopping
       </button>
+    </div>
+  </div>
+</div>
+
+<!-- Dynamic & High-Security PhonePe Checkout Modal -->
+<div *ngIf="checkoutOpen()" class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto" (click)="closeCheckout()">
+  <div class="absolute inset-0 backdrop-blur-md" style="background:rgba(11,29,58,0.7);"></div>
+  <div class="relative w-full max-w-2xl rounded-3xl overflow-hidden my-6 transition-all shadow-2xl border"
+       style="background:var(--white);border:1.5px solid rgba(184,134,11,0.25);"
+       (click)="$event.stopPropagation()">
+
+    <!-- Premium Header -->
+    <div class="px-7 py-6 text-white flex items-center justify-between relative overflow-hidden" style="background:var(--grad-navy);">
+      <div class="absolute top-0 right-0 w-48 h-48 rounded-full pointer-events-none opacity-10" style="background:var(--grad-gold);transform:translate(30%, -30%);"></div>
+      <div class="flex items-center gap-3.5 relative z-10">
+        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center p-2 shadow-lg border border-purple-100">
+          <!-- Official PhonePe Logo SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-full h-full">
+            <rect width="100" height="100" rx="22" fill="#5f259f"/>
+            <path d="M68 32H44v14h18c3.3 0 6 2.7 6 6v0c0 3.3-2.7 6-6 6H44v12h-8V24h32v8z" fill="#ffffff"/>
+            <path d="M44 58h18l-22 24v-16h4v-8z" fill="#5f259f"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="font-heading font-bold text-xl text-white">PhonePe Secure Checkout</h3>
+            <span class="px-2 py-0.5 text-[0.65rem] font-bold rounded-full uppercase tracking-wider bg-emerald-500 text-white shadow-sm">Verified Merchant</span>
+          </div>
+          <p class="font-body text-xs text-blue-100 flex items-center gap-1.5 mt-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            256-Bit SHA256 HMAC Encryption &bull; Official Gateway
+          </p>
+        </div>
+      </div>
+      <button (click)="closeCheckout()" [disabled]="isProcessingPayment()"
+              class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors text-xl font-bold">
+        &times;
+      </button>
+    </div>
+
+    <!-- Modal Content -->
+    <div class="p-7 flex flex-col gap-6 max-h-[78vh] overflow-y-auto">
+
+      <!-- Order Summary Card -->
+      <div class="rounded-2xl p-4.5 flex flex-col gap-2.5" style="background:var(--ivory);border:1px solid rgba(11,29,58,0.08);">
+        <div class="flex items-center justify-between pb-2" style="border-bottom:1px solid rgba(11,29,58,0.08);">
+          <span class="font-heading font-bold text-sm flex items-center gap-2" style="color:var(--navy);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Order Breakdown
+          </span>
+          <span class="font-body text-xs font-bold px-3 py-1 rounded-full" style="background:var(--grad-gold);color:var(--navy);">
+            {{ cartCount() }} Item(s)
+          </span>
+        </div>
+        <div class="flex flex-col gap-2 max-h-32 overflow-y-auto pr-1">
+          <div *ngFor="let item of cart()" class="flex items-center justify-between font-body text-xs">
+            <span class="font-medium truncate max-w-[260px]" style="color:var(--slate);">{{ item.name }} &times; {{ item.qty }}</span>
+            <span class="font-semibold" style="color:var(--navy);">&#8377;{{ (item.price * item.qty) | number }}</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between pt-2.5 mt-1" style="border-top:1px solid rgba(11,29,58,0.09);">
+          <span class="font-heading font-bold text-sm" style="color:var(--navy);">Grand Total (incl. GST)</span>
+          <span class="font-heading font-bold text-2xl" style="background:var(--grad-navy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+            &#8377;{{ cartTotal() | number }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Payment Method Selection Strip -->
+      <div class="flex flex-col gap-2">
+        <label class="font-heading font-bold text-xs uppercase tracking-wider" style="color:var(--slate-2);">Select Preferred Payment Method</label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <button (click)="setTab('upi')"
+                  class="p-3 rounded-2xl flex flex-col items-center justify-center gap-1.5 border transition-all text-xs font-semibold"
+                  [style]="selectedTab() === 'upi'
+                    ? 'border-2 border-purple-600 bg-purple-50 text-purple-900 shadow-sm'
+                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
+            <span class="text-base">📱</span>
+            <span>PhonePe UPI</span>
+          </button>
+
+          <button (click)="setTab('gpay')"
+                  class="p-3 rounded-2xl flex flex-col items-center justify-center gap-1.5 border transition-all text-xs font-semibold"
+                  [style]="selectedTab() === 'gpay'
+                    ? 'border-2 border-emerald-600 bg-emerald-50 text-emerald-900 shadow-sm'
+                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
+            <span class="text-base">💚</span>
+            <span>GPay / QR</span>
+          </button>
+
+          <button (click)="setTab('card')"
+                  class="p-3 rounded-2xl flex flex-col items-center justify-center gap-1.5 border transition-all text-xs font-semibold"
+                  [style]="selectedTab() === 'card'
+                    ? 'border-2 border-blue-600 bg-blue-50 text-blue-900 shadow-sm'
+                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
+            <span class="text-base">💳</span>
+            <span>Cards</span>
+          </button>
+
+          <button (click)="setTab('netbanking')"
+                  class="p-3 rounded-2xl flex flex-col items-center justify-center gap-1.5 border transition-all text-xs font-semibold"
+                  [style]="selectedTab() === 'netbanking'
+                    ? 'border-2 border-amber-600 bg-amber-50 text-amber-900 shadow-sm'
+                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
+            <span class="text-base">🏛️</span>
+            <span>NetBanking</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Error Alert Box -->
+      <div *ngIf="paymentError()" class="p-3.5 rounded-2xl text-xs font-body flex items-center gap-2 bg-red-50 text-red-900 border border-red-200 animate-shake">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>{{ paymentError() }}</span>
+      </div>
+
+      <!-- Customer Contact & Delivery Form -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <h4 class="font-heading font-bold text-sm" style="color:var(--navy);">Shipping &amp; Contact Details</h4>
+          <span class="font-body text-[0.7rem] text-slate-400">* All fields required</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">Full Name *</label>
+            <input type="text" [ngModel]="customer().name" (ngModelChange)="updateCustomerField('name', $event)"
+                   placeholder="e.g. Ramesh Kumar"
+                   class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                   style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
+          </div>
+          <div>
+            <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">10-Digit Mobile Number (UPI Registered) *</label>
+            <div class="relative flex items-center">
+              <span class="absolute left-3.5 text-xs font-bold text-slate-400">+91</span>
+              <input type="tel" [ngModel]="customer().phone" (ngModelChange)="updateCustomerField('phone', $event)"
+                     placeholder="9876543210" maxlength="10"
+                     class="w-full pl-12 pr-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                     style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">Email Address (For Instant Invoice Receipt) *</label>
+          <input type="email" [ngModel]="customer().email" (ngModelChange)="updateCustomerField('email', $event)"
+                 placeholder="ramesh@company.com"
+                 class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                 style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
+        </div>
+
+        <div>
+          <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">Shipping Address *</label>
+          <textarea [ngModel]="customer().address" (ngModelChange)="updateCustomerField('address', $event)" rows="2"
+                    placeholder="Door/Flat No., Street Name, Landmark"
+                    class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all resize-none"
+                    style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">City</label>
+            <input type="text" [ngModel]="customer().city" (ngModelChange)="updateCustomerField('city', $event)"
+                   placeholder="Chennai"
+                   class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none"
+                   style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
+          </div>
+          <div>
+            <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">Pincode</label>
+            <input type="text" [ngModel]="customer().pincode" (ngModelChange)="updateCustomerField('pincode', $event)"
+                   placeholder="600001"
+                   class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none"
+                   style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Security Seals & Trust Badges Strip -->
+      <div class="rounded-2xl p-4 flex flex-col gap-2 bg-slate-50 border border-slate-200/80">
+        <div class="flex items-center justify-between text-[0.7rem] font-bold text-slate-500 uppercase tracking-wider">
+          <span>Security &amp; Encryption Standards</span>
+          <span class="text-emerald-600 flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            PCI-DSS Compliant
+          </span>
+        </div>
+        <div class="grid grid-cols-3 gap-2 text-[0.72rem] font-medium text-slate-700">
+          <div class="flex items-center gap-1.5">
+            <span class="text-purple-600">🔒</span> 256-Bit SSL Handoff
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-emerald-600">🛡️</span> SHA-256 Checksum
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-amber-600">⚡</span> Instant Refund Protection
+          </div>
+        </div>
+      </div>
+
+      <!-- Pay Button -->
+      <button (click)="processPhonePePayment()" [disabled]="isProcessingPayment()"
+              class="press w-full py-4 rounded-2xl font-body font-bold text-base transition-all shadow-gold flex items-center justify-center gap-3"
+              style="background:var(--grad-gold);color:var(--navy);">
+        <span *ngIf="!isProcessingPayment()" class="flex items-center gap-2">
+          <span>Proceed to Pay &#8377;{{ cartTotal() | number }} with PhonePe Gateway</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+        <span *ngIf="isProcessingPayment()" class="flex items-center gap-2">
+          <svg class="animate-spin h-5 w-5 text-navy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span>Connecting to PhonePe Gateway...</span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<!-- Verifying Status Loading Overlay -->
+<div *ngIf="isVerifyingStatus()" class="fixed inset-0 z-50 flex items-center justify-center p-4" style="background:rgba(11,29,58,0.8);">
+  <div class="bg-white rounded-3xl p-8 max-w-sm w-full flex flex-col items-center gap-4 text-center shadow-2xl border" style="border:1px solid rgba(184,134,11,0.2);">
+    <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-purple-600 text-white shadow-lg animate-pulse">
+      <svg class="animate-spin h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+    </div>
+    <h3 class="font-heading font-bold text-xl" style="color:var(--navy);">Verifying PhonePe Payment</h3>
+    <p class="font-body text-xs text-slate-500">Checking cryptographical transaction status with PhonePe servers. Please do not close or refresh this page...</p>
+  </div>
+</div>
+
+<!-- Dynamic Payment Receipt & Order Confirmation Modal -->
+<div *ngIf="receiptModalOpen()" class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto" (click)="closeReceiptModal()">
+  <div class="absolute inset-0 backdrop-blur-md" style="background:rgba(11,29,58,0.75);"></div>
+  <div class="relative w-full max-w-lg rounded-3xl overflow-hidden my-6 bg-white shadow-2xl border"
+       style="border:1px solid rgba(184,134,11,0.25);"
+       (click)="$event.stopPropagation()">
+
+    <!-- Receipt Header -->
+    <div class="p-7 text-center flex flex-col items-center gap-3 text-white"
+         [style]="paymentReceipt()?.success ? 'background:var(--grad-navy);' : 'background:linear-gradient(135deg, #7F1D1D 0%, #991B1B 100%);'">
+      <div *ngIf="paymentReceipt()?.success" class="w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-lg transform scale-110">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+
+      <div *ngIf="!paymentReceipt()?.success" class="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg transform scale-110 border-2 border-white/20">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </div>
+
+      <div>
+        <h3 class="font-heading font-bold text-2xl text-white">
+          {{ paymentReceipt()?.success ? 'Payment Verified!' : 'Payment Not Completed' }}
+        </h3>
+        <p class="font-body text-xs text-red-100 mt-0.5" *ngIf="!paymentReceipt()?.success">
+          Payment was not successful. Your cart items are preserved.
+        </p>
+        <p class="font-body text-xs text-blue-100 mt-0.5" *ngIf="paymentReceipt()?.success">
+          Your order with JLite Engineers is confirmed
+        </p>
+      </div>
+    </div>
+
+    <!-- Receipt Body -->
+    <div *ngIf="paymentReceipt()" class="p-6 flex flex-col gap-4 max-h-[70vh] overflow-y-auto">
+
+      <!-- Order ID Pill -->
+      <div class="rounded-2xl p-4 flex flex-col gap-2" style="background:var(--ivory);border:1px solid rgba(11,29,58,0.08);">
+        <div class="flex items-center justify-between text-xs font-body">
+          <span class="text-slate-500">Transaction ID:</span>
+          <span class="font-mono font-bold" style="color:var(--navy);">{{ paymentReceipt()?.merchantTransactionId }}</span>
+        </div>
+        <div class="flex items-center justify-between text-xs font-body">
+          <span class="text-slate-500">Payment Status:</span>
+          <span class="font-bold uppercase text-xs" [class.text-emerald-600]="paymentReceipt()?.success" [class.text-red-600]="!paymentReceipt()?.success">
+            {{ paymentReceipt()?.paymentState || 'FAILED' }}
+          </span>
+        </div>
+        <div class="flex items-center justify-between text-xs font-body">
+          <span class="text-slate-500">Customer Email:</span>
+          <span class="font-semibold" style="color:var(--navy);">{{ paymentReceipt()?.customerEmail }}</span>
+        </div>
+      </div>
+
+      <!-- Failure Error Details Card -->
+      <div *ngIf="!paymentReceipt()?.success" class="p-4 rounded-2xl bg-red-50 text-red-900 border border-red-200 text-xs font-body flex flex-col gap-1.5">
+        <div class="flex items-center gap-2 font-bold text-red-800 text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Payment Failed / Declined</span>
+        </div>
+        <p class="text-xs text-red-700 leading-relaxed font-medium">
+          {{ paymentReceipt()?.message || 'Transaction could not be completed. Please check your payment details or try again.' }}
+        </p>
+        <div *ngIf="paymentReceipt()?.code" class="text-[0.7rem] font-mono text-red-600 mt-1">
+          Error Code: {{ paymentReceipt()?.code }}
+        </div>
+      </div>
+
+      <!-- Items Breakdown -->
+      <div *ngIf="paymentReceipt()?.items && paymentReceipt()!.items.length > 0" class="flex flex-col gap-2">
+        <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-500">Order Items</h4>
+        <div class="rounded-2xl border p-3.5 flex flex-col gap-2" style="border:1px solid rgba(11,29,58,0.08);">
+          <div *ngFor="let item of paymentReceipt()?.items" class="flex items-center justify-between font-body text-xs">
+            <span style="color:var(--navy);">{{ item.name }} &times; {{ item.quantity }}</span>
+            <span class="font-semibold" style="color:var(--navy);">&#8377;{{ (item.price * item.quantity) | number }}</span>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t font-body text-sm font-bold" style="border-color:rgba(11,29,58,0.1);">
+            <span style="color:var(--navy);">Total Order Value</span>
+            <span class="text-lg" style="color:var(--navy);">&#8377;{{ paymentReceipt()?.amount | number }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success Notification Banner -->
+      <div *ngIf="paymentReceipt()?.success" class="p-3.5 rounded-2xl bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-body flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Tax invoice &amp; receipt dispatched to <strong>{{ paymentReceipt()?.customerEmail }}</strong>.</span>
+      </div>
+
+      <!-- Action Buttons for SUCCESS -->
+      <div *ngIf="paymentReceipt()?.success" class="flex gap-3 pt-2">
+        <button (click)="printReceipt()" class="press flex-1 py-3 rounded-2xl font-body font-semibold text-xs border border-slate-300 hover:bg-slate-50 transition-colors flex items-center justify-center gap-1.5" style="color:var(--navy);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print Receipt
+        </button>
+        <button (click)="closeReceiptModal()" class="press flex-1 py-3 rounded-2xl font-body font-bold text-xs text-white shadow-gold flex items-center justify-center gap-1.5" style="background:var(--grad-navy);">
+          Continue Shopping
+        </button>
+      </div>
+
+      <!-- Action Buttons for FAILURE / RETRY -->
+      <div *ngIf="!paymentReceipt()?.success" class="flex flex-col sm:flex-row gap-3 pt-2">
+        <button (click)="retryPayment()" class="press flex-1 py-3.5 rounded-2xl font-body font-bold text-xs transition-all shadow-gold flex items-center justify-center gap-2"
+                style="background:var(--grad-gold);color:var(--navy);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6"/><path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          <span>Retry Payment</span>
+        </button>
+        <button (click)="closeReceiptModal()" class="press flex-1 py-3.5 rounded-2xl font-body font-semibold text-xs border border-slate-300 hover:bg-slate-50 transition-colors flex items-center justify-center" style="color:var(--navy);">
+          Return to Cart
+        </button>
+      </div>
+
     </div>
   </div>
 </div>
