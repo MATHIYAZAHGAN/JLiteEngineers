@@ -1,0 +1,96 @@
+<section id="faq" class="py-32 px-6 relative overflow-hidden" style="background:var(--ivory);">
+  <div class="absolute inset-0 dot-pattern pointer-events-none" style="opacity:0.5;"></div>
+  
+  <div class="max-w-4xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="flex items-center justify-center gap-3 mb-5">
+        <div class="gold-line"></div>
+        <span class="label-pill label-pill-gold">Frequently Asked Questions</span>
+        <div class="gold-line"></div>
+      </div>
+      <h2 class="font-heading font-bold leading-tight" 
+          style="font-size:clamp(2.4rem,4vw,3.4rem);color:var(--navy);letter-spacing:-0.02em;">
+        Common Questions About<br>
+        <span class="elec-text">JLITE Engineers</span>
+      </h2>
+      <p class="font-body mt-5 leading-[1.9] max-w-2xl mx-auto" 
+         style="color:var(--slate-2);font-size:1.05rem;">
+        Everything you need to know about our electrical products, services, and certifications
+      </p>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="flex flex-col gap-4">
+      <div *ngFor="let faq of faqs; let i = index" 
+           class="card overflow-hidden transition-all duration-300"
+           [class.ring-2]="faq.open"
+           [class.ring-amber-300]="faq.open">
+        <!-- Question Button -->
+        <button (click)="toggle(i)" 
+                class="w-full flex items-start justify-between gap-4 p-6 text-left transition-all duration-200"
+                [class.pb-4]="faq.open"
+                style="background:var(--white);">
+          <div class="flex items-start gap-4 flex-1">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300"
+                 [style]="faq.open 
+                   ? 'background:var(--grad-gold);box-shadow:var(--sh-gold);' 
+                   : 'background:var(--ivory);'">
+              <span class="font-heading font-bold text-sm"
+                    [style]="faq.open ? 'color:var(--navy);' : 'color:var(--slate-2);'">
+                {{ i + 1 }}
+              </span>
+            </div>
+            <h3 class="font-heading font-bold text-base leading-relaxed mt-1.5"
+                [style]="faq.open ? 'color:var(--navy);' : 'color:var(--slate);'">
+              {{ faq.question }}
+            </h3>
+          </div>
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300"
+               [style]="faq.open 
+                 ? 'background:var(--grad-gold);transform:rotate(180deg);' 
+                 : 'background:var(--ivory);'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" 
+                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                 [style]="faq.open ? 'color:var(--navy);' : 'color:var(--slate-2);'">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </button>
+
+        <!-- Answer Content -->
+        <div class="overflow-hidden transition-all duration-300"
+             [style.max-height]="faq.open ? '300px' : '0'">
+          <div class="px-6 pb-6 pt-2">
+            <div class="pl-14 pr-8">
+              <p class="font-body leading-relaxed" style="color:var(--slate-2);font-size:0.95rem;">
+                {{ faq.answer }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="mt-12 text-center rounded-2xl p-8 relative overflow-hidden"
+         style="background:var(--grad-hero);box-shadow:var(--sh-xl);">
+      <div class="absolute top-0 right-0 w-64 h-64 pointer-events-none"
+           style="background:radial-gradient(circle at top right,rgba(184,134,11,0.15),transparent 70%);"></div>
+      <div class="relative z-10">
+        <h3 class="font-heading font-bold text-2xl text-white mb-3">
+          Still Have Questions?
+        </h3>
+        <p class="font-body text-sm mb-6" style="color:rgba(255,255,255,0.7);">
+          Our team of experts is here to help you with any electrical solution
+        </p>
+        <a href="#contact" class="btn-gold press inline-flex items-center gap-2">
+          Contact Us Today
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

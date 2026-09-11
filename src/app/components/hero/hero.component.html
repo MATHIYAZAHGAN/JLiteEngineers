@@ -27,17 +27,19 @@
       <!-- Headline -->
       <h1 appScrollReveal [stagger]="80" class="font-heading font-bold leading-[1.06]"
           style="font-size:clamp(3rem,5.5vw,5rem);color:#ffffff;letter-spacing:-0.02em;">
-        Power Your World !<br>
+        <span itemscope itemtype="https://schema.org/Product">
+          <span itemprop="name">JLITE Engineers</span>  Power Your World<br>
+        </span>
         <span style="background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-          Safely &amp; Smartly !
+          Safely &amp; Smartly!
         </span>
       </h1>
 
       <!-- Sub -->
       <p appScrollReveal [stagger]="160" class="font-body leading-[1.9] max-w-[500px]"
          style="font-size:1.05rem;color:rgba(255,255,255,0.55);">
-        JLite Engineers supplies certified electrical components &mdash; MCBs, smart LED lighting,
-        switchgear, and wiring accessories &mdash; trusted by 50,000+ contractors across 40+ countries.
+        <strong style="color:rgba(255,255,255,0.85);">JLITE Engineers</strong> supplies certified <strong style="color:rgba(255,255,255,0.85);">MCBs, MCCB, LED lighting</strong>,
+         smart switchgear, and wiring accessories &mdash; trusted by 50,000+ electrical contractors across India.
       </p>
 
       <!-- Trust badges -->
@@ -89,8 +91,8 @@
       <div class="relative z-10 animate-float hero-panel-wrap"
            style="filter:drop-shadow(0 48px 96px rgba(0,0,0,0.6)) drop-shadow(0 12px 40px rgba(29,95,219,0.3)) drop-shadow(0 0 40px rgba(184,134,11,0.15));cursor:pointer;"
            (mouseenter)="onPanelHover($event)">
-        <img src="assets/hero-panel.png" alt="JLite Engineers Smart Distribution Board"
-             class="w-[300px] sm:w-[390px] lg:w-[480px] object-contain hero-panel-img" #panelImg />
+        <img src="assets/hero-panel.png" alt="JLITE Engineers Premium MCB Distribution Board - Smart Electrical Switchgear Panel with LED indicators and safety features"
+             class="w-[300px] sm:w-[390px] lg:w-[480px] object-contain hero-panel-img" #panelImg loading="eager" />
       </div>
     </div>
   </div>

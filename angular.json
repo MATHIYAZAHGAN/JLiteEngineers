@@ -47,12 +47,27 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
+              }
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "optimization": {
+              "scripts": true,
+              "styles": {
+                "minify": true,
+                "inlineCritical": true
+              },
+              "fonts": true
+            },
+            "sourceMap": false,
+            "namedChunks": false
           },
           "configurations": {
             "production": {
@@ -60,7 +75,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "1.5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -68,12 +83,69 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": true
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/voltx/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "optimization": true,
+            "sourceMap": false
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "optimization": true,
+              "sourceMap": false
+            },
+            "development": {
+              "optimization": false,
               "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "voltx:build:development",
+              "serverTarget": "voltx:server:development"
+            },
+            "production": {
+              "browserTarget": "voltx:build:production",
+              "serverTarget": "voltx:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "voltx:build:production",
+              "serverTarget": "voltx:server:production"
+            },
+            "development": {
+              "browserTarget": "voltx:build:development",
+              "serverTarget": "voltx:server:development"
             }
           },
           "defaultConfiguration": "production"
