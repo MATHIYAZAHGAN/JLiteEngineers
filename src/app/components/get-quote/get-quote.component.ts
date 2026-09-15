@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { ApiService } from '../../services/api.service';
+import { QuoteService } from '../../services/quote.service';
+import { Subscription } from 'rxjs';
 import emailjs from '@emailjs/browser';
 
 // EmailJS Configuration - Sends to jlite@jliteengineers.com
@@ -16,7 +18,9 @@ const EMAILJS_PUBLIC_KEY = '08x80TnEtJ1WxAle_';
   imports: [CommonModule, FormsModule, ScrollRevealDirective],
   templateUrl: './get-quote.component.html',
 })
-export class GetQuoteComponent {
+export class GetQuoteComponent implements OnInit, OnDestroy {
+
+  private quoteSubscription?: Subscription;
 
   form = {
     name: '',
@@ -50,7 +54,31 @@ export class GetQuoteComponent {
   urgencyLevels = ['Standard (1–2 weeks)', 'Urgent (2–5 days)', 'Emergency (Within 24 hrs)'];
   budgetRanges = ['Below ₹50,000', '₹50,000 – ₹2,00,000', '₹2,00,000 – ₹10,00,000', 'Above ₹10,00,000', 'To be discussed'];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private quoteService: QuoteService) {}
+
+  ngOnInit() {
+    // Listen for quote requests from products
+    this.quoteSubscription = this.quoteService.quoteRequest$.subscribe(request => {
+      // Pre-fill form with product details
+      this.form.details = `Product: ${request.productName}\nPrice: ₹${request.productPrice}\n\n${request.productDetails}\n\nAdditional Requirements:\n`;
+      
+      // Focus on the details field after a short delay
+      setTimeout(() => {
+        const detailsField = document.querySelector('textarea[name="details"]') as HTMLTextAreaElement;
+        if (detailsField) {
+          detailsField.focus();
+          // Move cursor to end of text
+          detailsField.setSelectionRange(detailsField.value.length, detailsField.value.length);
+        }
+      }, 800);
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.quoteSubscription) {
+      this.quoteSubscription.unsubscribe();
+    }
+  }
 
   async onSubmit() {
     if (!this.form.name || !this.form.email || !this.form.phone || !this.form.projectType) return;

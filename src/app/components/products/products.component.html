@@ -72,11 +72,19 @@
               </div>
               <span class="font-body text-[0.62rem]" style="color:var(--slate-3);">{{ p.unit }} &middot; incl. GST</span>
             </div>
-            <button (click)="addToCart(p)" class="press inline-flex items-center gap-1.5 font-body font-bold text-xs px-4 py-2.5 rounded-xl transition-all duration-200"
-                    style="background:var(--grad-navy);color:white;box-shadow:var(--sh-sm);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add
-            </button>
+            <div class="flex gap-2">
+              <button (click)="requestQuote(p)" class="press inline-flex items-center gap-1.5 font-body font-bold text-xs px-3.5 py-2.5 rounded-xl transition-all duration-200"
+                      style="background:var(--grad-gold);color:var(--navy);box-shadow:var(--sh-gold);"
+                      title="Get Quote for {{p.name}}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Quote
+              </button>
+              <button (click)="addToCart(p)" class="press inline-flex items-center gap-1.5 font-body font-bold text-xs px-3.5 py-2.5 rounded-xl transition-all duration-200"
+                      style="background:var(--grad-navy);color:white;box-shadow:var(--sh-sm);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -167,17 +175,17 @@
 </div>
 
 <!-- Dynamic & High-Security PhonePe Checkout Modal -->
-<div *ngIf="checkoutOpen()" class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto" (click)="closeCheckout()">
+<div *ngIf="checkoutOpen()" class="fixed inset-0 z-50 flex items-center justify-center p-3" (click)="closeCheckout()">
   <div class="absolute inset-0 backdrop-blur-md" style="background:rgba(11,29,58,0.7);"></div>
-  <div class="relative w-full max-w-2xl rounded-3xl overflow-hidden my-6 transition-all shadow-2xl border"
+  <div class="relative w-full max-w-2xl rounded-3xl overflow-hidden transition-all shadow-2xl border max-h-[96vh] flex flex-col"
        style="background:var(--white);border:1.5px solid rgba(184,134,11,0.25);"
        (click)="$event.stopPropagation()">
 
     <!-- Premium Header -->
-    <div class="px-7 py-6 text-white flex items-center justify-between relative overflow-hidden" style="background:var(--grad-navy);">
+    <div class="px-6 py-4 text-white flex items-center justify-between relative overflow-hidden flex-shrink-0" style="background:var(--grad-navy);">
       <div class="absolute top-0 right-0 w-48 h-48 rounded-full pointer-events-none opacity-10" style="background:var(--grad-gold);transform:translate(30%, -30%);"></div>
-      <div class="flex items-center gap-3.5 relative z-10">
-        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center p-2 shadow-lg border border-purple-100">
+      <div class="flex items-center gap-3 relative z-10">
+        <div class="w-11 h-11 rounded-xl bg-white flex items-center justify-center p-2 shadow-lg border border-purple-100">
           <!-- Official PhonePe Logo SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-full h-full">
             <rect width="100" height="100" rx="22" fill="#5f259f"/>
@@ -187,194 +195,186 @@
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h3 class="font-heading font-bold text-xl text-white">PhonePe Secure Checkout</h3>
-            <span class="px-2 py-0.5 text-[0.65rem] font-bold rounded-full uppercase tracking-wider bg-emerald-500 text-white shadow-sm">Verified Merchant</span>
+            <h3 class="font-heading font-bold text-lg text-white">PhonePe Secure Checkout</h3>
+            <span class="px-2 py-0.5 text-[0.6rem] font-bold rounded-full uppercase tracking-wider bg-emerald-500 text-white shadow-sm">Verified</span>
           </div>
-          <p class="font-body text-xs text-blue-100 flex items-center gap-1.5 mt-0.5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            256-Bit SHA256 HMAC Encryption &bull; Official Gateway
+          <p class="font-body text-[0.7rem] text-blue-100 flex items-center gap-1.5 mt-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            256-Bit Encryption &bull; Official Gateway
           </p>
         </div>
       </div>
       <button (click)="closeCheckout()" [disabled]="isProcessingPayment()"
-              class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors text-xl font-bold">
+              class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors text-lg font-bold flex-shrink-0">
         &times;
       </button>
     </div>
 
-    <!-- Modal Content -->
-    <div class="p-7 flex flex-col gap-6 max-h-[78vh] overflow-y-auto">
+    <!-- Modal Content - Scrollable -->
+    <div class="p-5 flex flex-col gap-4 overflow-y-auto flex-1">
 
       <!-- Order Summary Card -->
-      <div class="rounded-2xl p-4.5 flex flex-col gap-2.5" style="background:var(--ivory);border:1px solid rgba(11,29,58,0.08);">
+      <div class="rounded-2xl p-3.5 flex flex-col gap-2" style="background:var(--ivory);border:1px solid rgba(11,29,58,0.08);">
         <div class="flex items-center justify-between pb-2" style="border-bottom:1px solid rgba(11,29,58,0.08);">
-          <span class="font-heading font-bold text-sm flex items-center gap-2" style="color:var(--navy);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="font-heading font-bold text-xs flex items-center gap-2" style="color:var(--navy);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             Order Breakdown
           </span>
-          <span class="font-body text-xs font-bold px-3 py-1 rounded-full" style="background:var(--grad-gold);color:var(--navy);">
+          <span class="font-body text-[0.7rem] font-bold px-2.5 py-0.5 rounded-full" style="background:var(--grad-gold);color:var(--navy);">
             {{ cartCount() }} Item(s)
           </span>
         </div>
-        <div class="flex flex-col gap-2 max-h-32 overflow-y-auto pr-1">
-          <div *ngFor="let item of cart()" class="flex items-center justify-between font-body text-xs">
-            <span class="font-medium truncate max-w-[260px]" style="color:var(--slate);">{{ item.name }} &times; {{ item.qty }}</span>
+        <div class="flex flex-col gap-1.5 max-h-24 overflow-y-auto pr-1">
+          <div *ngFor="let item of cart()" class="flex items-center justify-between font-body text-[0.7rem]">
+            <span class="font-medium truncate max-w-[200px]" style="color:var(--slate);">{{ item.name }} &times; {{ item.qty }}</span>
             <span class="font-semibold" style="color:var(--navy);">&#8377;{{ (item.price * item.qty) | number }}</span>
           </div>
         </div>
-        <div class="flex items-center justify-between pt-2.5 mt-1" style="border-top:1px solid rgba(11,29,58,0.09);">
-          <span class="font-heading font-bold text-sm" style="color:var(--navy);">Grand Total (incl. GST)</span>
-          <span class="font-heading font-bold text-2xl" style="background:var(--grad-navy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        <div class="flex items-center justify-between pt-2 mt-0.5" style="border-top:1px solid rgba(11,29,58,0.09);">
+          <span class="font-heading font-bold text-xs" style="color:var(--navy);">Grand Total (incl. GST)</span>
+          <span class="font-heading font-bold text-xl" style="background:var(--grad-navy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
             &#8377;{{ cartTotal() | number }}
           </span>
         </div>
       </div>
 
       <!-- Payment Method Selection Strip -->
-      <div class="flex flex-col gap-2">
-        <label class="font-heading font-bold text-xs uppercase tracking-wider" style="color:var(--slate-2);">Select Preferred Payment Method</label>
+      <div class="flex flex-col gap-1.5">
+        <label class="font-heading font-bold text-[0.7rem] uppercase tracking-wider" style="color:var(--slate-2);">Select Preferred Payment Method</label>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          <button (click)="setTab('upi')"
-                  class="p-3 rounded-2xl flex flex-col items-center justify-center gap-1.5 border transition-all text-xs font-semibold"
-                  [style]="selectedTab() === 'upi'
-                    ? 'border-2 border-purple-600 bg-purple-50 text-purple-900 shadow-sm'
-                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
-            <span class="text-base">📱</span>
+          <button (click)="setTab('upi')" type="button"
+                  class="p-2.5 rounded-xl flex flex-col items-center justify-center gap-1 border-2 transition-all text-[0.7rem] font-semibold"
+                  [ngClass]="selectedTab() === 'upi' ? 'border-purple-600 bg-purple-50 text-purple-900 shadow-sm' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
             <span>PhonePe UPI</span>
           </button>
 
-          <button (click)="setTab('gpay')"
-                  class="p-3 rounded-2xl flex flex-col items-center justify-center gap-1.5 border transition-all text-xs font-semibold"
-                  [style]="selectedTab() === 'gpay'
-                    ? 'border-2 border-emerald-600 bg-emerald-50 text-emerald-900 shadow-sm'
-                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
-            <span class="text-base">💚</span>
+          <button (click)="setTab('gpay')" type="button"
+                  class="p-2.5 rounded-xl flex flex-col items-center justify-center gap-1 border-2 transition-all text-[0.7rem] font-semibold"
+                  [ngClass]="selectedTab() === 'gpay' ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-sm' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
             <span>GPay / QR</span>
           </button>
 
-          <button (click)="setTab('card')"
-                  class="p-3 rounded-2xl flex flex-col items-center justify-center gap-1.5 border transition-all text-xs font-semibold"
-                  [style]="selectedTab() === 'card'
-                    ? 'border-2 border-blue-600 bg-blue-50 text-blue-900 shadow-sm'
-                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
-            <span class="text-base">💳</span>
+          <button (click)="setTab('card')" type="button"
+                  class="p-2.5 rounded-xl flex flex-col items-center justify-center gap-1 border-2 transition-all text-[0.7rem] font-semibold"
+                  [ngClass]="selectedTab() === 'card' ? 'border-blue-600 bg-blue-50 text-blue-900 shadow-sm' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
             <span>Cards</span>
           </button>
 
-          <button (click)="setTab('netbanking')"
-                  class="p-3 rounded-2xl flex flex-col items-center justify-center gap-1.5 border transition-all text-xs font-semibold"
-                  [style]="selectedTab() === 'netbanking'
-                    ? 'border-2 border-amber-600 bg-amber-50 text-amber-900 shadow-sm'
-                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
-            <span class="text-base">🏛️</span>
+          <button (click)="setTab('netbanking')" type="button"
+                  class="p-2.5 rounded-xl flex flex-col items-center justify-center gap-1 border-2 transition-all text-[0.7rem] font-semibold"
+                  [ngClass]="selectedTab() === 'netbanking' ? 'border-amber-600 bg-amber-50 text-amber-900 shadow-sm' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             <span>NetBanking</span>
           </button>
         </div>
       </div>
 
       <!-- Error Alert Box -->
-      <div *ngIf="paymentError()" class="p-3.5 rounded-2xl text-xs font-body flex items-center gap-2 bg-red-50 text-red-900 border border-red-200 animate-shake">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div *ngIf="paymentError()" class="p-3 rounded-xl text-[0.7rem] font-body flex items-center gap-2 bg-red-50 text-red-900 border border-red-200 animate-shake">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         <span>{{ paymentError() }}</span>
       </div>
 
       <!-- Customer Contact & Delivery Form -->
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-3">
         <div class="flex items-center justify-between">
-          <h4 class="font-heading font-bold text-sm" style="color:var(--navy);">Shipping &amp; Contact Details</h4>
-          <span class="font-body text-[0.7rem] text-slate-400">* All fields required</span>
+          <h4 class="font-heading font-bold text-xs" style="color:var(--navy);">Shipping &amp; Contact Details</h4>
+          <span class="font-body text-[0.65rem] text-slate-400">* All fields required</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">Full Name *</label>
+            <label class="block font-body text-[0.7rem] font-semibold mb-1" style="color:var(--navy);">Full Name *</label>
             <input type="text" [ngModel]="customer().name" (ngModelChange)="updateCustomerField('name', $event)"
                    placeholder="e.g. Ramesh Kumar"
-                   class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                   class="w-full px-3 py-2 rounded-xl font-body text-xs border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
                    style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
           </div>
           <div>
-            <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">10-Digit Mobile Number (UPI Registered) *</label>
+            <label class="block font-body text-[0.7rem] font-semibold mb-1" style="color:var(--navy);">10-Digit Mobile Number (UPI Registered) *</label>
             <div class="relative flex items-center">
-              <span class="absolute left-3.5 text-xs font-bold text-slate-400">+91</span>
+              <span class="absolute left-3 text-[0.7rem] font-bold text-slate-400">+91</span>
               <input type="tel" [ngModel]="customer().phone" (ngModelChange)="updateCustomerField('phone', $event)"
                      placeholder="9876543210" maxlength="10"
-                     class="w-full pl-12 pr-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                     class="w-full pl-10 pr-3 py-2 rounded-xl font-body text-xs border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
                      style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
             </div>
           </div>
         </div>
 
         <div>
-          <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">Email Address (For Instant Invoice Receipt) *</label>
+          <label class="block font-body text-[0.7rem] font-semibold mb-1" style="color:var(--navy);">Email Address (For Invoice) *</label>
           <input type="email" [ngModel]="customer().email" (ngModelChange)="updateCustomerField('email', $event)"
                  placeholder="ramesh@company.com"
-                 class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                 class="w-full px-3 py-2 rounded-xl font-body text-xs border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
                  style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
         </div>
 
         <div>
-          <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">Shipping Address *</label>
+          <label class="block font-body text-[0.7rem] font-semibold mb-1" style="color:var(--navy);">Shipping Address *</label>
           <textarea [ngModel]="customer().address" (ngModelChange)="updateCustomerField('address', $event)" rows="2"
                     placeholder="Door/Flat No., Street Name, Landmark"
-                    class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all resize-none"
+                    class="w-full px-3 py-2 rounded-xl font-body text-xs border focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all resize-none"
                     style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);"></textarea>
         </div>
 
-        <div class="grid grid-cols-2 gap-3.5">
+        <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">City</label>
+            <label class="block font-body text-[0.7rem] font-semibold mb-1" style="color:var(--navy);">City</label>
             <input type="text" [ngModel]="customer().city" (ngModelChange)="updateCustomerField('city', $event)"
                    placeholder="Chennai"
-                   class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none"
+                   class="w-full px-3 py-2 rounded-xl font-body text-xs border focus:outline-none"
                    style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
           </div>
           <div>
-            <label class="block font-body text-xs font-semibold mb-1" style="color:var(--navy);">Pincode</label>
+            <label class="block font-body text-[0.7rem] font-semibold mb-1" style="color:var(--navy);">Pincode</label>
             <input type="text" [ngModel]="customer().pincode" (ngModelChange)="updateCustomerField('pincode', $event)"
                    placeholder="600001"
-                   class="w-full px-4 py-2.5 rounded-xl font-body text-sm border focus:outline-none"
+                   class="w-full px-3 py-2 rounded-xl font-body text-xs border focus:outline-none"
                    style="border:1.5px solid rgba(11,29,58,0.12);background:var(--white);" />
           </div>
         </div>
       </div>
 
       <!-- Security Seals & Trust Badges Strip -->
-      <div class="rounded-2xl p-4 flex flex-col gap-2 bg-slate-50 border border-slate-200/80">
-        <div class="flex items-center justify-between text-[0.7rem] font-bold text-slate-500 uppercase tracking-wider">
+      <div class="rounded-xl p-3 flex flex-col gap-1.5 bg-slate-50 border border-slate-200/80">
+        <div class="flex items-center justify-between text-[0.65rem] font-bold text-slate-500 uppercase tracking-wider">
           <span>Security &amp; Encryption Standards</span>
           <span class="text-emerald-600 flex items-center gap-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
             PCI-DSS Compliant
           </span>
         </div>
-        <div class="grid grid-cols-3 gap-2 text-[0.72rem] font-medium text-slate-700">
-          <div class="flex items-center gap-1.5">
-            <span class="text-purple-600">🔒</span> 256-Bit SSL Handoff
+        <div class="grid grid-cols-3 gap-2 text-[0.68rem] font-medium text-slate-700">
+          <div class="flex items-center gap-1">
+            <span class="text-purple-600">🔒</span> 256-Bit SSL
           </div>
-          <div class="flex items-center gap-1.5">
-            <span class="text-emerald-600">🛡️</span> SHA-256 Checksum
+          <div class="flex items-center gap-1">
+            <span class="text-emerald-600">🛡️</span> SHA-256
           </div>
-          <div class="flex items-center gap-1.5">
-            <span class="text-amber-600">⚡</span> Instant Refund Protection
+          <div class="flex items-center gap-1">
+            <span class="text-amber-600">⚡</span> Instant Refund
           </div>
         </div>
       </div>
 
       <!-- Pay Button -->
       <button (click)="processPhonePePayment()" [disabled]="isProcessingPayment()"
-              class="press w-full py-4 rounded-2xl font-body font-bold text-base transition-all shadow-gold flex items-center justify-center gap-3"
+              class="press w-full py-3.5 rounded-2xl font-body font-bold text-sm transition-all shadow-gold flex items-center justify-center gap-2"
               style="background:var(--grad-gold);color:var(--navy);">
         <span *ngIf="!isProcessingPayment()" class="flex items-center gap-2">
-          <span>Proceed to Pay &#8377;{{ cartTotal() | number }} with PhonePe Gateway</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <span>Proceed to Pay &#8377;{{ cartTotal() | number }}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
         <span *ngIf="isProcessingPayment()" class="flex items-center gap-2">
-          <svg class="animate-spin h-5 w-5 text-navy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <svg class="animate-spin h-4 w-4 text-navy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
-          <span>Connecting to PhonePe Gateway...</span>
+          <span>Connecting to PhonePe...</span>
         </span>
       </button>
 
@@ -472,40 +472,47 @@
           </div>
           <div class="flex items-center justify-between pt-2 border-t font-body text-sm font-bold" style="border-color:rgba(11,29,58,0.1);">
             <span style="color:var(--navy);">Total Order Value</span>
-            <span class="text-lg" style="color:var(--navy);">&#8377;{{ paymentReceipt()?.amount | number }}</span>
+            <span style="background:var(--grad-navy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+              &#8377;{{ paymentReceipt()?.amount | number }}
+            </span>
           </div>
         </div>
       </div>
 
-      <!-- Success Notification Banner -->
-      <div *ngIf="paymentReceipt()?.success" class="p-3.5 rounded-2xl bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-body flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <span>Tax invoice &amp; receipt dispatched to <strong>{{ paymentReceipt()?.customerEmail }}</strong>.</span>
-      </div>
-
-      <!-- Action Buttons for SUCCESS -->
-      <div *ngIf="paymentReceipt()?.success" class="flex gap-3 pt-2">
-        <button (click)="printReceipt()" class="press flex-1 py-3 rounded-2xl font-body font-semibold text-xs border border-slate-300 hover:bg-slate-50 transition-colors flex items-center justify-center gap-1.5" style="color:var(--navy);">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Print Receipt
-        </button>
-        <button (click)="closeReceiptModal()" class="press flex-1 py-3 rounded-2xl font-body font-bold text-xs text-white shadow-gold flex items-center justify-center gap-1.5" style="background:var(--grad-navy);">
-          Continue Shopping
-        </button>
-      </div>
-
-      <!-- Action Buttons for FAILURE / RETRY -->
-      <div *ngIf="!paymentReceipt()?.success" class="flex flex-col sm:flex-row gap-3 pt-2">
-        <button (click)="retryPayment()" class="press flex-1 py-3.5 rounded-2xl font-body font-bold text-xs transition-all shadow-gold flex items-center justify-center gap-2"
+      <!-- Actions -->
+      <div class="flex flex-col gap-2 mt-2">
+        <button *ngIf="paymentReceipt()?.success" (click)="printReceipt()"
+                class="press w-full py-3 rounded-2xl font-body font-semibold text-sm transition-all shadow-gold"
                 style="background:var(--grad-gold);color:var(--navy);">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6"/><path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-          <span>Retry Payment</span>
+          <span class="flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span>Print Receipt</span>
+          </span>
         </button>
-        <button (click)="closeReceiptModal()" class="press flex-1 py-3.5 rounded-2xl font-body font-semibold text-xs border border-slate-300 hover:bg-slate-50 transition-colors flex items-center justify-center" style="color:var(--navy);">
-          Return to Cart
+
+        <button *ngIf="!paymentReceipt()?.success" (click)="retryPayment()"
+                class="press w-full py-3 rounded-2xl font-body font-semibold text-sm transition-all"
+                style="background:var(--grad-navy);color:white;box-shadow:var(--sh-md);">
+          <span class="flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            <span>Retry Payment</span>
+          </span>
+        </button>
+
+        <button (click)="closeReceiptModal()"
+                class="press w-full py-3 rounded-2xl font-body font-semibold text-sm transition-all"
+                style="background:var(--ivory);border:1.5px solid rgba(11,29,58,0.1);color:var(--navy);">
+          Close
         </button>
       </div>
 
     </div>
   </div>
 </div>
+
+<!-- Authentication Modal -->
+<app-auth-modal *ngIf="authModalOpen()"
+                (onClose)="handleAuthClose()"
+                (onContinueAsGuest)="handleAuthContinueAsGuest()"
+                (onLoginSuccess)="handleAuthLoginSuccess()">
+</app-auth-modal>

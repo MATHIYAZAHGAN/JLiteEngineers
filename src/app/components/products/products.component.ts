@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { ApiService, CreatePaymentRequest, PaymentStatusResponse } from '../../services/api.service';
+import { QuoteService } from '../../services/quote.service';
+import { AuthService, User } from '../../services/auth.service';
+import { AuthModalComponent } from '../auth-modal/auth-modal.component';
 
 export interface Product {
   id: number;
@@ -23,7 +26,7 @@ export interface CartItem extends Product { qty: number; }
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, FormsModule, ScrollRevealDirective],
+  imports: [CommonModule, FormsModule, ScrollRevealDirective, AuthModalComponent],
   templateUrl: './products.component.html',
 })
 export class ProductsComponent implements OnInit {
@@ -61,7 +64,7 @@ export class ProductsComponent implements OnInit {
       tag: null, tagColor: null, type: 'rccb',
       desc: 'Residual current circuit breaker for earth leakage protection.',
       specs: ['63A', '30mA', 'IEC 61008'],
-      img: 'assets/work/Picture5.jpg', imgBg: '#EFF6FF',
+      img: 'assets/work/Picture13.jpg', imgBg: '#EFF6FF',
     },
     {
       id: 6, name: 'Armoured Cable 4mm', price: 699, unit: '/m',
@@ -89,7 +92,7 @@ export class ProductsComponent implements OnInit {
       tag: null, tagColor: null, type: 'switch',
       desc: 'Premium modular switch with piano-key mechanism, 6A rated.',
       specs: ['6A', '250V', 'ISI Mark'],
-      img: 'assets/Picture29.jpg', imgBg: '#F8FAFC',
+      img: 'assets/Picture14.jpg', imgBg: '#F8FAFC',
     },
     {
       id: 10, name: 'HRC Fuse 100A', price: 899, unit: '/pc',
@@ -132,6 +135,10 @@ export class ProductsComponent implements OnInit {
   cart = signal<CartItem[]>([]);
   cartOpen = signal(false);
 
+  // Authentication modal state
+  authModalOpen = signal(false);
+  isGuest = signal(false);
+
   // Checkout modal & payment processing state
   checkoutOpen = signal(false);
   isProcessingPayment = signal(false);
@@ -156,11 +163,35 @@ export class ProductsComponent implements OnInit {
   cartCount = computed(() => this.cart().reduce((s, i) => s + i.qty, 0));
   cartTotal = computed(() => this.cart().reduce((s, i) => s + i.price * i.qty, 0));
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService, 
+    private quoteService: QuoteService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.restoreSavedCustomer();
     this.checkReturnPaymentStatus();
+    
+    // Auto-fill customer details if logged in
+    if (this.authService.isLoggedIn()) {
+      this.prefillLoggedInUserData();
+    }
+  }
+
+  private prefillLoggedInUserData() {
+    const user = this.authService.getCurrentUser();
+    if (user) {
+      const defaultAddress = this.authService.getDefaultAddress();
+      this.customer.set({
+        name: user.name || '',
+        email: user.email || '',
+        phone: user.phone || '',
+        address: defaultAddress?.addressLine || '',
+        city: defaultAddress?.city || 'Chennai',
+        pincode: defaultAddress?.pincode || '600001'
+      });
+    }
   }
 
   private restoreSavedCustomer() {
@@ -233,14 +264,41 @@ export class ProductsComponent implements OnInit {
 
   openCheckout() {
     if (this.cart().length === 0) return;
+    
     this.cartOpen.set(false);
-    this.paymentError.set(null);
-    this.checkoutOpen.set(true);
+    
+    // Check if user is logged in
+    if (!this.authService.isLoggedIn() && !this.isGuest()) {
+      // Show auth modal - user must login or continue as guest
+      this.authModalOpen.set(true);
+    } else {
+      // User is logged in or chose guest checkout - proceed to payment
+      this.paymentError.set(null);
+      this.checkoutOpen.set(true);
+    }
   }
 
   closeCheckout() {
     if (this.isProcessingPayment()) return;
     this.checkoutOpen.set(false);
+  }
+
+  // Auth Modal Handlers
+  handleAuthLoginSuccess() {
+    this.authModalOpen.set(false);
+    this.isGuest.set(false);
+    this.prefillLoggedInUserData();
+    this.checkoutOpen.set(true);
+  }
+
+  handleAuthContinueAsGuest() {
+    this.authModalOpen.set(false);
+    this.isGuest.set(true);
+    this.checkoutOpen.set(true);
+  }
+
+  handleAuthClose() {
+    this.authModalOpen.set(false);
   }
 
   closeReceiptModal() {
@@ -338,5 +396,13 @@ export class ProductsComponent implements OnInit {
 
   printReceipt() {
     window.print();
+  }
+
+  requestQuote(product: Product) {
+    this.quoteService.requestQuote({
+      productName: product.name,
+      productPrice: product.price,
+      productDetails: `${product.desc} | Specs: ${product.specs.join(', ')}`
+    });
   }
 }
