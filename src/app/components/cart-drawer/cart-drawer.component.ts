@@ -28,7 +28,7 @@ export class CartDrawerComponent {
 
   checkoutForm = {
     name: this.authService.currentUser()?.fullName || 'Mathiyazhagan',
-    email: this.authService.currentUser()?.email || 'jlite2025@gmail.com',
+    email: this.authService.currentUser()?.email || 'jlite@jliteengineers.com',
     phone: this.authService.currentUser()?.phone || '7358178174',
     address: 'No.338, Vijaya Nagar, 6th Main Road, Velachery',
     city: 'Chennai',

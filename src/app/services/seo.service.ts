@@ -44,7 +44,7 @@ export class SeoService {
       'name': 'M/s. JLITE Electrical Engineer\'s and Contractor',
       'url': 'https://www.jliteengineers.com',
       'telephone': '+917358178174',
-      'email': 'jlite2025@gmail.com',
+      'email': 'jlite@jliteengineers.com',
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': 'No.338, Vijaya Nagar, 6th Main Road, Velachery',

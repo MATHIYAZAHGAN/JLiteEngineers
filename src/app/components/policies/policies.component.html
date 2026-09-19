@@ -1,14 +1,14 @@
-<section id="legal-policies" class="py-24 px-6 bg-slate-50 relative min-h-[70vh]">
+<section id="legal-policies" class="py-24 px-6 relative min-h-[70vh]" style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);">
   <div class="max-w-6xl mx-auto">
     <!-- Header -->
     <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 text-xs font-bold uppercase tracking-wider">
+      <span class="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider" style="background: #fef3c7; color: #ea8c00; border: 1px solid rgba(245, 158, 11, 0.4);">
         Legal & Compliance
       </span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+      <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight" style="color: #0a1628;">
         E-Commerce & Service Policies
       </h2>
-      <p class="text-slate-600 text-sm mt-2">
+      <p class="text-sm mt-2" style="color: #64748b;">
         Mandatory policies for PhonePe Payment Gateway onboarding, B2B compliance, and consumer rights protection.
       </p>
     </div>
@@ -17,33 +17,34 @@
     <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
       <button *ngFor="let tab of policyTabs" 
               (click)="setTab(tab.type)"
-              [class.bg-slate-900]="activeTab() === tab.type"
-              [class.text-white]="activeTab() === tab.type"
               [class.shadow-lg]="activeTab() === tab.type"
-              [class.bg-white]="activeTab() !== tab.type"
-              [class.text-slate-700]="activeTab() !== tab.type"
-              class="px-5 py-3 rounded-2xl font-bold text-xs sm:text-sm border border-slate-200 hover:border-amber-400 transition flex items-center gap-2">
+              class="px-5 py-3 rounded-2xl font-bold text-xs sm:text-sm border transition flex items-center gap-2"
+              [style.background]="activeTab() === tab.type ? 'linear-gradient(135deg, #0a1628 0%, #1e3a5f 100%)' : '#ffffff'"
+              [style.color]="activeTab() === tab.type ? '#ffffff' : '#475569'"
+              [style.border-color]="activeTab() === tab.type ? 'rgba(245, 158, 11, 0.4)' : '#e2e8f0'"
+              onmouseenter="if(this.style.background === 'rgb(255, 255, 255)') { this.style.borderColor='rgba(245, 158, 11, 0.6)'; this.style.color='#0a1628'; }"
+              onmouseleave="if(this.style.background === 'rgb(255, 255, 255)') { this.style.borderColor='#e2e8f0'; this.style.color='#475569'; }">
         {{ tab.label }}
       </button>
     </div>
 
     <!-- Policy Content Card -->
-    <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-xl max-w-4xl mx-auto">
-      <div *ngIf="isLoading()" class="py-16 text-center text-slate-400">
-        <svg class="animate-spin w-8 h-8 mx-auto text-amber-500 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <div class="bg-white rounded-3xl p-8 sm:p-12 border shadow-xl max-w-4xl mx-auto" style="border-color: #e2e8f0;">
+      <div *ngIf="isLoading()" class="py-16 text-center" style="color: #94a3b8;">
+        <svg class="animate-spin w-8 h-8 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="color: #f59e0b;">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
-        Loading policy content...
+        <p style="color: #64748b; font-weight: 500;">Loading policy content...</p>
       </div>
 
       <div *ngIf="!isLoading() && currentPolicy()" class="prose prose-slate max-w-none">
         <div class="flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
-          <h1 class="text-2xl font-extrabold text-slate-900 m-0">{{ currentPolicy()?.title }}</h1>
-          <span class="text-xs text-slate-400 font-medium">Last updated: {{ currentPolicy()?.lastUpdated | date:'mediumDate' }}</span>
+          <h1 class="text-2xl font-extrabold m-0" style="color: #0a1628;">{{ currentPolicy()?.title }}</h1>
+          <span class="text-xs font-medium" style="color: #94a3b8;">Last updated: {{ currentPolicy()?.lastUpdated | date:'mediumDate' }}</span>
         </div>
 
-        <div class="whitespace-pre-line text-slate-700 leading-relaxed text-sm sm:text-base">
+        <div class="whitespace-pre-line leading-relaxed text-sm sm:text-base" style="color: #475569; line-height: 1.8;">
           {{ currentPolicy()?.contentMarkdown }}
         </div>
       </div>

@@ -22,7 +22,9 @@
     <div>
       <div class="flex items-center gap-3 mb-8">
         <div class="gold-line"></div>
-        <h3 appScrollReveal class="font-heading font-bold text-[1.5rem]" style="color:var(--navy);">Our Clients</h3>
+        <h3 appScrollReveal class="font-heading font-bold text-[1.5rem]">
+          <span style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">Our Clients</span>
+        </h3>
       </div>
       <div appScrollReveal class="flex flex-wrap gap-2 mb-8">
         <button *ngFor="let cat of categories" (click)="setCategory(cat)"
@@ -57,7 +59,9 @@
     <div>
       <div class="flex items-center gap-3 mb-8">
         <div class="gold-line"></div>
-        <h3 appScrollReveal class="font-heading font-bold text-[1.5rem]" style="color:var(--navy);">Our Consultants</h3>
+        <h3 appScrollReveal class="font-heading font-bold text-[1.5rem]">
+          <span style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">Our Consultants</span>
+        </h3>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div *ngFor="let c of consultants; let i = index" appScrollReveal [stagger]="i * 60"
