@@ -1,77 +1,116 @@
-﻿<nav class="glass fixed top-0 left-0 right-0 z-50">
+<nav class="glass fixed top-0 left-0 right-0 z-50 shadow-md border-b border-amber-500/20">
   <div class="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between gap-8">
 
-    <!-- Logo -->
+    <!-- Logo - Premium JL Monogram -->
     <a href="#" class="flex items-center gap-3 press flex-shrink-0 group">
-      <div class="w-10 h-10 rounded-xl flex items-center justify-center relative overflow-hidden shadow-gold"
-           style="background:var(--grad-gold);">
-        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="white">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      <div class="w-11 h-11 rounded-lg flex items-center justify-center relative overflow-hidden transition-all duration-300" 
+           style="background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 100%); border: 1.5px solid rgba(245, 158, 11, 0.4); box-shadow: 0 4px 12px rgba(10, 22, 40, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);"
+           onmouseenter="this.style.boxShadow='0 6px 20px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12)'; this.style.borderColor='rgba(245, 158, 11, 0.6)';"
+           onmouseleave="this.style.boxShadow='0 4px 12px rgba(10, 22, 40, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08)'; this.style.borderColor='rgba(245, 158, 11, 0.4)';">
+        <!-- Premium JL Monogram with 45° Engineering Cut -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- J Letter - Precision engineered -->
+          <path d="M8.5 5 L8.5 14 Q8.5 17 11 17 L11.5 17" 
+                stroke="url(#goldGradient)" 
+                stroke-width="2.2" 
+                stroke-linecap="square" 
+                stroke-linejoin="miter"
+                fill="none"/>
+          
+          <!-- L Letter - Sharp 45° diagonal terminal -->
+          <path d="M14.5 5 L14.5 16.5 L19 16.5 L21 14.5" 
+                stroke="url(#goldGradient)" 
+                stroke-width="2.2" 
+                stroke-linecap="square" 
+                stroke-linejoin="miter"
+                fill="none"/>
+          
+          <!-- Precision electrical accent - subtle energy flow line -->
+          <line x1="11" y1="8" x2="14.5" y2="8" 
+                stroke="url(#goldGradient)" 
+                stroke-width="0.8" 
+                opacity="0.5"/>
+          
+          <!-- Gold gradient definition -->
+          <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#fbbf24;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#fcd34d;stop-opacity:1" />
+            </linearGradient>
+          </defs>
         </svg>
       </div>
       <div class="flex flex-col leading-none">
-        <span class="font-heading font-bold text-[1.1rem] tracking-tight" style="color:var(--navy);">JLite Engineers</span>
-        <span class="font-body text-[0.6rem] font-semibold tracking-[0.15em] uppercase" style="color:var(--gold);">Certified &bull; Trusted</span>
+        <span class="font-heading font-extrabold text-[1.15rem] tracking-tight text-slate-900 group-hover:text-slate-950 transition-colors">JLite Engineers</span>
+        <span class="font-body text-[0.6rem] font-bold tracking-[0.14em] uppercase" style="color: #ea8c00;">Govt. A-Grade License &bull; 33kV</span>
       </div>
     </a>
 
-    <!-- Desktop Nav -->
+    <!-- Desktop Nav Links -->
     <ul class="hidden md:flex items-center gap-1 flex-1 justify-center">
       <li *ngFor="let link of navLinks">
         <a [href]="'#' + link.id"
-           class="px-4 py-2 text-[0.85rem] font-body font-medium rounded-lg transition-all duration-200 relative group"
-           style="color:var(--slate);">
-          <span class="relative z-10 group-hover:text-navy transition-colors duration-200"
-                onmouseenter="this.parentElement.style.color='var(--navy)';this.parentElement.style.background='var(--ivory-2)';"
-                onmouseleave="this.parentElement.style.color='var(--slate)';this.parentElement.style.background='transparent';">
-            {{ link.label }}
-          </span>
+           class="px-3.5 py-2 text-[0.875rem] font-body font-semibold rounded-xl text-slate-700 hover:text-slate-950 hover:bg-slate-200/60 transition-all duration-200">
+          {{ link.label }}
         </a>
       </li>
     </ul>
 
-    <!-- Right -->
+    <!-- Right Action Buttons -->
     <div class="flex items-center gap-3 flex-shrink-0">
-      <a href="tel:+917358178174"
-         class="hidden lg:inline-flex items-center gap-2 text-[0.82rem] font-body font-medium px-3 py-2 rounded-lg transition-all duration-200"
-         style="color:var(--slate);"
-         onmouseenter="this.style.color='var(--navy)';this.style.background='var(--ivory-2)';"
-         onmouseleave="this.style.color='var(--slate)';this.style.background='transparent';">
-        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      <!-- Phone Contact Link -->
+      <!-- High-Contrast Navy Cart Button with Proper Colors -->
+      <button (click)="cartService.openCart()" 
+              style="background: linear-gradient(135deg, #0b1d3a 0%, #1a3060 100%); color: #ffffff; border: 2px solid rgba(184, 134, 11, 0.6); box-shadow: 0 4px 16px rgba(11, 29, 58, 0.4);"
+              class="relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs hover:shadow-xl transition-all duration-200 press">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
         </svg>
-        +91 73581 78174
+        <span style="color: #ffffff;">Cart</span>
+        <span *ngIf="cartService.cartCount() > 0" 
+              style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: #0b1d3a;"
+              class="w-5 h-5 rounded-full font-black text-[0.7rem] flex items-center justify-center animate-bounce shadow-lg">
+          {{ cartService.cartCount() }}
+        </span>
+      </button>
+
+      <!-- High-Contrast Gold Get Quote Button -->
+      <a href="#get-quote" 
+         style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); color: #0b1d3a; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);"
+         class="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl font-extrabold text-xs hover:shadow-2xl transition-all duration-200 press">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0b1d3a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        <span style="color: #0b1d3a;">Get Quote</span>
       </a>
-      <a href="#contact" class="hidden md:inline-flex btn-gold press text-[0.82rem] px-5 py-2.5">
-        Get a Quote
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
+
+      <!-- Mobile Hamburger Menu Button -->
       <button (click)="toggleMenu()" aria-label="Toggle menu"
-              class="md:hidden w-9 h-9 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-colors duration-200 press"
-              style="border-color:rgba(11,29,58,0.15);"
-              onmouseenter="this.style.background='var(--ivory-2)';"
-              onmouseleave="this.style.background='transparent';">
-        <span class="block w-4 h-0.5 rounded-full transition-all duration-300" style="background:var(--navy);"
+              class="md:hidden w-10 h-10 rounded-xl bg-slate-100 border border-slate-300 flex flex-col items-center justify-center gap-1.5 transition press">
+        <span class="block w-5 h-0.5 rounded-full bg-slate-900 transition-all duration-300"
               [class.rotate-45]="menuOpen" [class.translate-y-2]="menuOpen"></span>
-        <span class="block w-4 h-0.5 rounded-full transition-all duration-300" style="background:var(--navy);"
+        <span class="block w-5 h-0.5 rounded-full bg-slate-900 transition-all duration-300"
               [class.opacity-0]="menuOpen"></span>
-        <span class="block w-4 h-0.5 rounded-full transition-all duration-300" style="background:var(--navy);"
+        <span class="block w-5 h-0.5 rounded-full bg-slate-900 transition-all duration-300"
               [class.-rotate-45]="menuOpen" [class.-translate-y-2]="menuOpen"></span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div *ngIf="menuOpen" class="md:hidden border-t px-6 py-4 flex flex-col gap-1"
-       style="background:rgba(250,248,244,0.98);backdrop-filter:blur(28px);border-color:rgba(184,134,11,0.12);">
+  <!-- Mobile Menu Drawer -->
+  <div *ngIf="menuOpen" class="md:hidden border-t border-slate-200 px-6 py-4 flex flex-col gap-2 bg-white/95 backdrop-blur-xl">
     <a *ngFor="let link of navLinks" [href]="'#' + link.id" (click)="menuOpen = false"
-       class="px-4 py-3 text-sm font-body font-medium rounded-xl transition-all duration-200"
-       style="color:var(--slate);"
-       onmouseenter="this.style.color='var(--navy)';this.style.background='var(--ivory-2)';"
-       onmouseleave="this.style.color='var(--slate)';this.style.background='transparent';">
+       class="px-4 py-3 text-sm font-bold text-slate-800 rounded-xl hover:bg-slate-100 transition">
       {{ link.label }}
     </a>
-    <a href="#contact" (click)="menuOpen = false" class="btn-gold mt-3 justify-center text-sm py-3">Get a Quote</a>
+    <a href="#get-quote" (click)="menuOpen = false" class="w-full py-3 bg-amber-500 text-slate-950 font-extrabold text-center rounded-xl text-sm mt-2 shadow">
+      Get a Quote
+    </a>
   </div>
 </nav>
-

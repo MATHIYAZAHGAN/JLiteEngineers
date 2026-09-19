@@ -1,0 +1,178 @@
+<section id="admin-portal" class="py-24 px-6 bg-[#070b14] text-white min-h-screen relative overflow-hidden">
+  <!-- Subtle dark background glow -->
+  <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10 space-y-8">
+    <!-- Top Header Bar -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between pb-8 border-b border-slate-800/80 gap-6">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="px-3.5 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40 text-xs font-bold uppercase tracking-wider shadow-sm">
+            Enterprise Admin Control Center
+          </span>
+          <span class="px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live MongoDB Connected
+          </span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 text-white tracking-tight">
+          JLite Engineers Operations & Analytics
+        </h2>
+        <p class="text-slate-400 text-sm mt-1">Real-time store metrics, order fulfillment, B2B quote management, and contracting assignments.</p>
+      </div>
+
+      <!-- Control Tabs -->
+      <div class="flex items-center gap-2 bg-[#111827] p-2 rounded-2xl border border-slate-800 shadow-xl self-start md:self-auto">
+        <button (click)="setTab('dashboard')" 
+                [class.bg-gradient-to-r]="activeTab() === 'dashboard'"
+                [class.from-amber-400]="activeTab() === 'dashboard'"
+                [class.to-amber-500]="activeTab() === 'dashboard'"
+                [class.text-slate-950]="activeTab() === 'dashboard'"
+                [class.text-slate-300]="activeTab() !== 'dashboard'"
+                class="px-5 py-2.5 rounded-xl text-xs font-extrabold transition shadow-md">
+          Dashboard
+        </button>
+        <button (click)="setTab('orders')" 
+                [class.bg-gradient-to-r]="activeTab() === 'orders'"
+                [class.from-amber-400]="activeTab() === 'orders'"
+                [class.to-amber-500]="activeTab() === 'orders'"
+                [class.text-slate-950]="activeTab() === 'orders'"
+                [class.text-slate-300]="activeTab() !== 'orders'"
+                class="px-5 py-2.5 rounded-xl text-xs font-extrabold transition shadow-md">
+          Orders
+        </button>
+        <button (click)="setTab('inventory')" 
+                [class.bg-gradient-to-r]="activeTab() === 'inventory'"
+                [class.from-amber-400]="activeTab() === 'inventory'"
+                [class.to-amber-500]="activeTab() === 'inventory'"
+                [class.text-slate-950]="activeTab() === 'inventory'"
+                [class.text-slate-300]="activeTab() !== 'inventory'"
+                class="px-5 py-2.5 rounded-xl text-xs font-extrabold transition shadow-md">
+          Inventory
+        </button>
+        <button (click)="setTab('services')" 
+                [class.bg-gradient-to-r]="activeTab() === 'services'"
+                [class.from-amber-400]="activeTab() === 'services'"
+                [class.to-amber-500]="activeTab() === 'services'"
+                [class.text-slate-950]="activeTab() === 'services'"
+                [class.text-slate-300]="activeTab() !== 'services'"
+                class="px-5 py-2.5 rounded-xl text-xs font-extrabold transition shadow-md">
+          33kV Services
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div *ngIf="activeTab() === 'dashboard'" class="space-y-8 animate-fade-in">
+      <!-- High-Contrast Solid Executive Stat Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 bg-[#111827] rounded-3xl border border-slate-800 shadow-2xl hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Revenue</span>
+            <div class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">₹</div>
+          </div>
+          <span class="text-3xl font-black text-amber-400 mt-3 block">₹{{ stats().totalRevenue | number }}</span>
+          <span class="text-xs text-emerald-400 mt-2 block font-semibold">+18.4% vs last month</span>
+        </div>
+
+        <div class="p-6 bg-[#111827] rounded-3xl border border-slate-800 shadow-2xl hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Customer Orders</span>
+            <div class="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 11h14l1 12H4L5 11z" />
+              </svg>
+            </div>
+          </div>
+          <span class="text-3xl font-black text-white mt-3 block">{{ stats().totalOrders }}</span>
+          <span class="text-xs text-amber-400 mt-2 block font-semibold">{{ stats().pendingOrders }} Pending Dispatch</span>
+        </div>
+
+        <div class="p-6 bg-[#111827] rounded-3xl border border-slate-800 shadow-2xl hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">33kV Service Requests</span>
+            <div class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+          </div>
+          <span class="text-3xl font-black text-white mt-3 block">{{ stats().totalServices }}</span>
+          <span class="text-xs text-blue-400 mt-2 block font-semibold">High Voltage & SLD Audits</span>
+        </div>
+
+        <div class="p-6 bg-[#111827] rounded-3xl border border-slate-800 shadow-2xl hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Active B2B Contractors</span>
+            <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+          <span class="text-3xl font-black text-emerald-400 mt-3 block">{{ stats().activeContractors }}</span>
+          <span class="text-xs text-slate-400 mt-2 block font-semibold">Verified GSTIN Accounts</span>
+        </div>
+      </div>
+
+      <!-- Quick Management Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Recent Customer Orders Panel -->
+        <div class="p-8 bg-[#111827] rounded-3xl border border-slate-800 shadow-2xl">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+            <h3 class="font-extrabold text-lg text-white">Recent Customer Orders</h3>
+            <span class="text-xs text-amber-400 font-bold cursor-pointer hover:underline">View All Orders &rarr;</span>
+          </div>
+          <div class="space-y-4">
+            <div class="p-4 bg-[#1a2336] rounded-2xl border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-extrabold text-sm text-white block">#JL-20260918-912A</span>
+                <span class="text-xs text-slate-300 font-medium">JJ MCB 32A x 10 &bull; Velachery, Chennai</span>
+              </div>
+              <div class="text-right">
+                <span class="text-sm font-black text-amber-400 block">₹14,990</span>
+                <span class="text-xs px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">Paid (PhonePe)</span>
+              </div>
+            </div>
+
+            <div class="p-4 bg-[#1a2336] rounded-2xl border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-extrabold text-sm text-white block">#JL-20260918-442B</span>
+                <span class="text-xs text-slate-300 font-medium">Armoured Cable 4mm (100m) &bull; Guindy, Chennai</span>
+              </div>
+              <div class="text-right">
+                <span class="text-sm font-black text-amber-400 block">₹69,900</span>
+                <span class="text-xs px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30">Processing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contracting & RFQ Inquiries Panel -->
+        <div class="p-8 bg-[#111827] rounded-3xl border border-slate-800 shadow-2xl">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+            <h3 class="font-extrabold text-lg text-white">Contracting & RFQ Inquiries</h3>
+            <span class="text-xs text-amber-400 font-bold cursor-pointer hover:underline">Manage All &rarr;</span>
+          </div>
+          <div class="space-y-4">
+            <div class="p-4 bg-[#1a2336] rounded-2xl border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-extrabold text-sm text-white block">SRV-20260918-01</span>
+                <span class="text-xs text-slate-300 font-medium">33kV Sub-station Installation &bull; Vanguard Engineering</span>
+              </div>
+              <span class="text-xs px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 font-bold border border-blue-500/30">Under Review</span>
+            </div>
+
+            <div class="p-4 bg-[#1a2336] rounded-2xl border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-extrabold text-sm text-white block">SRV-20260918-02</span>
+                <span class="text-xs text-slate-300 font-medium">Smart Touch Switch Automation &bull; Commercial Complex</span>
+              </div>
+              <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">Assigned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

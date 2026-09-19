@@ -1,5 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,15 +9,17 @@ import { CommonModule } from '@angular/common';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
+  cartService = inject(CartService);
   menuOpen = false;
 
   navLinks = [
     { label: 'About',        id: 'about' },
-    { label: 'Features',     id: 'features' },
     { label: 'Products',     id: 'products' },
-    { label: 'Contractors',  id: 'electrical-contractors' },
+    { label: 'Contractors', id: 'electrical-contractors' },
     { label: 'Consultancy',  id: 'consultancy-services' },
     { label: 'Lighting',     id: 'light-pitcher' },
+    { label: 'Policies',     id: 'legal-policies' },
+    { label: 'Admin',        id: 'admin-portal' },
     { label: 'Contact',      id: 'contact' },
   ];
 

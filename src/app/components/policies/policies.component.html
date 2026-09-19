@@ -1,0 +1,52 @@
+<section id="legal-policies" class="py-24 px-6 bg-slate-50 relative min-h-[70vh]">
+  <div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 text-xs font-bold uppercase tracking-wider">
+        Legal & Compliance
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+        E-Commerce & Service Policies
+      </h2>
+      <p class="text-slate-600 text-sm mt-2">
+        Mandatory policies for PhonePe Payment Gateway onboarding, B2B compliance, and consumer rights protection.
+      </p>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+      <button *ngFor="let tab of policyTabs" 
+              (click)="setTab(tab.type)"
+              [class.bg-slate-900]="activeTab() === tab.type"
+              [class.text-white]="activeTab() === tab.type"
+              [class.shadow-lg]="activeTab() === tab.type"
+              [class.bg-white]="activeTab() !== tab.type"
+              [class.text-slate-700]="activeTab() !== tab.type"
+              class="px-5 py-3 rounded-2xl font-bold text-xs sm:text-sm border border-slate-200 hover:border-amber-400 transition flex items-center gap-2">
+        {{ tab.label }}
+      </button>
+    </div>
+
+    <!-- Policy Content Card -->
+    <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-xl max-w-4xl mx-auto">
+      <div *ngIf="isLoading()" class="py-16 text-center text-slate-400">
+        <svg class="animate-spin w-8 h-8 mx-auto text-amber-500 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Loading policy content...
+      </div>
+
+      <div *ngIf="!isLoading() && currentPolicy()" class="prose prose-slate max-w-none">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
+          <h1 class="text-2xl font-extrabold text-slate-900 m-0">{{ currentPolicy()?.title }}</h1>
+          <span class="text-xs text-slate-400 font-medium">Last updated: {{ currentPolicy()?.lastUpdated | date:'mediumDate' }}</span>
+        </div>
+
+        <div class="whitespace-pre-line text-slate-700 leading-relaxed text-sm sm:text-base">
+          {{ currentPolicy()?.contentMarkdown }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

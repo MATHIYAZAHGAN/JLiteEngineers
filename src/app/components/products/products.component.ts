@@ -1,9 +1,12 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { CartService, Product as GlobalProduct } from '../../services/cart.service';
+import { environment } from '../../../environments/environment';
 
 export interface Product {
-  id: number;
+  id: string | number;
   name: string;
   price: number;
   unit: string;
@@ -11,12 +14,13 @@ export interface Product {
   tagColor: string | null;
   type: string;
   desc: string;
+  description?: string;
   specs: string[];
   img: string;
-  imgBg: string;
+  imageUrl?: string;
+  imgBg?: string;
+  categoryName?: string;
 }
-
-export interface CartItem extends Product { qty: number; }
 
 @Component({
   selector: 'app-products',
@@ -24,136 +28,103 @@ export interface CartItem extends Product { qty: number; }
   imports: [CommonModule, ScrollRevealDirective],
   templateUrl: './products.component.html',
 })
-export class ProductsComponent {
-  products: Product[] = [
+export class ProductsComponent implements OnInit {
+  private http = inject(HttpClient);
+  cartService = inject(CartService);
+
+  isLoading = signal<boolean>(true);
+  products = signal<Product[]>([]);
+  categories = signal<string[]>(['All', 'Switchgear & MCBs', 'Smart Switches', 'LED & Architectural Lighting', 'Cables & Wiring', 'Surge & Power Protection']);
+  activeCategory = signal('All');
+
+  fallbackProducts: Product[] = [
     {
-      id: 1, name: 'JJ MCB 32A', price: 1499, unit: '/pc',
-      tag: 'Best Seller', tagColor: 'elec', type: 'mcb',
+      id: '1', name: 'JJ MCB 32A Double Pole', price: 1499, unit: '/pc',
+      tag: 'Best Seller', tagColor: 'elec', type: 'mcb', categoryName: 'Switchgear & MCBs',
       desc: 'Double-pole miniature circuit breaker, 6kA breaking capacity.',
-      specs: ['32A', '6kA', 'IEC 60898'],
-      img: 'assets/Picture1.jpg', imgBg: '#EFF6FF',
+      specs: ['32A', '6kA', 'IEC 60898'], img: 'assets/Picture1.jpg'
     },
     {
-      id: 2, name: 'Smart LED Panel 18W', price: 1999, unit: '/pc',
-      tag: 'New', tagColor: 'green', type: 'led',
+      id: '2', name: 'Smart LED Panel 18W Tunable CCT', price: 1999, unit: '/pc',
+      tag: 'New', tagColor: 'green', type: 'led', categoryName: 'LED & Architectural Lighting',
       desc: 'Slim recessed LED panel, CCT tunable 3000K–6500K, Wi-Fi ready.',
-      specs: ['18W', '1800lm', 'IP44'],
-      img: 'assets/Picture2.jpg', imgBg: '#FFFBEB',
+      specs: ['18W', '1800lm', 'IP44'], img: 'assets/Picture2.jpg'
     },
     {
-      id: 3, name: 'JJ Smart Switch', price: 2699, unit: '/pc',
-      tag: null, tagColor: null, type: 'switch',
+      id: '3', name: 'JJ Smart Touch Switch 4-Gang', price: 2699, unit: '/pc',
+      tag: 'B2B Choice', tagColor: 'blue', type: 'switch', categoryName: 'Smart Switches',
       desc: 'Touch-capacitive smart switch with Wi-Fi, works with Alexa & Google.',
-      specs: ['10A', '2.4GHz', 'Zigbee'],
-      img: 'assets/work/Picture3.jpg', imgBg: '#F8FAFC',
+      specs: ['10A', '2.4GHz', 'Zigbee'], img: 'assets/work/Picture3.jpg'
     },
     {
-      id: 4, name: 'DB Box 8-Way', price: 5499, unit: '/pc',
-      tag: 'New', tagColor: 'green', type: 'db',
+      id: '4', name: 'Distribution Board 8-Way Double Door', price: 5499, unit: '/pc',
+      tag: 'Heavy Duty', tagColor: 'slate', type: 'db', categoryName: 'Switchgear & MCBs',
       desc: 'Surface-mount distribution board, 8-way, with transparent door.',
-      specs: ['8-Way', 'IP40', 'DIN Rail'],
-      img: 'assets/work/Picture4.jpg', imgBg: '#F1F5F9',
+      specs: ['8-Way', 'IP40', 'DIN Rail'], img: 'assets/work/Picture4.jpg'
     },
     {
-      id: 5, name: 'RCCB 63A 30mA', price: 3499, unit: '/pc',
-      tag: null, tagColor: null, type: 'rccb',
+      id: '5', name: 'RCCB 63A 30mA 4-Pole', price: 3499, unit: '/pc',
+      tag: 'Safety First', tagColor: 'red', type: 'rccb', categoryName: 'Switchgear & MCBs',
       desc: 'Residual current circuit breaker for earth leakage protection.',
-      specs: ['63A', '30mA', 'IEC 61008'],
-      img: 'assets/work/Picture5.jpg', imgBg: '#EFF6FF',
+      specs: ['63A', '30mA', 'IEC 61008'], img: 'assets/work/Picture5.jpg'
     },
     {
-      id: 6, name: 'Armoured Cable 4mm', price: 699, unit: '/m',
-      tag: 'Best Seller', tagColor: 'elec', type: 'cable',
-      desc: '4-core SWA armoured cable for underground and industrial use.',
-      specs: ['4×4mm²', '0.6/1kV', 'BS5467'],
-      img: 'assets/Picture6.jpg', imgBg: '#F1F5F9',
-    },
-    {
-      id: 7, name: 'LED Batten 40W', price: 1599, unit: '/pc',
-      tag: null, tagColor: null, type: 'batten',
-      desc: 'Surface-mount LED batten fitting, 4ft, 4000lm, IP65 rated.',
-      specs: ['40W', '4000lm', 'IP65'],
-      img: 'assets/Picture7.jpg', imgBg: '#FFFBEB',
-    },
-    {
-      id: 8, name: 'Surge Protector SPD', price: 4599, unit: '/pc',
-      tag: 'New', tagColor: 'green', type: 'spd',
-      desc: 'Type 2 surge protection device for DIN rail, 40kA peak current.',
-      specs: ['40kA', 'Type 2', 'IEC 61643'],
-      img: 'assets/Picture8.jpg', imgBg: '#EFF6FF',
-    },
-    {
-      id: 9, name: 'Modular Switch 6A', price: 349, unit: '/pc',
-      tag: null, tagColor: null, type: 'switch',
-      desc: 'Premium modular switch with piano-key mechanism, 6A rated.',
-      specs: ['6A', '250V', 'ISI Mark'],
-      img: 'assets/Picture29.jpg', imgBg: '#F8FAFC',
-    },
-    {
-      id: 10, name: 'HRC Fuse 100A', price: 899, unit: '/pc',
-      tag: 'Best Seller', tagColor: 'elec', type: 'spd',
-      desc: 'High rupturing capacity fuse for industrial switchgear panels.',
-      specs: ['100A', '415V', 'BS88'],
-      img: 'assets/Picture30.jpg', imgBg: '#EFF6FF',
-    },
-    {
-      id: 11, name: 'LED Downlight 12W', price: 1199, unit: '/pc',
-      tag: 'New', tagColor: 'green', type: 'led',
-      desc: 'Recessed LED downlight, dimmable, 1100lm, warm white 3000K.',
-      specs: ['12W', '1100lm', 'IP20'],
-      img: 'assets/Picture31.jpg', imgBg: '#FFFBEB',
-    },
-    {
-      id: 12, name: 'Contactor 40A 3P', price: 2299, unit: '/pc',
-      tag: null, tagColor: null, type: 'mcb',
-      desc: '3-pole AC contactor for motor control and power switching.',
-      specs: ['40A', '3-Pole', 'IEC 60947'],
-      img: 'assets/Picture32.jpg', imgBg: '#EFF6FF',
-    },
+      id: '6', name: 'Armoured Power Cable 4-Core 4mm² SWA', price: 699, unit: '/m',
+      tag: 'Best Seller', tagColor: 'elec', type: 'cable', categoryName: 'Cables & Wiring',
+      desc: '4-core SWA armoured cable for underground and sub-station feeder use.',
+      specs: ['4×4mm²', '0.6/1kV', 'BS5467'], img: 'assets/Picture6.jpg'
+    }
   ];
 
-  categories = ['All', 'Switchgear', 'Lighting', 'Wiring', 'Smart'];
-  activeCategory = signal('All');
+  ngOnInit(): void {
+    this.fetchCatalog();
+  }
+
+  fetchCatalog(): void {
+    this.isLoading.set(true);
+    this.http.get<Product[]>(`${environment.apiUrl}/products`).subscribe({
+      next: (data) => {
+        if (data && data.length > 0) {
+          const mapped = data.map(p => ({
+            ...p,
+            img: p.imageUrl || p.img || 'assets/Picture1.jpg',
+            desc: p.description || p.desc || ''
+          }));
+          this.products.set(mapped);
+        } else {
+          this.products.set(this.fallbackProducts);
+        }
+        this.isLoading.set(false);
+      },
+      error: () => {
+        this.products.set(this.fallbackProducts);
+        this.isLoading.set(false);
+      }
+    });
+  }
 
   filteredProducts = computed(() => {
     const cat = this.activeCategory();
-    if (cat === 'All') return this.products;
-    const map: Record<string, string[]> = {
-      Switchgear: ['mcb', 'rccb', 'db', 'spd'],
-      Lighting:   ['led', 'batten'],
-      Wiring:     ['cable'],
-      Smart:      ['switch'],
-    };
-    return this.products.filter(p => map[cat]?.includes(p.type));
+    const list = this.products();
+    if (cat === 'All') return list;
+    return list.filter(p => p.categoryName === cat || p.type === cat);
   });
-
-  cart = signal<CartItem[]>([]);
-  cartOpen = signal(false);
-
-  cartCount = computed(() => this.cart().reduce((s, i) => s + i.qty, 0));
-  cartTotal = computed(() => this.cart().reduce((s, i) => s + i.price * i.qty, 0));
 
   setCategory(cat: string) { this.activeCategory.set(cat); }
 
   addToCart(product: Product) {
-    this.cart.update(items => {
-      const ex = items.find(i => i.id === product.id);
-      if (ex) return items.map(i => i.id === product.id ? { ...i, qty: i.qty + 1 } : i);
-      return [...items, { ...product, qty: 1 }];
-    });
-    this.cartOpen.set(true);
+    const globalItem: GlobalProduct = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      unit: product.unit,
+      tag: product.tag,
+      tagColor: product.tagColor,
+      type: product.type,
+      desc: product.desc,
+      specs: product.specs,
+      img: product.img
+    };
+    this.cartService.addToCart(globalItem, 1);
   }
-
-  removeFromCart(id: number) {
-    this.cart.update(items => items.filter(i => i.id !== id));
-  }
-
-  updateQty(id: number, delta: number) {
-    this.cart.update(items =>
-      items.map(i => i.id === id ? { ...i, qty: i.qty + delta } : i).filter(i => i.qty > 0)
-    );
-  }
-
-  toggleCart() { this.cartOpen.update(v => !v); }
-  closeCart()  { this.cartOpen.set(false); }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { AboutComponent } from './components/about/about.component';
@@ -12,6 +12,12 @@ import { ElectricalContractorsComponent } from './components/electrical-contract
 import { ConsultancyServicesComponent } from './components/consultancy-services/consultancy-services.component';
 import { LightPitcherComponent } from './components/light-pitcher/light-pitcher.component';
 import { GetQuoteComponent } from './components/get-quote/get-quote.component';
+import { CartDrawerComponent } from './components/cart-drawer/cart-drawer.component';
+import { PoliciesComponent } from './components/policies/policies.component';
+import { AdminPortalComponent } from './components/admin-portal/admin-portal.component';
+import { MobileNavComponent } from './components/mobile-nav/mobile-nav.component';
+import { SeoService } from './services/seo.service';
+import { KeepAliveService } from './services/keep-alive.service';
 
 @Component({
   selector: 'app-root',
@@ -28,9 +34,21 @@ import { GetQuoteComponent } from './components/get-quote/get-quote.component';
     ConsultancyServicesComponent,
     LightPitcherComponent,
     GetQuoteComponent,
+    PoliciesComponent,
+    AdminPortalComponent,
     ContactComponent,
     FooterComponent,
+    CartDrawerComponent,
+    MobileNavComponent
   ],
   templateUrl: './app.component.html',
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  private seoService = inject(SeoService);
+  private keepAliveService = inject(KeepAliveService);
+
+  ngOnInit(): void {
+    this.seoService.initDefaultSeo();
+    this.keepAliveService.initKeepAlive();
+  }
+}
