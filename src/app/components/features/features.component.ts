@@ -10,10 +10,10 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 })
 export class FeaturesComponent {
   features = [
-    { icon: 'certified', title: 'ISI & CE Certified',    desc: 'Every product meets international safety standards — ISI, CE, RoHS, and IEC certified for residential and industrial use.' },
-    { icon: 'smart',     title: 'Smart Ready',           desc: 'Wi-Fi and Zigbee-enabled switches and panels compatible with Alexa, Google Home, and custom BMS systems.' },
-    { icon: 'warranty',  title: '5-Year Warranty',       desc: 'Industry-leading warranty on all switchgear, MCBs, and wiring accessories. Zero-hassle replacement guarantee.' },
-    { icon: 'delivery',  title: 'Fast B2B Supply',       desc: 'Bulk orders dispatched within 24 hours. Dedicated account managers for contractors and project teams.' },
+    { icon: 'certified', title: 'ISI & CE Certified', desc: 'Every product meets international safety standards — ISI, CE, RoHS, and IEC certified for residential and industrial use.' },
+    { icon: 'smart', title: 'Smart Ready', desc: 'Wi-Fi and Zigbee-enabled switches and panels compatible with Alexa, Google Home, and custom BMS systems.' },
+    { icon: 'warranty', title: '5-Year Warranty', desc: 'Industry-leading warranty on all switchgear, MCBs, and wiring accessories. Zero-hassle replacement guarantee.' },
+    { icon: 'delivery', title: 'Fast B2B Supply', desc: 'Bulk orders dispatched within 24 hours. Dedicated account managers for contractors and project teams.' },
   ];
 
   trustItems = [

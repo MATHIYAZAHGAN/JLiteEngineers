@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, OnDestroy, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PolicyService, PolicyModel } from '../../services/policy.service';
 import { SeoService } from '../../services/seo.service';
@@ -9,13 +9,15 @@ import { SeoService } from '../../services/seo.service';
   imports: [CommonModule],
   templateUrl: './policies.component.html'
 })
-export class PoliciesComponent implements OnInit {
-  private policyService = inject(PolicyService);
+export class PoliciesComponent implements OnInit, OnDestroy {
+  policyService = inject(PolicyService);
   private seoService = inject(SeoService);
 
-  activeTab = signal<string>('privacy-policy');
+  activeTab = this.policyService.activePolicyTab;
+  isOpen = this.policyService.isPolicyOpen;
   currentPolicy = signal<PolicyModel | null>(null);
   isLoading = signal<boolean>(false);
+  private hashListener: any;
 
   policyTabs = [
     { type: 'privacy-policy', label: 'Privacy Policy', icon: 'shield-check' },
@@ -24,13 +26,61 @@ export class PoliciesComponent implements OnInit {
     { type: 'shipping-delivery', label: 'Shipping & Delivery', icon: 'truck' }
   ];
 
+  constructor() {
+    // Automatically reload content whenever activePolicyTab changes
+    effect(() => {
+      const currentTab = this.policyService.activePolicyTab();
+      this.loadPolicy(currentTab);
+    }, { allowSignalWrites: true });
+  }
+
   ngOnInit(): void {
-    this.loadPolicy(this.activeTab());
+    // Handle initial route/hash on direct page load
+    this.checkCurrentHash();
+
+    // Listen for hash changes in the URL (e.g. back/forward or deep links)
+    this.hashListener = () => this.checkCurrentHash();
+    window.addEventListener('hashchange', this.hashListener);
+  }
+
+  ngOnDestroy(): void {
+    if (this.hashListener) {
+      window.removeEventListener('hashchange', this.hashListener);
+    }
+  }
+
+  closePolicy(): void {
+    this.policyService.closePolicy();
+  }
+
+  private checkCurrentHash(): void {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const rawHash = window.location.hash.replace('#', '').trim().toLowerCase();
+      const policyKeys = [
+        'privacy-policy', 'privacy', 'legal-policies',
+        'terms-and-conditions', 'terms-of-service', 'terms',
+        'refund-cancellation', 'refunds', 'refund',
+        'shipping-delivery', 'shipping', 'delivery'
+      ];
+
+      if (policyKeys.includes(rawHash)) {
+        const targetType = this.policyService.normalizePolicyType(rawHash);
+        this.policyService.activePolicyTab.set(targetType);
+        this.policyService.isPolicyOpen.set(true);
+        setTimeout(() => {
+          this.policyService.scrollToPolicy(targetType);
+        }, 120);
+      }
+    }
   }
 
   setTab(type: string): void {
-    this.activeTab.set(type);
-    this.loadPolicy(type);
+    this.policyService.activePolicyTab.set(type);
+    try {
+      if (window.location.hash !== '#' + type) {
+        history.replaceState(null, '', '#' + type);
+      }
+    } catch (_) {}
   }
 
   loadPolicy(type: string): void {
@@ -42,15 +92,11 @@ export class PoliciesComponent implements OnInit {
         this.seoService.setTitle(`${policy.title} | JLite Engineers Compliance`);
       },
       error: () => {
-        // Fallback default policy content
-        this.currentPolicy.set({
-          id: '1',
-          type,
-          title: this.policyTabs.find(t => t.type === type)?.label || 'Policy Document',
-          contentMarkdown: `### ${type.toUpperCase()} - JLite Engineers\nOfficial compliance document for JLite Engineers Electrical Solutions & Contracting.`,
-          lastUpdated: new Date().toISOString()
-        });
+        // High-standard fallback policy content
+        const fallback = this.policyService.getDefaultPolicy(type);
+        this.currentPolicy.set(fallback);
         this.isLoading.set(false);
+        this.seoService.setTitle(`${fallback.title} | JLite Engineers Compliance`);
       }
     });
   }

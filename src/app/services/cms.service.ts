@@ -10,14 +10,25 @@ export interface TrustStat {
 }
 
 export interface HeroData {
+  slug?: string;
   title: string;
-  highlightText: string;
   subtitle: string;
-  badgeText: string;
-  trustStats: TrustStat[];
-  imageUrl: string;
-  ctaPrimary: string;
-  ctaSecondary: string;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+  backgroundImage: string;
+  videoUrl?: string | null;
+  isActive?: boolean;
+  order?: number;
+  createdAt?: string;
+  updatedAt?: string;
+  // UI extensions & fallback
+  highlightText?: string;
+  badgeText?: string;
+  trustStats?: TrustStat[];
+  imageUrl?: string;
+  ctaPrimary?: string;
+  ctaSecondary?: string;
 }
 
 export interface ProjectData {
@@ -45,19 +56,29 @@ export class CmsService {
   getHero(): Observable<HeroData> {
     return this.http.get<HeroData>(`${environment.apiUrl}/cms/hero`).pipe(
       catchError(() => of({
-        title: 'Power. Safety. Excellence.',
-        highlightText: "A-Grade Electrical Contractor • Up to 33kV",
-        subtitle: 'Manufacturer & Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches & Armoured Cables.',
-        badgeText: 'ISI & CE Certified • 5-Year Warranty • 24h Express Dispatch',
+        slug: 'main-hero',
+        badgeText: 'PREMIUM ELECTRICAL SOLUTIONS',
+        title: 'JLITE Engineers Power Your World',
+        highlightText: 'A-Grade Electrical Contractor • Up to 33kV',
+        subtitle: 'A-Grade Electrical Contractor • Up to 33kV',
+        description: 'Manufacturer & Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches & Armoured Cables.',
+        buttonText: 'Browse Catalogue',
+        buttonLink: '#products',
+        backgroundImage: 'assets/hero-panel.png',
+        videoUrl: null,
+        isActive: true,
+        order: 1,
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-01-01T00:00:00Z',
         trustStats: [
           { value: '50,000+', label: 'Contractors & B2B Buyers' },
-          { value: '33kV', label: 'A-Grade Govt. License' },
-          { value: '40+', label: 'Countries Exported' },
-          { value: '99.9%', label: 'On-Time Dispatch' }
+          { value: '33kV', label: 'Max Rating License' },
+          { value: '500+', label: 'Certified Products' },
+          { value: '24/7', label: 'Support Assistance' }
         ],
-        imageUrl: 'assets/Picture22.jpg',
-        ctaPrimary: 'Explore Switchgear',
-        ctaSecondary: 'Book 33kV Consultation'
+        imageUrl: 'assets/hero-panel.png',
+        ctaPrimary: 'Browse Catalogue',
+        ctaSecondary: 'Contact Engineering'
       }))
     );
   }

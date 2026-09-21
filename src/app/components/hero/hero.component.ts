@@ -12,13 +12,49 @@ import { CmsService, HeroData } from '../../services/cms.service';
 export class HeroComponent implements OnInit {
   private cmsService = inject(CmsService);
 
-  heroData = signal<HeroData | null>(null);
+  heroData = signal<HeroData>({
+    slug: 'main-hero',
+    badgeText: 'PREMIUM ELECTRICAL SOLUTIONS',
+    title: 'JLITE Engineers Power Your World',
+    highlightText: 'A-Grade Electrical Contractor • Up to 33kV',
+    subtitle: 'A-Grade Electrical Contractor • Up to 33kV',
+    description: 'Manufacturer & Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches & Armoured Cables.',
+    buttonText: 'Browse Catalogue',
+    buttonLink: '#products',
+    backgroundImage: 'assets/hero-panel.png',
+    videoUrl: null,
+    isActive: true,
+    order: 1,
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+    trustStats: [
+      { value: '50,000+', label: 'Contractors & B2B Buyers' },
+      { value: '33kV', label: 'Max Rating License' },
+      { value: '500+', label: 'Certified Products' },
+      { value: '24/7', label: 'Support Assistance' }
+    ],
+    imageUrl: 'assets/hero-panel.png',
+    ctaPrimary: 'Browse Catalogue',
+    ctaSecondary: 'Contact Engineering'
+  });
 
   @ViewChild('panelImg') panelImg!: ElementRef<HTMLImageElement>;
 
   ngOnInit(): void {
     this.cmsService.getHero().subscribe({
-      next: (data) => this.heroData.set(data)
+      next: (data) => {
+        if (data) {
+          this.heroData.set({
+            ...this.heroData(),
+            ...data,
+            badgeText: 'PREMIUM ELECTRICAL SOLUTIONS',
+            title: 'JLITE Engineers Power Your World',
+            highlightText: 'A-Grade Electrical Contractor • Up to 33kV',
+            subtitle: 'A-Grade Electrical Contractor • Up to 33kV',
+            description: 'Manufacturer & Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches & Armoured Cables.'
+          });
+        }
+      }
     });
   }
 

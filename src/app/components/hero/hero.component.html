@@ -1,4 +1,4 @@
-<section class="relative min-h-screen flex items-center overflow-hidden pt-[72px]" style="background:var(--grad-hero);">
+<section class="relative min-h-[calc(100vh-72px)] flex flex-col justify-start lg:justify-center overflow-hidden pt-[72px]" style="background:var(--grad-hero);">
 
   <!-- Rich layered background -->
   <div class="absolute inset-0 pointer-events-none">
@@ -8,45 +8,52 @@
     <div class="absolute bottom-0 left-0 right-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(184,134,11,0.4),rgba(240,192,64,0.4),transparent);"></div>
   </div>
 
-  <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-28 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center pt-2 pb-10 lg:pt-4 lg:pb-12 relative z-10">
 
     <!-- LEFT -->
-    <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-5 lg:gap-6">
 
-      <!-- Gold overline badge -->
+      <!-- Executive Brand Badge in Hero -->
       <div appScrollReveal class="flex items-center gap-3">
-        <div class="h-px w-10" style="background:var(--grad-gold);"></div>
-        <span class="font-body font-semibold tracking-[0.18em] uppercase text-xs" style="color: #fbbf24;">
-          {{ heroData()?.badgeText || 'ISI & CE Certified • 5-Year Warranty • 24h Express Dispatch' }}
-        </span>
+        <div class="h-px w-8 bg-gradient-to-r from-transparent to-amber-400/80"></div>
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#071326]/90 via-[#0f2744]/90 to-[#071326]/90 border border-amber-400/40 shadow-lg backdrop-blur-md">
+          <div class="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 border border-amber-400/70 shadow-sm flex items-center justify-center">
+            <img src="assets/brand-logo.png" alt="JL" class="w-full h-full object-cover transform scale-[1.33]" />
+          </div>
+          <span class="font-body font-bold tracking-[0.16em] uppercase text-[0.68rem] text-amber-300">
+            PREMIUM ELECTRICAL SOLUTIONS
+          </span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        </div>
+        <div class="h-px w-8 bg-gradient-to-l from-transparent to-amber-400/80"></div>
       </div>
 
       <!-- Headline -->
-      <h1 appScrollReveal [stagger]="80" class="font-heading font-bold leading-[1.06]"
-          style="font-size:clamp(2.8rem,5vw,4.8rem);color:#ffffff;letter-spacing:-0.02em;">
-        {{ heroData()?.title || 'Power Your World' }}<br>
+      <h1 appScrollReveal [stagger]="80" class="font-heading font-bold leading-[1.08]"
+          style="font-size:clamp(2.3rem,4.2vw,4rem);color:#ffffff;letter-spacing:-0.02em;">
+        JLITE Engineers Power Your World<br>
         <span style="background:linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-          {{ heroData()?.highlightText || "Safely & Smartly" }}
+          A-Grade Electrical Contractor &bull; Up to 33kV
         </span>
       </h1>
 
-      <!-- Subtitle -->
-      <p appScrollReveal [stagger]="160" class="font-body leading-[1.9] max-w-[520px]"
-         style="font-size:1.05rem;color:rgba(255,255,255,0.65);">
-        {{ heroData()?.subtitle || 'Manufacturer & Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches & Armoured Cables.' }}
+      <!-- Description -->
+      <p appScrollReveal [stagger]="160" class="font-body leading-[1.75] max-w-[540px]"
+         style="font-size:1rem;color:rgba(255,255,255,0.78);">
+        Manufacturer &amp; Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches &amp; Armoured Cables.
       </p>
 
       <!-- Trust Badges -->
       <div appScrollReveal [stagger]="220" class="flex flex-wrap gap-2">
-        <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.72rem;font-weight:600;color:#fbbf24;backdrop-filter:blur(8px);">
+        <span style="display:inline-flex;align-items:center;gap:7px;padding:6px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.72rem;font-weight:600;color:#fbbf24;backdrop-filter:blur(8px);">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           ISI &amp; CE Certified
         </span>
-        <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.72rem;font-weight:600;color:#fbbf24;backdrop-filter:blur(8px);">
+        <span style="display:inline-flex;align-items:center;gap:7px;padding:6px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.72rem;font-weight:600;color:#fbbf24;backdrop-filter:blur(8px);">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           5-Year Warranty
         </span>
-        <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.72rem;font-weight:600;color:#4ade80;backdrop-filter:blur(8px);">
+        <span style="display:inline-flex;align-items:center;gap:7px;padding:6px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.72rem;font-weight:600;color:#4ade80;backdrop-filter:blur(8px);">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           24h Dispatch Guarantee
         </span>
@@ -54,22 +61,22 @@
 
       <!-- CTAs -->
       <div appScrollReveal [stagger]="280" class="flex flex-wrap gap-3">
-        <a href="#products" class="btn-gold press" style="font-size:0.9rem;padding:0.9rem 2rem;">
-          {{ heroData()?.ctaPrimary || 'Explore Switchgear' }}
+        <a [href]="heroData().buttonLink || '#products'" class="btn-gold press" style="font-size:0.88rem;padding:0.8rem 1.8rem;">
+          {{ heroData().buttonText || 'Browse Catalogue' }}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-        <a href="#electrical-contractors" class="press" style="display:inline-flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-weight:500;font-size:0.9rem;padding:0.9rem 2rem;border-radius:12px;border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);text-decoration:none;transition:all 240ms ease;backdrop-filter:blur(8px);">
-          {{ heroData()?.ctaSecondary || 'Book 33kV Consultation' }}
+        <a href="#electrical-contractors" class="press" style="display:inline-flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-weight:500;font-size:0.88rem;padding:0.8rem 1.8rem;border-radius:12px;border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);text-decoration:none;transition:all 240ms ease;backdrop-filter:blur(8px);">
+          Book Consultation
         </a>
       </div>
 
       <!-- Dynamic Trust Stats -->
-      <div appScrollReveal [stagger]="340" class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 mt-2 border-t border-white/10">
-        <div *ngFor="let s of heroData()?.trustStats" class="flex flex-col gap-1">
-          <span class="font-heading font-bold text-3xl sm:text-4xl leading-none" style="color: #fbbf24;">
+      <div appScrollReveal [stagger]="340" class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-5 mt-1 border-t border-white/10">
+        <div *ngFor="let s of heroData().trustStats" class="flex flex-col gap-0.5">
+          <span class="font-heading font-bold text-2xl sm:text-3xl leading-none" style="color: #fbbf24;">
             {{ s.value }}
           </span>
-          <span class="font-body text-xs font-medium tracking-wide" style="color: #cbd5e1;">
+          <span class="font-body text-[0.72rem] font-medium tracking-wide" style="color: #cbd5e1;">
             {{ s.label }}
           </span>
         </div>
@@ -78,10 +85,10 @@
 
     <!-- RIGHT -->
     <div class="relative flex items-center justify-center">
-      <div class="absolute rounded-full pointer-events-none" style="width:520px;height:520px;background:radial-gradient(circle,rgba(184,134,11,0.12) 0%,transparent 65%);"></div>
+      <div class="absolute rounded-full pointer-events-none" style="width:460px;height:460px;background:radial-gradient(circle,rgba(184,134,11,0.12) 0%,transparent 65%);"></div>
       <div class="relative z-10 animate-float hero-panel-wrap cursor-pointer" (mouseenter)="onPanelHover($event)">
-        <img [src]="heroData()?.imageUrl || 'assets/Picture22.jpg'" alt="JLite Engineers Electrical Solutions"
-             style="width: 480px; max-width: 100%; height: auto; object-fit: contain; padding: 32px; background: transparent; border: none; border-radius: 24px; box-shadow: none;"
+        <img [src]="heroData().backgroundImage || heroData().imageUrl || 'assets/hero-panel.png'" alt="JLITE Engineers Power Your World"
+             style="width: 440px; max-width: 100%; height: auto; object-fit: contain; padding: 12px; background: transparent; border: none; border-radius: 24px; box-shadow: none;"
              class="hero-panel-img" #panelImg />
       </div>
     </div>

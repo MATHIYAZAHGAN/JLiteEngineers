@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './cart-drawer.component.html'
 })
-export class CartDrawerComponent {
+export class CartDrawerComponent implements OnInit {
   cartService = inject(CartService);
   authService = inject(AuthService);
 
@@ -27,15 +27,39 @@ export class CartDrawerComponent {
   confirmedOrderNumber = signal<string>('');
 
   checkoutForm = {
-    name: this.authService.currentUser()?.fullName || 'Mathiyazhagan',
-    email: this.authService.currentUser()?.email || 'jlite@jliteengineers.com',
-    phone: this.authService.currentUser()?.phone || '7358178174',
+    name: '',
+    email: '',
+    phone: '',
     address: 'No.338, Vijaya Nagar, 6th Main Road, Velachery',
     city: 'Chennai',
     state: 'Tamil Nadu',
     pincode: '600042',
-    gstin: this.authService.currentUser()?.gstin || '33AAAAA0000A1Z5'
+    gstin: ''
   };
+
+  ngOnInit(): void {
+    this.populateUserDetails();
+  }
+
+  populateUserDetails(): void {
+    const user = this.authService.currentUser();
+    if (user) {
+      this.checkoutForm.name = user.fullName || this.checkoutForm.name;
+      this.checkoutForm.email = user.email || this.checkoutForm.email;
+      this.checkoutForm.phone = user.phone || this.checkoutForm.phone;
+      this.checkoutForm.gstin = user.gstin || this.checkoutForm.gstin;
+    } else {
+      this.checkoutForm.name = 'Mathiyazhagan';
+      this.checkoutForm.email = 'jlite@jliteengineers.com';
+      this.checkoutForm.phone = '7358178174';
+      this.checkoutForm.gstin = '33AAAAA0000A1Z5';
+    }
+  }
+
+  signInFromCart(): void {
+    this.cartService.closeCart();
+    this.authService.openAuthModal('login');
+  }
 
   applyPromo(): void {
     if (!this.promoCodeInput.trim()) return;
@@ -51,6 +75,7 @@ export class CartDrawerComponent {
 
   openCheckout(): void {
     if (this.cartService.cart().length === 0) return;
+    this.populateUserDetails();
     this.paymentStep.set('FORM');
     this.showCheckoutModal.set(true);
   }
@@ -70,13 +95,61 @@ export class CartDrawerComponent {
     this.isProcessingPayment.set(true);
     this.paymentStep.set('VERIFYING');
 
+    const summary = this.cartService.gstBreakdown();
+    const orderItems = this.cartService.cart().map(i => ({
+      productId: String(i.id),
+      productName: i.name,
+      imageUrl: i.img || '',
+      unitPrice: i.price,
+      quantity: i.qty,
+      totalPrice: i.price * i.qty
+    }));
+
+    const orderPayload = {
+      userId: this.authService.currentUser()?.id || '',
+      customerName: this.checkoutForm.name,
+      customerEmail: this.checkoutForm.email,
+      customerPhone: this.checkoutForm.phone,
+      gstin: this.checkoutForm.gstin,
+      companyName: this.authService.currentUser()?.companyName || '',
+      items: orderItems,
+      shippingAddress: {
+        name: this.checkoutForm.name,
+        phone: this.checkoutForm.phone,
+        street: this.checkoutForm.address,
+        city: this.checkoutForm.city,
+        state: this.checkoutForm.state,
+        pincode: this.checkoutForm.pincode
+      },
+      subtotal: summary.subtotal,
+      taxAmount: summary.totalTax,
+      cgst: summary.cgst,
+      sgst: summary.sgst,
+      shippingFee: summary.shipping,
+      discountAmount: summary.discount,
+      totalAmount: summary.totalAmount,
+      paymentMethod: 'PhonePe',
+      paymentStatus: 'Paid'
+    };
+
+    // Save to live backend orders collection so it links to user
+    this.cartService.createBackendOrder(orderPayload).subscribe({
+      next: (created) => {
+        if (created?.orderNumber) {
+          this.confirmedOrderNumber.set(created.orderNumber);
+        }
+      },
+      error: () => {}
+    });
+
     // Call S2S PhonePe API Initiation
     this.cartService.initiatePhonePeCheckout(this.checkoutForm).subscribe({
-      next: (res) => {
-        // Simulate S2S Status Check Handoff
+      next: () => {
         setTimeout(() => {
           this.isProcessingPayment.set(false);
-          this.confirmedOrderNumber.set('JL-' + new Date().getFullYear() + '0918-' + Math.floor(1000 + Math.random() * 9000));
+          if (!this.confirmedOrderNumber()) {
+            this.confirmedOrderNumber.set('JL-' + new Date().getFullYear() + '0918-' + Math.floor(1000 + Math.random() * 9000));
+          }
           this.paymentStep.set('SUCCESS');
           this.cartService.clearCart();
         }, 2200);
@@ -84,7 +157,9 @@ export class CartDrawerComponent {
       error: () => {
         setTimeout(() => {
           this.isProcessingPayment.set(false);
-          this.confirmedOrderNumber.set('JL-' + new Date().getFullYear() + '0918-' + Math.floor(1000 + Math.random() * 9000));
+          if (!this.confirmedOrderNumber()) {
+            this.confirmedOrderNumber.set('JL-' + new Date().getFullYear() + '0918-' + Math.floor(1000 + Math.random() * 9000));
+          }
           this.paymentStep.set('SUCCESS');
           this.cartService.clearCart();
         }, 2200);

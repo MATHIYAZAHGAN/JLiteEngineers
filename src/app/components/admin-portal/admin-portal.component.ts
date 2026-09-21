@@ -2,6 +2,7 @@ import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../../services/auth.service';
 
 export interface DashboardStats {
   totalOrders: number;
@@ -20,6 +21,7 @@ export interface DashboardStats {
 })
 export class AdminPortalComponent implements OnInit {
   private http = inject(HttpClient);
+  public authService = inject(AuthService);
 
   stats = signal<DashboardStats>({
     totalOrders: 142,
@@ -33,7 +35,9 @@ export class AdminPortalComponent implements OnInit {
   activeTab = signal<'dashboard' | 'orders' | 'inventory' | 'services'>('dashboard');
 
   ngOnInit(): void {
-    this.fetchStats();
+    if (this.authService.isAdmin()) {
+      this.fetchStats();
+    }
   }
 
   fetchStats(): void {

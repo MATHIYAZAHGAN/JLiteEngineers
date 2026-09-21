@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
@@ -28,13 +30,19 @@ module.exports = {
         sky:      "#2d8ef5",
         green:    "#0a6b47",
         "green-light": "#e8f5ef",
-        slate:    "#3d5068",
+        slate: {
+          ...colors.slate,
+          DEFAULT: "#3d5068",
+        },
         "slate-2":"#5a6e85",
         "slate-3":"#8a9db5",
         ivory:    "#faf8f4",
         "ivory-2":"#f3f0ea",
         "ivory-3":"#ede9e0",
-        amber:    "#b8860b",
+        amber: {
+          ...colors.amber,
+          DEFAULT: "#b8860b",
+        },
         "amber-light": "#fdf6e3",
         "elec-mid": "rgba(29,95,219,0.18)",
         "elec-mid-2": "rgba(29,95,219,0.1)",

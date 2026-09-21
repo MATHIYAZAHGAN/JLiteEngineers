@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PolicyService } from '../../services/policy.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './footer.component.html',
 })
 export class FooterComponent {
+  policyService = inject(PolicyService);
   year = new Date().getFullYear();
 
   links = ['About', 'Features', 'Products', 'Contact'];
@@ -19,4 +21,9 @@ export class FooterComponent {
     { icon: 'twitter',  href: '#', label: 'Twitter' },
     { icon: 'youtube',  href: '#', label: 'YouTube' },
   ];
+
+  scrollToPolicy(type: string, event: Event): void {
+    event.preventDefault();
+    this.policyService.scrollToPolicy(type);
+  }
 }

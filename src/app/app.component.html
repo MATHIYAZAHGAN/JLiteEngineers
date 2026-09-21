@@ -11,13 +11,16 @@
   <app-projects />
   <app-clients />
   <app-policies />
-  <app-admin-portal />
+  <app-admin-portal *ngIf="authService.isAdmin()" />
   <app-contact />
 </main>
 <app-footer />
 
 <!-- Slide-over Cart Drawer & PhonePe Payment Modal -->
 <app-cart-drawer />
+
+<!-- Authentication & User Account Modal -->
+<app-auth-modal />
 
 <!-- Mobile Bottom Navigation Bar -->
 <app-mobile-nav />

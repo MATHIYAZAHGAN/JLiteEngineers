@@ -1,187 +1,230 @@
-﻿<section id="about" class="px-6 relative overflow-hidden" style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); padding-top: 6rem; padding-bottom: 6rem;">
+<section id="about" class="px-6 relative overflow-hidden"
+  style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); padding-top: 6rem; padding-bottom: 6rem;">
   <div class="absolute inset-0 dot-pattern pointer-events-none" style="opacity:0.3;"></div>
   <div class="max-w-7xl mx-auto flex flex-col gap-16 relative z-10">
 
     <!-- Section Heading -->
     <div class="text-center max-w-3xl mx-auto">
       <div appScrollReveal class="flex items-center justify-center gap-3 mb-5">
-        <div style="width: 48px; height: 3px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); border-radius: 2px;"></div>
-        <span style="display: inline-flex; align-items: center; gap: 7px; font-family: 'Outfit', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 14px; border-radius: 999px; color: #ea8c00; background: #fef3c7; border: 1px solid rgba(245, 158, 11, 0.4);">ABOUT US</span>
-        <div style="width: 48px; height: 3px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); border-radius: 2px;"></div>
+        <div
+          style="width: 48px; height: 3px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); border-radius: 2px;">
+        </div>
+        <span
+          style="display: inline-flex; align-items: center; gap: 7px; font-family: 'Outfit', sans-serif; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 15px; border-radius: 999px; color: #b45309; background: #fef3c7; border: 1px solid rgba(245, 158, 11, 0.45);">
+          {{ aboutData().heading || 'ABOUT JLITE ENGINEERS' }}
+        </span>
+        <div
+          style="width: 48px; height: 3px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); border-radius: 2px;">
+        </div>
       </div>
       <h2 appScrollReveal [stagger]="100" class="font-heading font-bold leading-tight mt-2"
-          style="font-size:clamp(2.4rem,4vw,3.4rem);color:#0a1628;letter-spacing:-0.02em;">
+        style="font-size:clamp(2.4rem,4vw,3.4rem);color:#0a1628;letter-spacing:-0.02em;">
         Tamilnadu's Trusted<br>
-        <span style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">Electrical Contractors</span>
+        <span
+          style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">
+          {{ aboutData().subheading || 'Electrical Contractors' }}
+        </span>
       </h2>
-      <p appScrollReveal [stagger]="200" class="font-body mt-5 leading-[1.9] max-w-2xl mx-auto"
-         style="color:#64748b;font-size:1.05rem;">
-        Over a decade of delivering safe, certified, and high-quality electrical installations &mdash;
-        from low voltage to 33,000 V high voltage systems across South India.
+      <p appScrollReveal [stagger]="200"
+        class="font-body mt-5 leading-[1.9] max-w-2xl mx-auto text-slate-600 font-medium text-base sm:text-lg">
+        {{ aboutData().content }}
       </p>
     </div>
 
-    <!-- Stats -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-5">
-      <div *ngFor="let s of stats; let i = index" appScrollReveal [stagger]="i * 80"
-           class="card-premium p-7 text-center group">
-        <span class="block" style="font-family: 'Playfair Display', serif; font-weight: 800; font-size: 2.6rem; line-height: 1; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">{{ s.value }}</span>
-        <span class="font-body text-sm mt-3 block leading-tight" style="color:#64748b;">{{ s.label }}</span>
+    <!-- Dynamic Stats Grid from DB Document (3 Items) -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div *ngFor="let s of aboutData().stats; let i = index" appScrollReveal [stagger]="i * 80"
+        class="card-premium p-7 text-center group flex flex-col items-center justify-center relative overflow-hidden">
+        <!-- Metric Icon -->
+        <div
+          class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center mb-3 text-amber-500 group-hover:scale-110 transition-transform">
+          <svg *ngIf="s.icon === 'check-circle'" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+          <svg *ngIf="s.icon === 'zap'" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+          </svg>
+          <svg *ngIf="s.icon === 'users'" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <span class="block"
+          style="font-family: 'Playfair Display', serif; font-weight: 800; font-size: 2.7rem; line-height: 1; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">
+          {{ s.value }}
+        </span>
+        <span class="font-body text-sm mt-3 block leading-tight font-bold text-slate-700">{{ s.label }}</span>
       </div>
     </div>
 
-    <!-- Main Content: Paragraphs + License Card -->
+    <!-- Main Content: Credentials Paragraphs + High-Contrast License Card -->
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
 
-      <!-- Left: Real company paragraphs -->
+      <!-- Left: Real company paragraphs & Document Images -->
       <div class="lg:col-span-3 flex flex-col gap-5">
         <div class="flex items-center gap-3">
           <div class="gold-line"></div>
           <h3 appScrollReveal class="font-heading font-bold text-[1.8rem]" style="color:var(--navy);">Who We Are</h3>
         </div>
 
-        <p appScrollReveal [stagger]="60" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
-          We introduce ourselves as one of the leading electrical Contractors in Tamilnadu and we are in this field for over
-          <span class="font-semibold" style="color:var(--navy);">10 years</span>. We have been carrying out new electrical installation,
-          additional installation and operation and maintenance works in many establishments throughout Tamilnadu and also in other states like
-          <span class="font-semibold" style="color:var(--navy);">Kerala, Karnataka, Andhra Pradesh</span>.
+        <p *ngFor="let para of paragraphs; let idx = index" appScrollReveal [stagger]="(idx + 1) * 60"
+          class="font-body leading-[1.95] text-slate-600 text-[0.98rem]">
+          {{ para }}
         </p>
 
-        <p appScrollReveal [stagger]="120" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
-          We hold <span class="font-semibold" style="color:var(--navy);">'A' Grade contractor's License</span> issued by the Tamilnadu state
-          authorizing us to carry out all high voltage works, New as well as additions and alterations, up to a rating of
-          <span class="font-semibold" style="color:var(--navy);">33,000 Volts</span>, Medium &amp; Low voltage Installations.
-          We have also sister concerns and associates in other states through whom we can get works done in those states if necessary.
-        </p>
-
-        <p appScrollReveal [stagger]="180" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
-          We have a varied experience in the electrical field having done jobs in different type of industries, multistoried buildings,
-          hospitals, star Hotels, Banks, Software complexes, etc. We are confident of taking up all kinds of works.
-          We have appreciations of works and the quality of services given by us from all the Clients to whom we have done the works.
-          <span class="font-semibold" style="color:var(--navy);">We are entrusted with additional new works when once we do any works initially</span>
-          &mdash; this speaks about our quality of work and service.
-        </p>
-
-        <p appScrollReveal [stagger]="240" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
-          We have all the necessary testing instruments and all tools and tackles
-          <span class="font-semibold" style="color:var(--navy);">more than 5 sets</span> and we have sufficient number of qualified and
-          experienced engineers, senior electricians and technocrats whose help we could avail of for any special requirements needed.
-        </p>
-
-        <p appScrollReveal [stagger]="300" class="font-body leading-[1.95]" style="color:var(--slate-2);font-size:1rem;">
-          We have good relationship with the supply authorities like
-          <span class="font-semibold" style="color:var(--navy);">Electricity Boards</span> and other statutory Authorities like
-          <span class="font-semibold" style="color:var(--navy);">Electrical Inspectorate, Lift Inspectorate</span> etc.
-          We are thorough with their requirements and so can be helpful in getting necessary clearance.
-        </p>
+        <!-- Project Images from DB Document -->
+        <div *ngIf="aboutData().images && aboutData().images.length" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+          <div *ngFor="let img of aboutData().images; let imgIdx = index"
+            class="rounded-2xl overflow-hidden shadow-md border border-amber-500/25 group relative h-48">
+            <img [src]="img" alt="JLite Project Engineering"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-4">
+              <span class="text-[0.68rem] font-bold text-amber-300 uppercase tracking-wider block">
+                {{ imgIdx === 0 ? 'Licensed Substation & Contracting' : 'Turnkey Power Engineering' }}
+              </span>
+              <span class="text-xs font-semibold text-white">ISO &amp; CEIG Standard Delivery</span>
+            </div>
+          </div>
+        </div>
 
         <!-- Quote -->
-        <blockquote appScrollReveal [stagger]="360" class="pl-6 py-3 mt-2 relative">
-          <div class="absolute top-0 left-0 w-[3px] h-full rounded-full" style="background:var(--grad-gold);"></div>
-          <p class="font-heading text-[1.1rem] italic leading-relaxed" style="color:var(--navy-2);">
-            "Entrusted with additional new works every time we complete a project &mdash; that's the quality standard we hold ourselves to."
+        <blockquote appScrollReveal [stagger]="360" class="pl-6 py-3 mt-1 relative">
+          <div class="absolute top-0 left-0 w-[3.5px] h-full rounded-full" style="background:var(--grad-gold);"></div>
+          <p class="font-heading text-[1.1rem] italic leading-relaxed text-slate-800 font-semibold">
+            "Entrusted with additional new works every time we complete a project &mdash; that's the quality standard we
+            hold ourselves to."
           </p>
         </blockquote>
       </div>
 
-      <!-- Right: License Card -->
-      <div appScrollReveal [stagger]="120" class="lg:col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col gap-6"
-           style="background:var(--grad-hero);box-shadow:var(--sh-xl);">
+      <!-- Right: High-Contrast License Card -->
+      <div appScrollReveal [stagger]="120"
+        class="lg:col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col gap-6"
+        style="background: linear-gradient(145deg, #071426 0%, #0d223d 50%, #153359 100%); border: 1.5px solid rgba(245, 158, 11, 0.4); box-shadow: 0 10px 30px rgba(7, 20, 38, 0.35);">
         <div class="absolute top-0 right-0 w-40 h-40 pointer-events-none"
-             style="background:radial-gradient(circle at top right,rgba(184,134,11,0.2),transparent 70%);"></div>
-        <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:var(--grad-gold);"></div>
+          style="background:radial-gradient(circle at top right,rgba(184,134,11,0.25),transparent 70%);"></div>
+        <div class="absolute top-0 left-0 right-0 h-[3px]"
+          style="background:linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);"></div>
 
         <!-- License badge -->
         <div class="flex items-center gap-4 relative z-10">
           <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-gold"
-               style="background:var(--grad-gold);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+            style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="#071426" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
             </svg>
           </div>
           <div>
-            <p class="font-heading font-bold text-[1.1rem] text-white">'A' Grade Contractor's License</p>
-            <p class="font-body text-xs mt-0.5" style="color:rgba(255,255,255,0.5);">Issued by the Government of Tamilnadu</p>
+            <p class="font-heading font-extrabold text-[1.2rem] text-white tracking-tight">'A' Grade Contractor's
+              License</p>
+            <p class="font-body text-xs mt-0.5 font-bold text-amber-300 uppercase tracking-wide">Issued by Govt. of
+              Tamil Nadu</p>
           </div>
         </div>
 
-        <div class="h-px" style="background:rgba(255,255,255,0.1);"></div>
+        <div class="h-px" style="background:rgba(255,255,255,0.15);"></div>
 
-        <!-- Facts grid -->
+        <!-- Facts grid with 100% visible high-contrast text -->
         <div class="grid grid-cols-2 gap-5 relative z-10">
-          <div *ngFor="let f of companyFacts" class="flex flex-col gap-1.5">
-            <span class="font-body text-[0.62rem] uppercase tracking-[0.12em]" style="color:rgba(255,255,255,0.4);">{{ f.label }}</span>
-            <span class="font-body text-sm font-semibold text-white">{{ f.val }}</span>
+          <div *ngFor="let f of companyFacts" class="flex flex-col gap-1">
+            <span class="font-body text-[0.68rem] uppercase tracking-[0.14em] font-extrabold text-amber-300/90">{{
+              f.label }}</span>
+            <span class="font-body text-sm font-bold text-white">{{ f.val }}</span>
           </div>
         </div>
 
-        <div class="h-px" style="background:rgba(255,255,255,0.1);"></div>
+        <div class="h-px" style="background:rgba(255,255,255,0.15);"></div>
 
-        <!-- Voltage highlight -->
-        <div class="rounded-xl p-5 relative z-10" style="background:rgba(184,134,11,0.12);border:1px solid rgba(184,134,11,0.25);">
-          <p class="font-body text-[0.62rem] uppercase tracking-[0.12em] mb-2" style="color:rgba(255,255,255,0.45);">Authorised Voltage Range</p>
-          <p class="font-heading font-bold text-[1.7rem]" style="background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Up to 33,000 V</p>
-          <p class="font-body text-xs mt-1" style="color:rgba(255,255,255,0.45);">High Voltage &middot; Medium Voltage &middot; Low Voltage</p>
-          <p class="font-body text-xs mt-1" style="color:rgba(255,255,255,0.45);">New Works &middot; Additions &middot; Alterations</p>
+        <!-- Max Rating Highlight from Document -->
+        <div class="rounded-xl p-5 relative z-10"
+          style="background:rgba(245,158,11,0.15);border:1.5px solid rgba(245,158,11,0.45);box-shadow:inset 0 1px 0 rgba(255,255,255,0.15);">
+          <p class="font-body text-[0.68rem] uppercase tracking-[0.14em] mb-1 font-extrabold text-amber-300">
+            Max Rating
+          </p>
+          <p
+            class="font-heading font-black text-[2.2rem] leading-none text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-200">
+            {{ maxRating }}
+          </p>
+          <p class="font-body text-xs mt-2 font-bold text-slate-100">
+            {{ aboutData().subheading }}
+          </p>
         </div>
 
-        <!-- State tags -->
-        <div class="flex flex-wrap gap-2 relative z-10">
-          <span *ngFor="let state of ['Tamilnadu','Kerala','Karnataka','Andhra Pradesh']"
-                class="font-body text-[0.7rem] font-semibold px-3 py-1.5 rounded-full"
-                style="color:var(--gold-3);background:rgba(184,134,11,0.12);border:1px solid rgba(184,134,11,0.25);">
-            {{ state }}
-          </span>
-        </div>
-
-        <!-- Key points -->
-        <div class="flex flex-col gap-3 relative z-10">
-          <div *ngFor="let pt of ['5+ sets of testing instruments & tools','Qualified engineers & senior electricians','Statutory clearances from all authorities','Sister concerns across Kerala, KA & AP']"
-               class="flex items-start gap-2.5">
-            <div class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:var(--grad-gold);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <!-- Key Features from DB Document -->
+        <div class="flex flex-col gap-3.5 relative z-10">
+          <div *ngFor="let feat of aboutData().features" class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm"
+              style="background:linear-gradient(135deg, #f59e0b, #fbbf24);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="#071426" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
             </div>
-            <span class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.6);">{{ pt }}</span>
+            <div class="flex flex-col">
+              <span class="font-body text-xs font-bold text-white">{{ feat.title }}</span>
+              <span class="font-body text-[0.72rem] font-medium leading-relaxed text-slate-300">{{ feat.description }}</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Strengths -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div *ngFor="let s of strengths; let i = index" appScrollReveal [stagger]="i * 80"
-           class="card p-7 flex flex-col gap-5 group">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center shadow-gold flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
-             style="background:var(--grad-gold);">
-          <svg *ngIf="s.icon === 'bolt'" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <svg *ngIf="s.icon === 'shield'" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <svg *ngIf="s.icon === 'tool'" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          <svg *ngIf="s.icon === 'users'" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <!-- Core Strengths / Features from DB Document -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div *ngFor="let f of aboutData().features; let i = index" appScrollReveal [stagger]="i * 80"
+        class="card-premium p-7 flex flex-col gap-4 group">
+        <div
+          class="w-12 h-12 rounded-xl flex items-center justify-center shadow-gold flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
+          style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+          <svg *ngIf="f.icon === 'award'" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+            fill="none" stroke="#071426" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="7" />
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+          </svg>
+          <svg *ngIf="f.icon === 'shield'" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+            fill="none" stroke="#071426" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <svg *ngIf="f.icon === 'phone'" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+            fill="none" stroke="#071426" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
         </div>
         <div>
-          <h3 class="font-heading font-bold text-[1rem] mb-2" style="color:var(--navy);">{{ s.title }}</h3>
-          <p class="font-body text-sm leading-relaxed" style="color:var(--slate-2);">{{ s.desc }}</p>
+          <h3 class="font-heading font-extrabold text-[1.1rem] mb-2 text-slate-900">{{ f.title }}</h3>
+          <p class="font-body text-sm text-slate-600 leading-relaxed font-medium">{{ f.description }}</p>
         </div>
       </div>
     </div>
 
-    <!-- Industries -->
+    <!-- Industries We Serve -->
     <div>
       <div class="flex items-center gap-3 mb-7">
         <div class="gold-line"></div>
-        <h3 appScrollReveal class="font-heading font-bold text-[1.4rem]" style="color:var(--navy);">Industries We Serve</h3>
+        <h3 appScrollReveal class="font-heading font-bold text-[1.4rem]" style="color:var(--navy);">Industries We Serve
+        </h3>
       </div>
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-2.5">
         <span *ngFor="let ind of industries; let i = index" appScrollReveal [stagger]="i * 40"
-              class="font-body text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-250 cursor-default"
-              style="background:var(--white);border:1px solid rgba(11,29,58,0.1);color:var(--slate);box-shadow:var(--sh-xs);"
-              onmouseenter="this.style.background='var(--navy)';this.style.color='#fff';this.style.borderColor='var(--navy)';this.style.boxShadow='var(--sh-md)';"
-              onmouseleave="this.style.background='var(--white)';this.style.color='var(--slate)';this.style.borderColor='rgba(11,29,58,0.1)';this.style.boxShadow='var(--sh-xs)';">
+          class="font-body text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-250 cursor-default"
+          style="background:var(--white);border:1px solid rgba(11,29,58,0.12);color:#334155;box-shadow:0 2px 8px rgba(11,29,58,0.04);"
+          onmouseenter="this.style.background='var(--navy)';this.style.color='#fff';this.style.borderColor='var(--navy)';this.style.boxShadow='var(--sh-md)';"
+          onmouseleave="this.style.background='var(--white)';this.style.color='#334155';this.style.borderColor='rgba(11,29,58,0.12)';this.style.boxShadow='0 2px 8px rgba(11,29,58,0.04)';">
           {{ ind }}
         </span>
       </div>
     </div>
-
 
   </div>
 </section>

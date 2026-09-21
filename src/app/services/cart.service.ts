@@ -141,4 +141,8 @@ export class CartService {
       payload
     );
   }
+
+  createBackendOrder(orderData: any) {
+    return this.http.post<any>(`${environment.apiUrl}/orders`, orderData);
+  }
 }

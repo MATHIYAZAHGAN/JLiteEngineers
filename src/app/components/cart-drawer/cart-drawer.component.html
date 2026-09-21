@@ -29,6 +29,26 @@
     </button>
   </div>
 
+  <!-- User Authentication Banner in Cart -->
+  <div *ngIf="!authService.isLoggedIn()" class="px-6 py-2.5 bg-amber-50 border-b border-amber-200 flex items-center justify-between text-xs">
+    <div class="flex items-center gap-2 text-slate-800 font-medium">
+      <svg class="w-4 h-4 text-amber-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <span>Sign in for saved address &amp; tracking</span>
+    </div>
+    <button (click)="signInFromCart()" class="text-xs font-bold text-amber-700 hover:text-amber-800 underline">
+      Sign In
+    </button>
+  </div>
+  <div *ngIf="authService.isLoggedIn()" class="px-6 py-2 bg-emerald-50 border-b border-emerald-200 flex items-center justify-between text-xs text-emerald-900">
+    <div class="flex items-center gap-1.5 font-semibold">
+      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+      <span>Ordering as: <strong>{{ authService.currentUser()?.fullName }}</strong></span>
+    </div>
+    <span class="text-[0.65rem] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold uppercase">{{ authService.currentUser()?.role }}</span>
+  </div>
+
   <!-- Cart Items List -->
   <div class="flex-1 overflow-y-auto p-6 space-y-4">
     <div *ngIf="cartService.cart().length === 0" class="py-16 text-center">
@@ -38,11 +58,11 @@
         </svg>
       </div>
       <h4 class="text-slate-900 font-extrabold text-lg">Your Cart is Empty</h4>
-      <p class="text-slate-500 text-sm mt-1 max-w-xs mx-auto">Add high-grade MCBs, Switchgear, Smart Touch Switches, or Armoured Cables.</p>
+      <p class="text-slate-500 text-sm mt-1 max-w-xs mx-auto">Add high-grade Architectural Luminaires, Luxury Crystal Chandeliers, or Commercial LED Panels.</p>
     </div>
 
     <div *ngFor="let item of cartService.cart()" class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center gap-4 hover:border-amber-500/50 transition">
-      <img [src]="item.img" [alt]="item.name" class="w-16 h-16 object-cover rounded-xl bg-white p-1 border border-slate-200" />
+      <img [src]="item.img" [alt]="item.name" class="w-16 h-16 object-cover rounded-xl bg-white border border-slate-200" />
       <div class="flex-1 min-w-0">
         <h4 class="font-bold text-slate-900 text-sm truncate">{{ item.name }}</h4>
         <div class="flex items-center gap-2 mt-1">

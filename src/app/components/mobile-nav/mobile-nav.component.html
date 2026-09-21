@@ -1,42 +1,99 @@
-<!-- Mobile Bottom Sticky Navigation Bar -->
-<div class="md:hidden fixed bottom-0 inset-x-0 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 text-slate-400 z-[90] px-4 py-2.5 flex items-center justify-around shadow-2xl">
-  <button (click)="scrollToSection('hero')" class="flex flex-col items-center gap-1 hover:text-amber-400 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-    </svg>
-    <span class="text-[0.65rem] font-bold uppercase tracking-wider">Home</span>
-  </button>
+<!-- Mobile Bottom Navigation Bar (High-End Production Look) -->
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-[90] transition-all duration-300"
+     style="background: linear-gradient(180deg, rgba(8, 20, 38, 0.98) 0%, rgba(4, 11, 23, 0.99) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1.5px solid rgba(245, 158, 11, 0.35);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.45);
+            padding-bottom: max(env(safe-area-inset-bottom, 8px), 8px);
+            padding-top: 8px;">
 
-  <button (click)="scrollToSection('products')" class="flex flex-col items-center gap-1 hover:text-amber-400 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 11h14l1 12H4L5 11z" />
-    </svg>
-    <span class="text-[0.65rem] font-bold uppercase tracking-wider">Products</span>
-  </button>
+  <div class="grid grid-cols-5 items-center px-1">
 
-  <button (click)="scrollToSection('contractors')" class="flex flex-col items-center gap-1 hover:text-amber-400 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-    </svg>
-    <span class="text-[0.65rem] font-bold uppercase tracking-wider">Contractors</span>
-  </button>
+    <!-- 1. HOME -->
+    <button (click)="scrollToSection('hero', 'home')"
+            class="flex flex-col items-center justify-center gap-1 py-1 transition-all duration-200 active:scale-95"
+            [style.color]="activeTab() === 'home' ? '#fbbf24' : '#cbd5e1'">
+      <div class="relative flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <span class="text-[0.62rem] font-bold uppercase tracking-wider leading-none">Home</span>
+      <div class="w-1 h-1 rounded-full bg-amber-400 mt-0.5 transition-all duration-200"
+           [style.opacity]="activeTab() === 'home' ? '1' : '0'"></div>
+    </button>
 
-  <button (click)="cartService.openCart()" class="flex flex-col items-center gap-1 relative hover:text-amber-400 transition">
-    <div class="relative">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-      <span *ngIf="cartService.cartCount() > 0" class="absolute -top-1.5 -right-2.5 w-4 h-4 rounded-full bg-amber-500 text-slate-950 font-black text-[0.6rem] flex items-center justify-center animate-pulse">
-        {{ cartService.cartCount() }}
-      </span>
-    </div>
-    <span class="text-[0.65rem] font-bold uppercase tracking-wider">Cart</span>
-  </button>
+    <!-- 2. PRODUCTS -->
+    <button (click)="scrollToSection('products', 'products')"
+            class="flex flex-col items-center justify-center gap-1 py-1 transition-all duration-200 active:scale-95"
+            [style.color]="activeTab() === 'products' ? '#fbbf24' : '#cbd5e1'">
+      <div class="relative flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </div>
+      <span class="text-[0.62rem] font-bold uppercase tracking-wider leading-none">Products</span>
+      <div class="w-1 h-1 rounded-full bg-amber-400 mt-0.5 transition-all duration-200"
+           [style.opacity]="activeTab() === 'products' ? '1' : '0'"></div>
+    </button>
 
-  <button (click)="scrollToSection('contact')" class="flex flex-col items-center gap-1 hover:text-amber-400 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-    </svg>
-    <span class="text-[0.65rem] font-bold uppercase tracking-wider">Contact</span>
-  </button>
-</div>
+    <!-- 3. CONTRACTORS -->
+    <button (click)="scrollToSection('electrical-contractors', 'contractors')"
+            class="flex flex-col items-center justify-center gap-1 py-1 transition-all duration-200 active:scale-95"
+            [style.color]="activeTab() === 'contractors' ? '#fbbf24' : '#cbd5e1'">
+      <div class="relative flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+      </div>
+      <span class="text-[0.62rem] font-bold uppercase tracking-wider leading-none">Contractors</span>
+      <div class="w-1 h-1 rounded-full bg-amber-400 mt-0.5 transition-all duration-200"
+           [style.opacity]="activeTab() === 'contractors' ? '1' : '0'"></div>
+    </button>
+
+    <!-- 4. CART -->
+    <button (click)="openCart()"
+            class="flex flex-col items-center justify-center gap-1 py-1 transition-all duration-200 active:scale-95"
+            [style.color]="cartService.cartOpen() ? '#fbbf24' : '#cbd5e1'">
+      <div class="relative flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span *ngIf="cartService.cartCount() > 0"
+              class="absolute -top-1.5 -right-3 min-w-[17px] h-[17px] px-1 rounded-full text-[0.6rem] font-black text-slate-950 flex items-center justify-center shadow-md animate-pulse"
+              style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);">
+          {{ cartService.cartCount() }}
+        </span>
+      </div>
+      <span class="text-[0.62rem] font-bold uppercase tracking-wider leading-none">Cart</span>
+      <div class="w-1 h-1 rounded-full bg-amber-400 mt-0.5 transition-all duration-200"
+           [style.opacity]="cartService.cartOpen() ? '1' : '0'"></div>
+    </button>
+
+    <!-- 5. CONTACT -->
+    <button (click)="scrollToSection('contact', 'contact')"
+            class="flex flex-col items-center justify-center gap-1 py-1 transition-all duration-200 active:scale-95"
+            [style.color]="activeTab() === 'contact' ? '#fbbf24' : '#cbd5e1'">
+      <div class="relative flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </div>
+      <span class="text-[0.62rem] font-bold uppercase tracking-wider leading-none">Contact</span>
+      <div class="w-1 h-1 rounded-full bg-amber-400 mt-0.5 transition-all duration-200"
+           [style.opacity]="activeTab() === 'contact' ? '1' : '0'"></div>
+    </button>
+
+  </div>
+</nav>
