@@ -81,12 +81,20 @@ export class GetQuoteComponent {
     this.status = 'sending';
 
     try {
-      // Try backend API first
-      await this.sendViaBackend();
-    } catch (backendError) {
-      console.warn('Backend failed, using EmailJS fallback:', backendError);
-      // Fallback to EmailJS if backend fails
+      // 1. Send quote request email to Gmail via EmailJS (template_kkwxyy7)
       await this.sendViaEmailJS();
+
+      // 2. Also log to backend if available
+      this.sendViaBackend().catch(err => console.warn('Backend quote log skipped:', err));
+    } catch (emailError) {
+      console.warn('EmailJS failed, trying backend fallback:', emailError);
+      try {
+        await this.sendViaBackend();
+        this._onSuccess();
+      } catch (backendError) {
+        this.status = 'error';
+        setTimeout(() => { this.status = 'idle'; }, 5000);
+      }
     }
   }
 
@@ -127,6 +135,9 @@ export class GetQuoteComponent {
   private async sendViaEmailJS(): Promise<void> {
     try {
       const templateParams = {
+        email: 'jlite@jliteengineers.com',
+        to_email: 'jlite@jliteengineers.com',
+        to_name: 'JLite Engineers',
         from_name: this.form.name,
         from_email: this.form.email,
         phone: this.form.phone,
