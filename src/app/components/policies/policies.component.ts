@@ -51,6 +51,7 @@ export class PoliciesComponent implements OnInit, OnDestroy {
 
   closePolicy(): void {
     this.policyService.closePolicy();
+    this.restoreDefaultTitle();
   }
 
   private checkCurrentHash(): void {
@@ -89,15 +90,25 @@ export class PoliciesComponent implements OnInit, OnDestroy {
       next: (policy) => {
         this.currentPolicy.set(policy);
         this.isLoading.set(false);
-        this.seoService.setTitle(`${policy.title} | JLite Engineers Compliance`);
+        // Only update the page title when the policy panel is actually open
+        if (this.isOpen()) {
+          this.seoService.setTitle(`${policy.title} | JLite Engineers Compliance`);
+        }
       },
       error: () => {
         // High-standard fallback policy content
         const fallback = this.policyService.getDefaultPolicy(type);
         this.currentPolicy.set(fallback);
         this.isLoading.set(false);
-        this.seoService.setTitle(`${fallback.title} | JLite Engineers Compliance`);
+        // Only update the page title when the policy panel is actually open
+        if (this.isOpen()) {
+          this.seoService.setTitle(`${fallback.title} | JLite Engineers Compliance`);
+        }
       }
     });
+  }
+
+  restoreDefaultTitle(): void {
+    this.seoService.setTitle('JLite Engineers | Govt. A-Grade Electrical Contractors & Switchgear Suppliers');
   }
 }
