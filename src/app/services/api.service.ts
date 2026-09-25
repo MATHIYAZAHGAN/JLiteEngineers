@@ -38,7 +38,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   submitContact(request: ContactRequest): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(`${this.apiUrl}/contact`, request);
+    return this.http.post<ApiResponse>(`${this.apiUrl}/Cms/contact`, request);
   }
 
   submitQuote(request: QuoteRequest): Observable<ApiResponse> {

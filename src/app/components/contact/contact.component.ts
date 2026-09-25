@@ -26,6 +26,14 @@ export class ContactComponent {
   async onSubmit() {
     if (!this.form.name || !this.form.email || !this.form.message) return;
 
+    // Validate email format before making requests
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.form.email.trim())) {
+      this.status = 'error';
+      setTimeout(() => { this.status = 'idle'; }, 4000);
+      return;
+    }
+
     this.status = 'sending';
     
     try {
