@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
@@ -7,7 +7,7 @@ import emailjs from '@emailjs/browser';
 
 // EmailJS Configuration - Sends to jlite@jliteengineers.com
 const EMAILJS_SERVICE_ID = 'service_1t9r75b';
-const EMAILJS_TEMPLATE_ID = 'template_kkwxyy7';
+const EMAILJS_TEMPLATE_ID = 'template_s3fj4if';
 const EMAILJS_PUBLIC_KEY = '08x80TnEtJ1WxAle_';
 
 @Component({
