@@ -1,33 +1,33 @@
 <!-- ═══════════════════════════════════════════════════════════
      CONSULTANCY & SERVICES SECTION
 ═══════════════════════════════════════════════════════════ -->
-<section id="consultancy-services" class="relative py-24 overflow-hidden" style="background: var(--grad-ivory);">
+<section id="consultancy-services" class="relative py-10 sm:py-12 lg:py-14 overflow-hidden" style="background: var(--grad-ivory);">
 
   <!-- Decorative blobs -->
-  <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+  <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none max-w-full"
        style="background: radial-gradient(circle, rgba(184,134,11,0.06) 0%, transparent 70%); transform: translate(-40%, -40%);"></div>
-  <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+  <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none max-w-full"
        style="background: radial-gradient(circle, rgba(29,95,219,0.06) 0%, transparent 70%); transform: translate(40%, 40%);"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
 
     <!-- Header -->
-    <div class="text-center mb-16" appScrollReveal>
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 border"
+    <div class="text-center mb-6 sm:mb-8" appScrollReveal>
+      <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-5 border"
            style="background: var(--gold-light); border-color: rgba(184,134,11,0.25);">
         <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--gold);"></span>
-        <span class="text-sm font-semibold tracking-widest uppercase" style="color: var(--gold);">Expert Advisory</span>
+        <span class="text-xs sm:text-sm font-semibold tracking-widest uppercase" style="color: var(--gold);">Expert Advisory</span>
       </div>
-      <h2 class="font-heading text-4xl md:text-5xl font-bold mb-4" style="color: var(--navy);">
+      <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4" style="color: var(--navy);">
         Consultancy <span class="gold-text">&amp; Services</span>
       </h2>
-      <p class="text-lg max-w-2xl mx-auto" style="color: var(--slate-2);">
+      <p class="text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed" style="color: var(--slate-2);">
         From concept design to statutory approvals — our expert consultancy team delivers end-to-end electrical engineering solutions for every project scale.
       </p>
     </div>
 
     <!-- Services Grid (accordion cards) -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-14 sm:mb-20">
       <div *ngFor="let svc of services; let i = index"
            appScrollReveal [stagger]="i * 80"
            class="rounded-2xl border overflow-hidden cursor-pointer transition-all duration-300 group"
@@ -39,7 +39,7 @@
            (click)="toggleService(svc.id)">
 
         <!-- Card Header -->
-        <div class="p-6">
+        <div class="p-4 sm:p-6">
           <div class="flex items-start justify-between gap-4">
             <div class="flex items-center gap-4">
               <!-- Icon -->

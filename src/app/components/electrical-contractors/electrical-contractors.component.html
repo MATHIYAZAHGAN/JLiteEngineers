@@ -1,38 +1,38 @@
 <!-- ═══════════════════════════════════════════════════════════
      ELECTRICAL CONTRACTORS SECTION
 ═══════════════════════════════════════════════════════════ -->
-<section id="electrical-contractors" class="relative py-24 overflow-hidden" style="background: var(--grad-navy);">
+<section id="electrical-contractors" class="relative py-10 sm:py-12 lg:py-14 overflow-hidden" style="background: var(--grad-navy);">
 
   <!-- Background pattern -->
   <div class="absolute inset-0 grid-pattern opacity-10 pointer-events-none"></div>
-  <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+  <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none max-w-full"
        style="background: radial-gradient(circle, rgba(29,95,219,0.12) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
-  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none max-w-full"
        style="background: radial-gradient(circle, rgba(184,134,11,0.08) 0%, transparent 70%); transform: translate(-30%, 30%);"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
 
     <!-- Section Header -->
-    <div class="text-center mb-16" appScrollReveal>
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 border"
+    <div class="text-center mb-6 sm:mb-8" appScrollReveal>
+      <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-5 border"
            style="background: rgba(29,95,219,0.12); border-color: rgba(29,95,219,0.3);">
         <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--blue);"></span>
-        <span class="text-sm font-semibold tracking-widest uppercase" style="color: var(--gold-3);">Licensed Contractor</span>
+        <span class="text-xs sm:text-sm font-semibold tracking-widest uppercase" style="color: var(--gold-3);">Licensed Contractor</span>
       </div>
-      <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
+      <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
         Electrical <span class="elec-text">Contractors</span>
       </h2>
-      <p class="text-lg max-w-2xl mx-auto" style="color: var(--slate-3);">
+      <p class="text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed" style="color: var(--slate-3);">
         Grade 'A' licensed electrical contractor authorised by the Government of Tamil Nadu — executing HV, MV &amp; LV works up to 33kV across industries, institutions, and infrastructure.
       </p>
     </div>
 
     <!-- Tab Navigation -->
-    <div class="flex flex-wrap justify-center gap-3 mb-12" appScrollReveal [stagger]="100">
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12" appScrollReveal [stagger]="100">
       <button
         *ngFor="let tab of tabs"
         (click)="setTab(tab.id)"
-        class="flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-300 border"
+        class="flex items-center gap-2 px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-300 border min-h-[42px]"
         [ngClass]="activeTab === tab.id
           ? 'text-white border-transparent'
           : 'border-white/10 hover:border-white/25'"
@@ -52,10 +52,10 @@
     </div>
 
     <!-- Tab Content -->
-    <div class="grid lg:grid-cols-2 gap-10 items-center mb-20" appScrollReveal [stagger]="200">
+    <div class="grid lg:grid-cols-2 gap-8 sm:gap-10 items-center mb-14 sm:mb-20" appScrollReveal [stagger]="200">
 
       <!-- Left: Service Details -->
-      <div class="rounded-2xl p-8 border" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); backdrop-filter: blur(12px);">
+      <div class="rounded-2xl p-5 sm:p-8 border" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); backdrop-filter: blur(12px);">
         <div class="flex items-center gap-4 mb-6">
           <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
                style="background: var(--grad-blue); box-shadow: var(--sh-blue);">

@@ -133,28 +133,30 @@
 </div>
 
 <!-- PhonePe Payment Gateway Modal -->
-<div *ngIf="showCheckoutModal()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[120] flex items-center justify-center p-4">
-  <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-amber-500/40 animate-scale-up">
+<div *ngIf="showCheckoutModal()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[120] flex items-center justify-center p-3 sm:p-4"
+     (wheel)="$event.stopPropagation()" (touchmove)="$event.stopPropagation()">
+  <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-amber-500/40 animate-scale-up max-h-[94vh] flex flex-col"
+       (wheel)="$event.stopPropagation()" (touchmove)="$event.stopPropagation()" (click)="$event.stopPropagation()">
     <!-- Modal Header -->
-    <div class="p-6 bg-[#0b1d3a] text-white flex items-center justify-between border-b border-amber-500/30">
+    <div class="p-4 sm:p-6 bg-[#0b1d3a] text-white flex items-center justify-between border-b border-amber-500/30 flex-shrink-0">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-black text-sm shadow">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-black text-sm shadow flex-shrink-0">
           PE
         </div>
         <div>
-          <h3 class="font-extrabold text-base text-white leading-tight">PhonePe Production Gateway</h3>
-          <p class="text-xs text-amber-400 font-semibold">Official S2S Payment Partner</p>
+          <h3 class="font-extrabold text-sm sm:text-base text-white leading-tight">PhonePe Production Gateway</h3>
+          <p class="text-[0.68rem] sm:text-xs text-amber-400 font-semibold">Official S2S Payment Partner</p>
         </div>
       </div>
       <!-- High-Contrast Close Icon -->
-      <button (click)="closeCheckout()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold">
+      <button (click)="closeCheckout()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold flex-shrink-0">
         &times;
       </button>
     </div>
 
     <!-- Step 1: Form & Payment Option Selection -->
-    <div *ngIf="paymentStep() === 'FORM'" class="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
-      <div class="grid grid-cols-2 gap-3">
+    <div *ngIf="paymentStep() === 'FORM'" class="p-4 sm:p-6 space-y-3.5 sm:space-y-4 overflow-y-auto no-scrollbar flex-1">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">Customer Name *</label>
           <input type="text" [(ngModel)]="checkoutForm.name" class="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-xl font-semibold focus:outline-none focus:border-amber-500" placeholder="Full Name" />
@@ -165,7 +167,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">Email</label>
           <input type="email" [(ngModel)]="checkoutForm.email" class="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-xl font-semibold focus:outline-none focus:border-amber-500" placeholder="email@domain.com" />
@@ -184,29 +186,29 @@
       <!-- Payment Method Picker -->
       <div>
         <label class="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">Select Payment Mode</label>
-        <div class="grid grid-cols-3 gap-2">
+        <div class="grid grid-cols-3 gap-1.5 sm:gap-2">
           <button (click)="paymentMethod.set('UPI')" 
                   [class.border-purple-600]="paymentMethod() === 'UPI'"
                   [class.bg-purple-50]="paymentMethod() === 'UPI'"
-                  class="p-3 border rounded-xl font-bold text-xs flex flex-col items-center gap-1 text-slate-800 transition">
-            <span class="text-purple-700 font-extrabold text-sm">UPI / QR</span>
-            <span class="text-[0.65rem] text-slate-500">GooglePay / PhonePe</span>
+                  class="p-2 sm:p-3 border rounded-xl font-bold text-xs flex flex-col items-center gap-0.5 sm:gap-1 text-slate-800 transition">
+            <span class="text-purple-700 font-extrabold text-xs sm:text-sm">UPI / QR</span>
+            <span class="text-[0.6rem] sm:text-[0.65rem] text-slate-500 text-center leading-tight">GooglePay / PhonePe</span>
           </button>
 
           <button (click)="paymentMethod.set('CARD')" 
                   [class.border-purple-600]="paymentMethod() === 'CARD'"
                   [class.bg-purple-50]="paymentMethod() === 'CARD'"
-                  class="p-3 border rounded-xl font-bold text-xs flex flex-col items-center gap-1 text-slate-800 transition">
-            <span class="text-purple-700 font-extrabold text-sm">Cards</span>
-            <span class="text-[0.65rem] text-slate-500">Credit / Debit Card</span>
+                  class="p-2 sm:p-3 border rounded-xl font-bold text-xs flex flex-col items-center gap-0.5 sm:gap-1 text-slate-800 transition">
+            <span class="text-purple-700 font-extrabold text-xs sm:text-sm">Cards</span>
+            <span class="text-[0.6rem] sm:text-[0.65rem] text-slate-500 text-center leading-tight">Credit / Debit</span>
           </button>
 
           <button (click)="paymentMethod.set('NETBANKING')" 
                   [class.border-purple-600]="paymentMethod() === 'NETBANKING'"
                   [class.bg-purple-50]="paymentMethod() === 'NETBANKING'"
-                  class="p-3 border rounded-xl font-bold text-xs flex flex-col items-center gap-1 text-slate-800 transition">
-            <span class="text-purple-700 font-extrabold text-sm">NetBanking</span>
-            <span class="text-[0.65rem] text-slate-500">All Major Banks</span>
+                  class="p-2 sm:p-3 border rounded-xl font-bold text-xs flex flex-col items-center gap-0.5 sm:gap-1 text-slate-800 transition">
+            <span class="text-purple-700 font-extrabold text-xs sm:text-sm">NetBanking</span>
+            <span class="text-[0.6rem] sm:text-[0.65rem] text-slate-500 text-center leading-tight">Major Banks</span>
           </button>
         </div>
       </div>
@@ -218,18 +220,18 @@
       </div>
 
       <!-- Payable Amount Box -->
-      <div class="p-4 bg-slate-900 text-white rounded-2xl flex items-center justify-between shadow-inner">
+      <div class="p-3.5 sm:p-4 bg-slate-900 text-white rounded-2xl flex items-center justify-between shadow-inner">
         <div>
           <span class="text-xs text-slate-400 font-semibold block">Total Amount to Pay</span>
-          <span class="text-xl font-extrabold text-amber-400">₹{{ cartService.gstBreakdown().totalAmount | number }}</span>
+          <span class="text-lg sm:text-xl font-extrabold text-amber-400">₹{{ cartService.gstBreakdown().totalAmount | number }}</span>
         </div>
-        <span class="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold px-3 py-1 rounded-full">
+        <span class="text-[0.7rem] sm:text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold px-2.5 sm:px-3 py-1 rounded-full">
           100% Encrypted S2S
         </span>
       </div>
 
       <button (click)="submitPhonePePayment()" 
-              class="w-full py-4 bg-purple-700 hover:bg-purple-800 text-white font-black text-sm rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-purple-600/30 transition press">
+              class="w-full py-3.5 sm:py-4 bg-purple-700 hover:bg-purple-800 text-white font-black text-xs sm:text-sm rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-purple-600/30 transition press">
         <span>Proceed to PhonePe Pay (₹{{ cartService.gstBreakdown().totalAmount | number }})</span>
       </button>
     </div>

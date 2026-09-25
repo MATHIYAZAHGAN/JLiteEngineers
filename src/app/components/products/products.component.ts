@@ -379,4 +379,9 @@ export class ProductsComponent implements OnInit {
     };
     this.cartService.addToCart(globalItem, 1);
   }
+
+  getItemQty(id: string | number): number {
+    const item = this.cartService.cart().find(i => String(i.id) === String(id));
+    return item ? item.qty : 0;
+  }
 }

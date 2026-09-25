@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, OnDestroy, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService, OrderRecord } from '../../services/auth.service';
@@ -11,9 +11,28 @@ import { PolicyService } from '../../services/policy.service';
   templateUrl: './auth-modal.component.html',
   styleUrls: ['./auth-modal.component.css']
 })
-export class AuthModalComponent implements OnInit {
+export class AuthModalComponent implements OnInit, OnDestroy {
   authService = inject(AuthService);
   policyService = inject(PolicyService);
+
+  constructor() {
+    effect(() => {
+      const isOpen = this.authService.authModalOpen();
+      if (typeof document !== 'undefined') {
+        if (isOpen) {
+          document.body.classList.add('modal-open');
+        } else {
+          document.body.classList.remove('modal-open');
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (typeof document !== 'undefined') {
+      document.body.classList.remove('modal-open');
+    }
+  }
 
   // Forms data
   loginData = {

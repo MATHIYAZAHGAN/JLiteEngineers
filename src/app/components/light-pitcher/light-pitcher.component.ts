@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { QuoteService } from '../../services/quote.service';
 
 export interface LightProduct {
   id: number;
@@ -342,12 +343,41 @@ export class LightPitcherComponent {
 
   setCategory(id: string) { this.activeCategory.set(id); }
 
+  @HostListener('window:keydown.escape')
+  onEscapeKey(): void {
+    if (this.lightboxImg()) {
+      this.closeLightbox();
+    }
+  }
+
   openLightbox(img: string, title: string) {
     this.lightboxImg.set(img);
     this.lightboxTitle.set(title);
+    if (typeof document !== 'undefined') {
+      document.body.classList.add('modal-open');
+    }
   }
 
-  closeLightbox() { this.lightboxImg.set(null); }
+  closeLightbox() {
+    this.lightboxImg.set(null);
+    if (typeof document !== 'undefined') {
+      document.body.classList.remove('modal-open');
+    }
+  }
+
+  private quoteService = inject(QuoteService);
+
+  onGetQuote(p: LightProduct, event: Event) {
+    event.stopPropagation();
+    this.quoteService.requestQuoteFor({
+      productName: p.name,
+      category: 'Lighting Solutions',
+      specs: `${p.wattage} · ${p.lumens} · ${p.cct} · ${p.ip}`,
+      details: `Inquiry for ${p.name} (${p.wattage}, ${p.lumens}, ${p.cct}, IP Rating: ${p.ip}). Description: ${p.desc}`,
+      img: p.img,
+      badge: p.badge || p.tag || 'Luminaire'
+    });
+  }
 
   tagBg(color: string): string {
     const map: Record<string, string> = {

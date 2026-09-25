@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, OnDestroy, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
@@ -10,9 +10,31 @@ import { AuthService } from '../../services/auth.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './cart-drawer.component.html'
 })
-export class CartDrawerComponent implements OnInit {
+export class CartDrawerComponent implements OnInit, OnDestroy {
   cartService = inject(CartService);
   authService = inject(AuthService);
+
+  constructor() {
+    effect(() => {
+      const isCartOpen = this.cartService.cartOpen();
+      const isCheckoutOpen = this.showCheckoutModal();
+      if (typeof document !== 'undefined') {
+        if (isCartOpen || isCheckoutOpen) {
+          document.body.classList.add('modal-open');
+        } else if (!this.authService.authModalOpen()) {
+          document.body.classList.remove('modal-open');
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (typeof document !== 'undefined') {
+      if (!this.authService.authModalOpen()) {
+        document.body.classList.remove('modal-open');
+      }
+    }
+  }
 
   promoCodeInput = '';
   promoMessage = signal<string | null>(null);

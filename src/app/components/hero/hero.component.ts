@@ -66,4 +66,19 @@ export class HeroComponent implements OnInit {
     img.offsetHeight;
     img.style.animation = 'panel-spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards';
   }
+
+  navigateToSection(id: string, event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+    const el = document.getElementById(id);
+    if (el) {
+      const navOffset = 76;
+      const targetTop = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+      try {
+        history.pushState(null, '', '#' + id);
+      } catch (_) { }
+    }
+  }
 }

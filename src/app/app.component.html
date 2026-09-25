@@ -1,5 +1,5 @@
 <app-navbar />
-<main class="overflow-x-hidden">
+<main>
   <app-hero />
   <app-features />
   <app-about />
@@ -7,7 +7,7 @@
   <app-electrical-contractors />
   <app-consultancy-services />
   <app-light-pitcher />
-  <app-get-quote />
+  <app-get-quote *ngIf="quoteService.isOpen()" />
   <app-projects />
   <app-clients />
   <app-policies />

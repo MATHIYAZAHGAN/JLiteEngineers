@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { ApiService } from '../../services/api.service';
+import { QuoteService } from '../../services/quote.service';
 import emailjs from '@emailjs/browser';
 
 // EmailJS Configuration - Sends to jlite@jliteengineers.com
@@ -17,6 +18,9 @@ const EMAILJS_PUBLIC_KEY = '08x80TnEtJ1WxAle_';
   templateUrl: './get-quote.component.html',
 })
 export class GetQuoteComponent {
+
+  quoteService = inject(QuoteService);
+  selectedProduct = this.quoteService.selectedItem;
 
   form = {
     name: '',
@@ -50,7 +54,26 @@ export class GetQuoteComponent {
   urgencyLevels = ['Standard (1–2 weeks)', 'Urgent (2–5 days)', 'Emergency (Within 24 hrs)'];
   budgetRanges = ['Below ₹50,000', '₹50,000 – ₹2,00,000', '₹2,00,000 – ₹10,00,000', 'Above ₹10,00,000', 'To be discussed'];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+    effect(() => {
+      const item = this.quoteService.selectedItem();
+      if (item) {
+        this.form.projectType = item.category || 'Lighting Solutions';
+        if (item.details) {
+          this.form.details = item.details;
+        }
+      }
+    });
+  }
+
+  clearSelectedProduct() {
+    this.quoteService.clearSelection();
+    this.form.details = '';
+  }
+
+  closeQuote() {
+    this.quoteService.closeQuote();
+  }
 
   async onSubmit() {
     if (!this.form.name || !this.form.email || !this.form.phone || !this.form.projectType) return;
@@ -132,9 +155,11 @@ export class GetQuoteComponent {
 
   private _onSuccess() {
     this.status = 'success';
+    this.quoteService.clearSelection();
     setTimeout(() => {
       this.status = 'idle';
       this.form = { name: '', email: '', phone: '', company: '', projectType: '', siteType: '', quantity: '', budget: '', location: '', timeline: '', urgency: '', details: '' };
-    }, 5000);
+      this.quoteService.closeQuote();
+    }, 4500);
   }
 }

@@ -1,43 +1,43 @@
-<section id="clients" class="pt-20 pb-12 px-6 relative overflow-hidden" style="background:var(--white);">
+<section id="clients" class="py-10 sm:py-12 lg:py-14 px-3.5 sm:px-6 relative overflow-hidden" style="background:var(--white);">
   <div class="absolute inset-0 dot-pattern pointer-events-none" style="opacity:0.5;"></div>
-  <div class="max-w-7xl mx-auto flex flex-col gap-20 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col gap-6 sm:gap-8 relative z-10">
 
     <div class="text-center max-w-2xl mx-auto">
-      <div appScrollReveal class="flex items-center justify-center gap-3 mb-5">
+      <div appScrollReveal class="flex items-center justify-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
         <div class="gold-line"></div>
         <span class="label-pill label-pill-gold">Clients &amp; Consultants</span>
         <div class="gold-line"></div>
       </div>
       <h2 appScrollReveal [stagger]="100" class="font-heading font-bold leading-tight mt-2"
-          style="font-size:clamp(2.4rem,4vw,3.4rem);color:var(--navy);letter-spacing:-0.02em;">
+          style="font-size:clamp(1.85rem,3.5vw,3rem);color:var(--navy);letter-spacing:-0.02em;">
         Clients &amp; <span class="elec-text">Consultants</span>
       </h2>
-      <p appScrollReveal [stagger]="200" class="font-body mt-5 leading-[1.9] max-w-xl mx-auto"
-         style="color:var(--slate-2);font-size:1.05rem;">
+      <p appScrollReveal [stagger]="200" class="font-body mt-2.5 leading-relaxed max-w-xl mx-auto text-xs sm:text-base"
+         style="color:var(--slate-2);">
         We are happy and proud to associate with the following group of Companies and with leading
         <span class="font-semibold" style="color:var(--navy);">Architects &amp; Consultants</span>.
       </p>
     </div>
 
     <div>
-      <div class="flex items-center gap-3 mb-8">
+      <div class="flex items-center gap-3 mb-6 sm:mb-8">
         <div class="gold-line"></div>
-        <h3 appScrollReveal class="font-heading font-bold text-[1.5rem]">
+        <h3 appScrollReveal class="font-heading font-bold text-[1.3rem] sm:text-[1.5rem]">
           <span style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">Our Clients</span>
         </h3>
       </div>
-      <div appScrollReveal class="flex flex-wrap gap-2 mb-8">
+      <div appScrollReveal class="flex flex-wrap gap-2 mb-6 sm:mb-8">
         <button *ngFor="let cat of categories" (click)="setCategory(cat)"
-                class="font-body text-[0.8rem] font-semibold px-5 py-2 rounded-full transition-all duration-200 press"
+                class="font-body text-xs sm:text-[0.8rem] font-semibold px-4 sm:px-5 py-2 rounded-full transition-all duration-200 press min-h-[38px]"
                 [style]="cat === activeCategory
                   ? 'background:var(--grad-navy);color:white;box-shadow:var(--sh-md);border:none;'
                   : 'background:var(--ivory);border:1.5px solid rgba(11,29,58,0.12);color:var(--slate);'">
           {{ cat }}
         </button>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
         <div *ngFor="let client of filteredClients; let i = index" appScrollReveal [stagger]="i * 60"
-             class="card p-5 flex items-center gap-4 group">
+             class="card p-4 sm:p-5 flex items-center gap-3.5 sm:gap-4 group">
           <div [class]="'w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 ' + avatarColor(i)"
                style="box-shadow:var(--sh-sm);">
             <span class="font-heading font-bold text-white text-xs tracking-wide">{{ client.abbr.slice(0,3) }}</span>
