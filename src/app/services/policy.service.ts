@@ -138,7 +138,8 @@ Your personal information is retained only as long as necessary for business, ta
 7. Grievance Officer & Contact
 In compliance with the Information Technology Act 2000 and DPDP Act 2023:
 Grievance Officer: Legal & Compliance Desk, JLite Engineers Pvt. Ltd.
-Address: No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai – 600042, Tamil Nadu, India.
+Address (Head Office): No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai – 600042, Tamil Nadu, India.
+Branch Office: 7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount, Chennai – 600016, Tamil Nadu, India.
 Email: jlite@jliteengineers.com | Tel: +91 73581 78174`
         };
 

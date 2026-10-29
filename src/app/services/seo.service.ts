@@ -45,6 +45,10 @@ export class SeoService {
       'url': 'https://www.jliteengineers.com',
       'telephone': '+917358178174',
       'email': 'jlite@jliteengineers.com',
+      'sameAs': [
+        'https://www.instagram.com/jlite2026/reels/',
+        'https://www.facebook.com/profile.php?id=61593258419189'
+      ],
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': 'No.338, Vijaya Nagar, 6th Main Road, Velachery',
@@ -53,6 +57,21 @@ export class SeoService {
         'postalCode': '600042',
         'addressCountry': 'IN'
       },
+      'department': [
+        {
+          '@type': 'LocalBusiness',
+          'name': 'JLite Engineers - St Thomas Mount Branch',
+          'telephone': '+917358178174',
+          'address': {
+            '@type': 'PostalAddress',
+            'streetAddress': '7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount',
+            'addressLocality': 'Chennai',
+            'addressRegion': 'Tamil Nadu',
+            'postalCode': '600016',
+            'addressCountry': 'IN'
+          }
+        }
+      ],
       'geo': {
         '@type': 'GeoCoordinates',
         'latitude': '12.9756',

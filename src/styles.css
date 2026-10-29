@@ -579,152 +579,133 @@ body {
    WHATSAPP FLOATING ACTION BUTTON — DISABLED
 ═══════════════════════════════════════════════════════════════ */
 
-/* wrapper — anchors the ripple rings */
+/* wrapper — anchors the ripple ring */
 .wa-fab-wrap {
-  display: none !important;
-  visibility: hidden !important;
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 90;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ripple rings */
-.wa-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 60px;
-  border: 2px solid rgba(37, 211, 102, 0.55);
-  animation: wa-ripple 2.6s ease-out infinite;
-  pointer-events: none;
-}
-.wa-ring-2 { animation-delay: 1.3s; }
-
-@keyframes wa-ripple {
-  0%   { transform: scale(1);    opacity: 0.7; }
-  100% { transform: scale(1.55); opacity: 0;   }
-}
-
-/* main pill button */
-.wa-fab {
-  position: relative;
+  bottom: 24px;
+  right: 24px;
+  z-index: 85;
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: linear-gradient(135deg, #1fbe5a 0%, #25D366 50%, #20c95e 100%);
-  color: white;
-  border-radius: 60px;
-  padding: 11px 18px 11px 12px;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* subtle ripple ring */
+.wa-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(37, 211, 102, 0.5);
+  animation: wa-ripple 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes wa-ripple {
+  0%   { transform: scale(0.98); opacity: 0.7; }
+  100% { transform: scale(1.28); opacity: 0;   }
+}
+
+/* compact main pill button */
+.wa-fab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #25D366 100%);
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 8px 14px 8px 10px;
   text-decoration: none;
   box-shadow:
-    0 4px 20px rgba(37, 211, 102, 0.5),
-    0 1px 4px rgba(0,0,0,0.2),
-    inset 0 1px 0 rgba(255,255,255,0.25);
-  transition: transform 0.22s cubic-bezier(.34,1.56,.64,1),
-              box-shadow 0.22s ease;
-  border: 1px solid rgba(255,255,255,0.18);
+    0 4px 16px rgba(22, 163, 74, 0.38),
+    0 2px 4px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s cubic-bezier(.34,1.56,.64,1),
+              box-shadow 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
 }
 
 .wa-fab:hover {
-  transform: translateY(-4px) scale(1.03);
+  transform: translateY(-2px) scale(1.02);
   box-shadow:
-    0 12px 36px rgba(37, 211, 102, 0.6),
-    0 4px 12px rgba(0,0,0,0.22),
-    inset 0 1px 0 rgba(255,255,255,0.3);
+    0 8px 24px rgba(37, 211, 102, 0.5),
+    0 3px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .wa-fab:active {
-  transform: translateY(-1px) scale(0.98);
-  transition-duration: 0.1s;
+  transform: translateY(0) scale(0.97);
 }
 
-/* icon circle */
+/* icon */
 .wa-fab-icon {
-  width: 42px;
-  height: 42px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.15);
+  background: rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: background 0.2s ease;
 }
 
-.wa-fab:hover .wa-fab-icon {
-  background: rgba(0,0,0,0.22);
-}
-
-/* text stack */
-.wa-fab-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  gap: 3px;
-}
-
+/* single concise title */
 .wa-fab-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 0.8125rem;
+  font-weight: 600;
   letter-spacing: 0.01em;
-  color: #fff;
+  color: #ffffff;
+  white-space: nowrap;
 }
 
-.wa-fab-sub {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: rgba(255,255,255,0.78);
-  letter-spacing: 0.01em;
+/* tiny pulsing live green dot */
+.wa-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #bbf7d0;
+  box-shadow: 0 0 6px #86efac;
+  flex-shrink: 0;
+  animation: wa-pulse 1.8s ease-in-out infinite alternate;
 }
 
-/* arrow */
-.wa-fab-arrow {
-  display: flex;
-  align-items: center;
-  margin-left: 2px;
-  opacity: 0.7;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+@keyframes wa-pulse {
+  0%   { opacity: 0.5; transform: scale(0.85); }
+  100% { opacity: 1;   transform: scale(1.15); }
 }
 
-.wa-fab:hover .wa-fab-arrow {
-  transform: translateX(3px);
-  opacity: 1;
-}
-
-/* tooltip */
+/* compact tooltip */
 .wa-tooltip {
   position: absolute;
-  bottom: calc(100% + 10px);
+  bottom: calc(100% + 8px);
   right: 0;
-  background: rgba(11,29,58,0.92);
-  color: rgba(255,255,255,0.88);
+  background: rgba(11, 29, 58, 0.95);
+  color: #ffffff;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 4px 10px;
+  border-radius: 6px;
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
   transform: translateY(4px);
   transition: opacity 0.2s ease, transform 0.2s ease;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 .wa-tooltip::after {
   content: '';
   position: absolute;
   top: 100%;
-  right: 22px;
-  border: 5px solid transparent;
-  border-top-color: rgba(11,29,58,0.92);
+  right: 18px;
+  border: 4px solid transparent;
+  border-top-color: rgba(11, 29, 58, 0.95);
 }
 
 .wa-fab-wrap:hover .wa-tooltip {
@@ -732,22 +713,28 @@ body {
   transform: translateY(0);
 }
 
-/* mobile — collapse to icon-only circle */
-@media (max-width: 520px) {
+/* mobile responsiveness: position above bottom bar, convert to neat circle if screen is small */
+@media (max-width: 768px) {
+  .wa-fab-wrap {
+    bottom: 74px; /* Clears mobile navigation cleanly */
+    right: 14px;
+  }
+}
+
+@media (max-width: 480px) {
   .wa-fab {
-    padding: 14px;
+    padding: 9px;
     border-radius: 50%;
     gap: 0;
   }
-  .wa-fab-text,
-  .wa-fab-arrow {
+  .wa-fab-title,
+  .wa-live-dot {
     display: none;
   }
   .wa-fab-icon {
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
     background: transparent;
-    border: none;
   }
   .wa-ring {
     border-radius: 50%;
