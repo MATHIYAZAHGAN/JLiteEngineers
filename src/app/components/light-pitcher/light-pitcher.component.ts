@@ -1,5 +1,6 @@
 import { Component, signal, inject, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { QuoteService } from '../../services/quote.service';
 
@@ -21,7 +22,7 @@ export interface LightProduct {
 @Component({
   selector: 'app-light-pitcher',
   standalone: true,
-  imports: [CommonModule, ScrollRevealDirective],
+  imports: [CommonModule, RouterLink, ScrollRevealDirective],
   templateUrl: './light-pitcher.component.html',
 })
 export class LightPitcherComponent {

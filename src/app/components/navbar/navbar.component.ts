@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { AuthService } from '../../services/auth.service';
 import { QuoteService } from '../../services/quote.service';
@@ -14,6 +15,7 @@ export class NavbarComponent {
   cartService = inject(CartService);
   authService = inject(AuthService);
   quoteService = inject(QuoteService);
+  private router = inject(Router);
 
   menuOpen = false;
   accountDropdownOpen = false;
@@ -67,22 +69,29 @@ export class NavbarComponent {
       return;
     }
 
-    // Allow menu closing to complete before scrolling
     setTimeout(() => {
       if (id === 'hero' || id === 'home') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        try { history.pushState(null, '', ' '); } catch (_) { }
+        if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+          this.router.navigate(['/']);
+        } else if (typeof window !== 'undefined') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          try { history.pushState(null, '', ' '); } catch (_) { }
+        }
         return;
       }
 
-      const el = document.getElementById(id);
-      if (el) {
-        const navOffset = 76;
-        const targetTop = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
-        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
-        try {
-          history.pushState(null, '', '#' + id);
-        } catch (_) { }
+      if (typeof document !== 'undefined') {
+        const el = document.getElementById(id);
+        if (el) {
+          const navOffset = 76;
+          const targetTop = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
+          window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+          try {
+            history.pushState(null, '', '#' + id);
+          } catch (_) { }
+        } else {
+          this.router.navigate(['/'], { fragment: id });
+        }
       }
     }, 40);
   }
