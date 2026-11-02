@@ -1,39 +1,48 @@
-<div class="pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+<div class="pt-16 sm:pt-20 md:pt-24 pb-24 sm:pb-16 px-3 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-x-hidden">
 
   <!-- Breadcrumbs -->
-  <nav aria-label="Breadcrumb" class="mb-6 flex items-center gap-2 text-xs text-slate-500 font-medium">
+  <nav aria-label="Breadcrumb"
+    class="mb-2.5 sm:mb-3.5 flex items-center gap-1.5 text-[0.68rem] sm:text-xs text-slate-500 font-medium flex-wrap">
     <a routerLink="/" class="hover:text-amber-600 transition-colors">Home</a>
-    <span>/</span>
+    <span class="text-slate-400">/</span>
     <span class="text-slate-400">Services</span>
-    <span>/</span>
+    <span class="text-slate-400">/</span>
     <span class="text-slate-900 font-semibold" aria-current="page">Electrical Consultant in Chennai</span>
   </nav>
 
   <!-- Hero Header Block -->
-  <header class="relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12 mb-12 border border-amber-500/20"
-          style="background: linear-gradient(135deg, #071224 0%, #0d2244 50%, #132f5d 100%); box-shadow: 0 10px 40px rgba(7, 18, 36, 0.4);">
+  <header
+    class="relative overflow-hidden rounded-2xl p-4 sm:p-7 lg:p-8 mb-5 sm:mb-8 border border-amber-500/25 shadow-lg"
+    style="background: linear-gradient(135deg, #071224 0%, #0d2244 50%, #132f5d 100%); box-shadow: 0 8px 30px rgba(7, 18, 36, 0.4);">
     <div class="relative z-10 max-w-3xl">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4">
-        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+      <div
+        class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-[0.65rem] sm:text-xs font-bold uppercase tracking-wider mb-2 sm:mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
         Govt. Authorized Electrical Engineering Advisory
       </div>
-      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-4">
-        Electrical Consultant in <span style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Chennai</span>
+      <h1
+        class="font-heading text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] font-extrabold text-white leading-tight tracking-tight mb-2 sm:mb-3">
+        Electrical Consultant in <span
+          style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Chennai</span>
       </h1>
-      <p class="text-slate-200 text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
-        Looking for a licensed, experienced electrical consultant in Chennai? JLITE Engineers delivers comprehensive electrical system design, load sanctioning calculations, Single-Line Diagrams (SLD), statutory CEIG liaison approvals, and turnkey engineering advisory for industrial plants, IT parks, and commercial complexes across Tamil Nadu.
+      <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 max-w-2xl">
+        Looking for a licensed electrical consultant in Chennai? JLITE Engineers delivers comprehensive electrical
+        system design, load calculations, Single-Line Diagrams (SLD), statutory CEIG approvals, and turnkey engineering
+        advisory for industrial plants and commercial complexes.
       </p>
-      <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
         <button type="button" (click)="quoteService.openQuote()"
-                class="px-6 py-3.5 rounded-xl font-bold text-sm text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 transition-all shadow-lg hover:shadow-amber-500/25 active:scale-95 cursor-pointer">
-          Request Consultation &rarr;
+          class="w-full sm:w-auto text-center justify-center inline-flex items-center px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 transition-all shadow-md active:scale-95 cursor-pointer">
+          <span>Request Consultation</span>
+          <span class="ml-1.5">&rarr;</span>
         </button>
-        <a href="tel:+917358178174"
-           class="px-5 py-3.5 rounded-xl font-semibold text-sm text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all flex items-center gap-2">
-          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        <a href="mailto:jlite@jliteengineers.com"
+          class="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-semibold text-xs sm:text-sm text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all">
+          <svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          +91 73581 78174
+          <span>jlite&#64;jliteengineers.com</span>
         </a>
       </div>
     </div>
@@ -53,74 +62,90 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- 1. Electrical Load Design -->
       <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-center text-amber-600 mb-4 font-bold text-lg">
+        <div
+          class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-center text-amber-600 mb-4 font-bold text-lg">
           01
         </div>
         <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Electrical Load Calculations &amp; Sizing</h3>
         <p class="text-slate-600 text-sm leading-relaxed mb-3">
-          Precise connected load vs maximum demand assessments, diversity factor modeling, transformer rating sizing, and DG backup optimization for cost efficiency and statutory compliance.
+          Precise connected load vs maximum demand assessments, diversity factor modeling, transformer rating sizing,
+          and DG backup optimization for cost efficiency and statutory compliance.
         </p>
         <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">IS 732 Standards</span>
       </article>
 
       <!-- 2. Single-Line Diagram (SLD) -->
       <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-blue-600 mb-4 font-bold text-lg">
+        <div
+          class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-blue-600 mb-4 font-bold text-lg">
           02
         </div>
         <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Single-Line Diagrams (SLD) &amp; BOQ</h3>
         <p class="text-slate-600 text-sm leading-relaxed mb-3">
-          CAD-based comprehensive power flow schematics, fault level calculations, breaker coordination curves, cable schedule preparation, and exact itemized Bill of Quantities (BOQ).
+          CAD-based comprehensive power flow schematics, fault level calculations, breaker coordination curves, cable
+          schedule preparation, and exact itemized Bill of Quantities (BOQ).
         </p>
-        <span class="text-xs font-semibold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md">AutoCAD &amp; ETAP Ready</span>
+        <span class="text-xs font-semibold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md">AutoCAD &amp; ETAP
+          Ready</span>
       </article>
 
       <!-- 3. Statutory CEIG Liaison -->
       <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-emerald-600 mb-4 font-bold text-lg">
+        <div
+          class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-emerald-600 mb-4 font-bold text-lg">
           03
         </div>
         <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Statutory CEIG Approvals &amp; TANGEDCO</h3>
         <p class="text-slate-600 text-sm leading-relaxed mb-3">
-          Complete statutory approval management through the Chief Electrical Inspector to Government (CEIG) of Tamil Nadu, drawing approvals, safety certificates, and HT/LT connection sanctioning.
+          Complete statutory approval management through the Chief Electrical Inspector to Government (CEIG) of Tamil
+          Nadu, drawing approvals, safety certificates, and HT/LT connection sanctioning.
         </p>
-        <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">Govt. Authorized Liaison</span>
+        <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">Govt. Authorized
+          Liaison</span>
       </article>
 
       <!-- 4. Power Quality & Safety Audits -->
       <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200/80 flex items-center justify-center text-purple-600 mb-4 font-bold text-lg">
+        <div
+          class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200/80 flex items-center justify-center text-purple-600 mb-4 font-bold text-lg">
           04
         </div>
         <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Power Quality &amp; Harmonic Audits</h3>
         <p class="text-slate-600 text-sm leading-relaxed mb-3">
-          Advanced power quality analysis, Total Harmonic Distortion (THD) mitigation, active harmonic filter (AHF) sizing, and APFC capacitor bank design to eliminate TANGEDCO power factor penalties.
+          Advanced power quality analysis, Total Harmonic Distortion (THD) mitigation, active harmonic filter (AHF)
+          sizing, and APFC capacitor bank design to eliminate TANGEDCO power factor penalties.
         </p>
-        <span class="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md">IEEE 519 Compliant</span>
+        <span class="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md">IEEE 519
+          Compliant</span>
       </article>
 
       <!-- 5. Substation & Switchgear Engineering -->
       <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-center text-amber-600 mb-4 font-bold text-lg">
+        <div
+          class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-center text-amber-600 mb-4 font-bold text-lg">
           05
         </div>
         <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Substation &amp; Switchgear Engineering</h3>
         <p class="text-slate-600 text-sm leading-relaxed mb-3">
-          Engineering design of 11kV/22kV/33kV indoor and outdoor substations, compact substations (CSS), vacuum circuit breaker (VCB) panels, and main LT distribution panelboards.
+          Engineering design of 11kV/22kV/33kV indoor and outdoor substations, compact substations (CSS), vacuum circuit
+          breaker (VCB) panels, and main LT distribution panelboards.
         </p>
         <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">Up to 33kV HT / LT</span>
       </article>
 
       <!-- 6. Earthing & Lightning Protection -->
       <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-12 h-12 rounded-xl bg-rose-50 border border-rose-200/80 flex items-center justify-center text-rose-600 mb-4 font-bold text-lg">
+        <div
+          class="w-12 h-12 rounded-xl bg-rose-50 border border-rose-200/80 flex items-center justify-center text-rose-600 mb-4 font-bold text-lg">
           06
         </div>
         <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Earthing Grid &amp; Lightning Protection</h3>
         <p class="text-slate-600 text-sm leading-relaxed mb-3">
-          Soil resistivity testing, chemical pipe earthing grid design to IS 3043 standards, and Early Streamer Emission (ESE) lightning protection to NFC 17-102 and IS/IEC 62305.
+          Soil resistivity testing, chemical pipe earthing grid design to IS 3043 standards, and Early Streamer Emission
+          (ESE) lightning protection to NFC 17-102 and IS/IEC 62305.
         </p>
-        <span class="text-xs font-semibold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-md">IS 3043 &amp; IEC 62305</span>
+        <span class="text-xs font-semibold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-md">IS 3043 &amp; IEC
+          62305</span>
       </article>
     </div>
   </section>
@@ -159,11 +184,12 @@
         <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Turnkey Execution</span>
         <h3 class="font-heading text-xl font-bold mt-1 mb-2">Electrical Contractor in Chennai</h3>
         <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-          Need implementation for your approved design? Our Govt. A-Grade contracting division executes HT/LT installations up to 33kV.
+          Need implementation for your approved design? Our Govt. A-Grade contracting division executes HT/LT
+          installations up to 33kV.
         </p>
       </div>
       <a routerLink="/electrical-contractor-chennai"
-         class="inline-flex items-center gap-2 text-xs font-bold text-amber-300 hover:text-white transition-colors">
+        class="inline-flex items-center gap-2 text-xs font-bold text-amber-300 hover:text-white transition-colors">
         View Electrical Contracting Services &rarr;
       </a>
     </div>
@@ -173,11 +199,12 @@
         <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Lighting Solutions</span>
         <h3 class="font-heading text-xl font-bold mt-1 mb-2">Light Pitcher in Chennai</h3>
         <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-          Complete your interior engineering with architectural LED troffers, suspended linear systems, and high-efficiency office lighting.
+          Complete your interior engineering with architectural LED troffers, suspended linear systems, and
+          high-efficiency office lighting.
         </p>
       </div>
       <a routerLink="/light-pitcher-chennai"
-         class="inline-flex items-center gap-2 text-xs font-bold text-amber-300 hover:text-white transition-colors">
+        class="inline-flex items-center gap-2 text-xs font-bold text-amber-300 hover:text-white transition-colors">
         Explore Light Pitcher Luminaires &rarr;
       </a>
     </div>
@@ -194,48 +221,63 @@
         <!-- FAQ 1 -->
         <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
           <button type="button" (click)="toggleFaq(0)"
-                  class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
+            class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
             <span>What does an electrical consultant in Chennai do?</span>
             <span class="text-amber-600 font-bold text-lg">{{ activeFaq === 0 ? '−' : '+' }}</span>
           </button>
-          <div *ngIf="activeFaq === 0" class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-            An electrical consultant designs the entire electrical power distribution architecture for your facility. At JLITE Engineers, our consultancy covers load sanctioning calculations, transformer and generator sizing, single-line diagrams (SLD), fault level analysis, statutory CEIG drawing approvals, bill of quantities (BOQ), and safety compliance under Tamil Nadu Electrical Inspectorate guidelines.
+          <div *ngIf="activeFaq === 0"
+            class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            An electrical consultant designs the entire electrical power distribution architecture for your facility. At
+            JLITE Engineers, our consultancy covers load sanctioning calculations, transformer and generator sizing,
+            single-line diagrams (SLD), fault level analysis, statutory CEIG drawing approvals, bill of quantities
+            (BOQ), and safety compliance under Tamil Nadu Electrical Inspectorate guidelines.
           </div>
         </div>
 
         <!-- FAQ 2 -->
         <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
           <button type="button" (click)="toggleFaq(1)"
-                  class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
+            class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
             <span>Do you handle CEIG drawing approvals in Tamil Nadu?</span>
             <span class="text-amber-600 font-bold text-lg">{{ activeFaq === 1 ? '−' : '+' }}</span>
           </button>
-          <div *ngIf="activeFaq === 1" class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-            Yes. We prepare complete statutory drawing submittals to the Chief Electrical Inspector to Government (CEIG) of Tamil Nadu. We assist clients through initial drawing scrutiny, compliance site inspections, safety certificates, and final charging sanctions for installations exceeding 250kVA or operating at high voltage (11kV/22kV/33kV).
+          <div *ngIf="activeFaq === 1"
+            class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            Yes. We prepare complete statutory drawing submittals to the Chief Electrical Inspector to Government (CEIG)
+            of Tamil Nadu. We assist clients through initial drawing scrutiny, compliance site inspections, safety
+            certificates, and final charging sanctions for installations exceeding 250kVA or operating at high voltage
+            (11kV/22kV/33kV).
           </div>
         </div>
 
         <!-- FAQ 3 -->
         <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
           <button type="button" (click)="toggleFaq(2)"
-                  class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
+            class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
             <span>How does power quality consultancy help reduce electricity bills?</span>
             <span class="text-amber-600 font-bold text-lg">{{ activeFaq === 2 ? '−' : '+' }}</span>
           </button>
-          <div *ngIf="activeFaq === 2" class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-            Our harmonic audits and power factor consultancy identify low power factor penalties charged by TANGEDCO. By designing appropriately rated Automatic Power Factor Correction (APFC) panels and Active Harmonic Filters (AHF), we restore power factor to near-unity (0.99), completely eliminating penalties and reducing cable thermal losses.
+          <div *ngIf="activeFaq === 2"
+            class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            Our harmonic audits and power factor consultancy identify low power factor penalties charged by TANGEDCO. By
+            designing appropriately rated Automatic Power Factor Correction (APFC) panels and Active Harmonic Filters
+            (AHF), we restore power factor to near-unity (0.99), completely eliminating penalties and reducing cable
+            thermal losses.
           </div>
         </div>
 
         <!-- FAQ 4 -->
         <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
           <button type="button" (click)="toggleFaq(3)"
-                  class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
+            class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors">
             <span>Where can we meet JLITE Engineers in Chennai?</span>
             <span class="text-amber-600 font-bold text-lg">{{ activeFaq === 3 ? '−' : '+' }}</span>
           </button>
-          <div *ngIf="activeFaq === 3" class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-            You can visit our Head Office at No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042, or our Branch Office at 7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount, Chennai - 600016. Our engineers also conduct on-site project walkthroughs across Chennai and industrial corridors.
+          <div *ngIf="activeFaq === 3"
+            class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            You can visit our Head Office at No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042, or our
+            Branch Office at 7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount, Chennai - 600016. Our engineers
+            also conduct on-site project walkthroughs across Chennai and industrial corridors.
           </div>
         </div>
       </div>
@@ -243,25 +285,29 @@
   </section>
 
   <!-- CTA Box -->
-  <section class="p-8 sm:p-10 rounded-3xl text-center bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-xl">
-    <h2 class="font-heading text-2xl sm:text-3xl font-black mb-3">
+  <section
+    class="p-5 sm:p-7 rounded-2xl text-center bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-xl">
+    <h2 class="font-heading text-lg sm:text-2xl font-black mb-1.5">
       Discuss Your Project with Chennai's Trusted Electrical Consultants
     </h2>
-    <p class="text-slate-900 text-sm sm:text-base max-w-xl mx-auto mb-6 font-medium">
-      From load calculations to final inspection certificates, our senior engineering team responds within 2 business hours.
+    <p class="text-slate-900 text-xs sm:text-sm max-w-xl mx-auto mb-4 font-medium">
+      From load calculations to final inspection certificates, our senior engineering team responds within 2 business
+      hours.
     </p>
-    <div class="flex flex-wrap justify-center items-center gap-3">
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 sm:gap-2.5">
       <button type="button" (click)="quoteService.openQuote()"
-              class="px-6 py-3 rounded-xl bg-slate-950 text-white font-bold text-sm hover:bg-slate-800 transition-all cursor-pointer">
+        class="w-full sm:w-auto text-center justify-center inline-flex items-center px-5 py-2.5 rounded-xl bg-slate-950 text-white font-bold text-xs sm:text-sm hover:bg-slate-800 transition-all cursor-pointer">
         Get Quotation
       </button>
-      <a href="https://wa.me/917358178174?text=Hello%20JLITE%20Engineers%2C%20I%20would%20like%20to%20consult%20regarding%20electrical%20design%20services%20in%20Chennai."
-         target="_blank" rel="noopener noreferrer"
-         class="px-5 py-3 rounded-xl bg-white text-slate-950 font-bold text-sm hover:bg-slate-100 transition-all shadow-sm">
-        WhatsApp Enquiry
+      <a href="mailto:jlite@jliteengineers.com?subject=Consultancy%20Enquiry%20-%20Electrical%20Consultant%20Chennai"
+        class="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-slate-950 font-bold text-xs sm:text-sm hover:bg-slate-100 transition-all shadow-sm">
+        <svg class="w-4 h-4 text-amber-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span>Email Project Enquiry</span>
       </a>
     </div>
   </section>
 
 </div>
-

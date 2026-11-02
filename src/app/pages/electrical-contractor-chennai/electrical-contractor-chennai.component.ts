@@ -162,7 +162,7 @@ export class ElectricalContractorChennaiComponent implements OnInit {
                 'name': 'How can I request a quotation for an electrical project?',
                 'acceptedAnswer': {
                   '@type': 'Answer',
-                  'text': 'You can click the "Request a Project Quotation" button on our website, email your Single-Line Diagram (SLD) or Bill of Quantities (BOQ) to jlite@jliteengineers.com, or call our engineering team at +91 73581 78174. We typically provide comprehensive commercial and technical proposals within 24 to 48 hours.'
+                  'text': 'You can click the "Request a Project Quotation" button on our website or email your Single-Line Diagram (SLD) or Bill of Quantities (BOQ) directly to jlite@jliteengineers.com. Our engineering team provides comprehensive commercial and technical proposals within 24 to 48 hours.'
                 }
               },
               {
@@ -170,7 +170,7 @@ export class ElectricalContractorChennaiComponent implements OnInit {
                 'name': 'How can I contact JLite Engineers for project requirements?',
                 'acceptedAnswer': {
                   '@type': 'Answer',
-                  'text': 'You can reach JLite Engineers by phone at +91 73581 78174, via WhatsApp, by email at jlite@jliteengineers.com, or visit our Head Office at No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042, or our Branch Office at 7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount, Chennai - 600016.'
+                  'text': 'You can reach JLite Engineers directly by email at jlite@jliteengineers.com or visit our Head Office at No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042, or our Branch Office at 7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount, Chennai - 600016.'
                 }
               }
             ]

@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface QuotePrefill {
   productName: string;
@@ -13,6 +14,7 @@ export interface QuotePrefill {
   providedIn: 'root'
 })
 export class QuoteService {
+  private router = inject(Router, { optional: true });
   selectedItem = signal<QuotePrefill | null>(null);
   isOpen = signal<boolean>(false);
 
@@ -22,18 +24,27 @@ export class QuoteService {
       this.selectedItem.set(item);
     }
 
-    // Smooth scroll to #get-quote section with fixed nav offset
-    setTimeout(() => {
-      const el = document.getElementById('get-quote');
-      if (el) {
-        const navOffset = 76;
-        const targetTop = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
-        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
-        try {
-          history.pushState(null, '', '#get-quote');
-        } catch (_) {}
-      }
-    }, 60);
+    if (typeof window !== 'undefined' && window.location.pathname !== '/' && this.router) {
+      this.router.navigate(['/']).then(() => {
+        setTimeout(() => this.scrollToQuote(), 120);
+      });
+      return;
+    }
+
+    setTimeout(() => this.scrollToQuote(), 60);
+  }
+
+  private scrollToQuote(): void {
+    if (typeof document === 'undefined') return;
+    const el = document.getElementById('get-quote');
+    if (el) {
+      const navOffset = 76;
+      const targetTop = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+      try {
+        history.pushState(null, '', '#get-quote');
+      } catch (_) {}
+    }
   }
 
   requestQuoteFor(item: QuotePrefill) {

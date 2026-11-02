@@ -1,61 +1,62 @@
-<div class="pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+<div class="pt-16 sm:pt-20 md:pt-24 pb-24 sm:pb-16 px-3 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-x-hidden">
 
   <!-- Breadcrumbs -->
-  <nav aria-label="Breadcrumb" class="mb-6 flex items-center gap-2 text-xs text-slate-500 font-medium">
+  <nav aria-label="Breadcrumb" class="mb-2.5 sm:mb-3.5 flex items-center gap-1.5 text-[0.68rem] sm:text-xs text-slate-500 font-medium flex-wrap">
     <a routerLink="/" class="hover:text-amber-600 transition-colors">Home</a>
-    <span>/</span>
+    <span class="text-slate-400">/</span>
     <span class="text-slate-400">Products</span>
-    <span>/</span>
+    <span class="text-slate-400">/</span>
     <span class="text-slate-900 font-semibold" aria-current="page">Light Pitcher in Chennai</span>
   </nav>
 
   <!-- Hero Header Block -->
-  <header class="relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12 mb-12 border border-amber-500/20"
-          style="background: linear-gradient(135deg, #071224 0%, #162a4d 50%, #0d1e3a 100%); box-shadow: 0 10px 40px rgba(7, 18, 36, 0.45);">
+  <header class="relative overflow-hidden rounded-2xl p-4 sm:p-7 lg:p-8 mb-5 sm:mb-8 border border-amber-500/25 shadow-lg"
+          style="background: linear-gradient(135deg, #071224 0%, #162a4d 50%, #0d1e3a 100%); box-shadow: 0 8px 30px rgba(7, 18, 36, 0.45);">
     <div class="relative z-10 max-w-3xl">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4">
-        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-[0.65rem] sm:text-xs font-bold uppercase tracking-wider mb-2 sm:mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
         Architectural &amp; Commercial Luminaire Brand
       </div>
-      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-4">
+      <h1 class="font-heading text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] font-extrabold text-white leading-tight tracking-tight mb-2 sm:mb-3">
         Light Pitcher Lighting Solutions in <span style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Chennai</span>
       </h1>
-      <p class="text-slate-200 text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
-        Discover Light Pitcher in Chennai by JLITE Engineers — high-efficiency commercial LED troffers, architectural suspended linear profiles, low-glare office panels, and rugged industrial high bay luminaires engineered for corporate workplaces, luxury hospitality, and manufacturing hubs across Tamil Nadu.
+      <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 max-w-2xl">
+        Discover Light Pitcher in Chennai by JLITE Engineers — high-efficiency commercial LED troffers, architectural linear profiles, low-glare office panels, and rugged industrial high bay luminaires across Tamil Nadu.
       </p>
-      <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
         <button type="button" (click)="quoteService.openQuote()"
-                class="px-6 py-3.5 rounded-xl font-bold text-sm text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 transition-all shadow-lg hover:shadow-amber-500/25 active:scale-95 cursor-pointer">
-          Request Luminaire Quote &rarr;
+                class="w-full sm:w-auto text-center justify-center inline-flex items-center px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 transition-all shadow-md active:scale-95 cursor-pointer">
+          <span>Request Luminaire Quote</span>
+          <span class="ml-1.5">&rarr;</span>
         </button>
-        <a href="tel:+917358178174"
-           class="px-5 py-3.5 rounded-xl font-semibold text-sm text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all flex items-center gap-2">
-          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        <a href="mailto:jlite@jliteengineers.com"
+           class="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-semibold text-xs sm:text-sm text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all">
+          <svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
           </svg>
-          +91 73581 78174
+          <span>jlite&#64;jliteengineers.com</span>
         </a>
       </div>
     </div>
   </header>
 
   <!-- Technical Value Metrics Strip -->
-  <section class="mb-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
-    <div class="p-5 rounded-2xl bg-white border border-slate-200 text-center shadow-xs">
-      <div class="font-heading text-3xl font-extrabold text-amber-600 mb-1">Up to 90%</div>
-      <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Energy Savings</div>
+  <section class="mb-6 sm:mb-8 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+    <div class="p-2.5 sm:p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
+      <div class="font-heading text-lg sm:text-2xl font-black text-amber-600 mb-0.5">Up to 90%</div>
+      <div class="text-[0.6rem] sm:text-xs uppercase tracking-wider text-slate-500 font-semibold leading-tight">Energy Savings</div>
     </div>
-    <div class="p-5 rounded-2xl bg-white border border-slate-200 text-center shadow-xs">
-      <div class="font-heading text-3xl font-extrabold text-blue-600 mb-1">50,000 hrs</div>
-      <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Rated LED Lifespan</div>
+    <div class="p-2.5 sm:p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
+      <div class="font-heading text-lg sm:text-2xl font-black text-blue-600 mb-0.5">50,000 hrs</div>
+      <div class="text-[0.6rem] sm:text-xs uppercase tracking-wider text-slate-500 font-semibold leading-tight">Rated Lifespan</div>
     </div>
-    <div class="p-5 rounded-2xl bg-white border border-slate-200 text-center shadow-xs">
-      <div class="font-heading text-3xl font-extrabold text-slate-900 mb-1">IP20–IP67</div>
-      <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Ingress Protection</div>
+    <div class="p-2.5 sm:p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
+      <div class="font-heading text-lg sm:text-2xl font-black text-slate-900 mb-0.5">IP20–IP67</div>
+      <div class="text-[0.6rem] sm:text-xs uppercase tracking-wider text-slate-500 font-semibold leading-tight">Protection</div>
     </div>
-    <div class="p-5 rounded-2xl bg-white border border-slate-200 text-center shadow-xs">
-      <div class="font-heading text-3xl font-extrabold text-emerald-600 mb-1">CRI &gt; 85</div>
-      <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Color Rendering Index</div>
+    <div class="p-2.5 sm:p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
+      <div class="font-heading text-lg sm:text-2xl font-black text-emerald-600 mb-0.5">CRI &gt; 85</div>
+      <div class="text-[0.6rem] sm:text-xs uppercase tracking-wider text-slate-500 font-semibold leading-tight">Color Rendering</div>
     </div>
   </section>
 
@@ -212,7 +213,7 @@
             <span class="text-amber-600 font-bold text-lg">{{ activeFaq === 3 ? '−' : '+' }}</span>
           </button>
           <div *ngIf="activeFaq === 3" class="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-            You can view product samples and discuss luminaire schedules at JLITE Engineers' Velachery Head Office (No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042) or our St Thomas Mount Branch (7/23 A3, 2nd Floor, Police Officer Road, Chennai - 600016). Call +91 73581 78174 for sample requests.
+            You can view product samples and discuss luminaire schedules at JLITE Engineers' Velachery Head Office (No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042) or our St Thomas Mount Branch (7/23 A3, 2nd Floor, Police Officer Road, Chennai - 600016), or email jlite&#64;jliteengineers.com for sample requests.
           </div>
         </div>
       </div>
@@ -220,22 +221,24 @@
   </section>
 
   <!-- CTA Box -->
-  <section class="p-8 sm:p-10 rounded-3xl text-center bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-xl">
-    <h2 class="font-heading text-2xl sm:text-3xl font-black mb-3">
+  <section class="p-5 sm:p-7 rounded-2xl text-center bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-xl">
+    <h2 class="font-heading text-lg sm:text-2xl font-black mb-1.5">
       Request Light Pitcher Commercial Pricing &amp; Lux Schedules in Chennai
     </h2>
-    <p class="text-slate-900 text-sm sm:text-base max-w-xl mx-auto mb-6 font-medium">
+    <p class="text-slate-900 text-xs sm:text-sm max-w-xl mx-auto mb-4 font-medium">
       From turnkey office fitouts to industrial high bay replacements, our lighting specialists provide photometrics and project pricing.
     </p>
-    <div class="flex flex-wrap justify-center items-center gap-3">
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 sm:gap-2.5">
       <button type="button" (click)="quoteService.openQuote()"
-              class="px-6 py-3 rounded-xl bg-slate-950 text-white font-bold text-sm hover:bg-slate-800 transition-all cursor-pointer">
+              class="w-full sm:w-auto text-center justify-center inline-flex items-center px-5 py-2.5 rounded-xl bg-slate-950 text-white font-bold text-xs sm:text-sm hover:bg-slate-800 transition-all cursor-pointer">
         Get Quotation
       </button>
-      <a href="https://wa.me/917358178174?text=Hello%20JLITE%20Engineers%2C%20I%20would%20like%20to%20enquire%20about%20Light%20Pitcher%20LED%20lighting%20solutions%20in%20Chennai."
-         target="_blank" rel="noopener noreferrer"
-         class="px-5 py-3 rounded-xl bg-white text-slate-950 font-bold text-sm hover:bg-slate-100 transition-all shadow-sm">
-        WhatsApp Enquiry
+      <a href="mailto:jlite@jliteengineers.com?subject=Light%20Pitcher%20Lighting%20Enquiry%20-%20Chennai"
+         class="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-slate-950 font-bold text-xs sm:text-sm hover:bg-slate-100 transition-all shadow-sm">
+        <svg class="w-4 h-4 text-amber-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        <span>Email Lighting Enquiry</span>
       </a>
     </div>
   </section>
