@@ -181,7 +181,18 @@ body {
   transition: opacity 800ms cubic-bezier(0.16,1,0.3,1),
               transform 800ms cubic-bezier(0.16,1,0.3,1);
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.visible, .visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    PRESS

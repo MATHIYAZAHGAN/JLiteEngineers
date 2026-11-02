@@ -39,6 +39,7 @@ export class SeoService {
     if (
       url.includes('electrical-consultant-chennai') ||
       url.includes('electrical-contractor-chennai') ||
+      url.includes('electrical-contractors-chennai') ||
       url.includes('light-pitcher-chennai')
     ) {
       return;
@@ -76,7 +77,7 @@ export class SeoService {
         'JLITE Engineers is a Govt. A-Grade licensed electrical contractor and electrical consultant in Chennai. Specializing in HT/LT substations up to 33kV, industrial electrical engineering, switchgear supply, and Light Pitcher commercial LED lighting solutions across Tamil Nadu.',
       canonicalUrl: 'https://www.jliteengineers.com/',
       keywords:
-        'Electrical consultant in Chennai, Electrical contractor in Chennai, Light Pitcher in Chennai, Electrical consultancy services in Chennai, Electrical engineering consultant in Chennai, Industrial electrical contractor in Chennai, Commercial electrical contractor in Chennai, HT LT electrical contractor in Chennai, Substation installation contractor in Chennai, Transformer installation services in Chennai, Light Pitcher lighting solutions in Chennai, LED lighting supplier in Chennai'
+        'electrical contractors in Chennai, Chennai, Electrical consultant in Chennai, Light pole supplier in Chennai, Electrical components supplier in Chennai, Electrical contractor in Chennai, Light Pitcher in Chennai, Electrical consultancy services in Chennai, Electrical engineering consultant in Chennai, Industrial electrical contractor in Chennai, Commercial electrical contractor in Chennai, HT LT electrical contractor in Chennai, Substation installation contractor in Chennai, Transformer installation services in Chennai, Light Pitcher lighting solutions in Chennai, LED lighting supplier in Chennai'
     });
     this.injectLocalBusinessSchema();
   }
@@ -194,8 +195,16 @@ export class SeoService {
           },
           'hasOfferCatalog': {
             '@type': 'OfferCatalog',
-            'name': 'Electrical Consultancy, Contracting & Light Pitcher Solutions',
+            'name': 'Electrical Contracting, Consultancy & Product Supply Solutions',
             'itemListElement': [
+              {
+                '@type': 'Offer',
+                'itemOffered': {
+                  '@type': 'Service',
+                  'name': 'Electrical Contractors in Chennai',
+                  'description': 'Government Grade A licensed electrical contracting up to 33kV, HT/LT substations, transformer setups, and turnkey industrial installations in Chennai.'
+                }
+              },
               {
                 '@type': 'Offer',
                 'itemOffered': {
@@ -208,16 +217,24 @@ export class SeoService {
                 '@type': 'Offer',
                 'itemOffered': {
                   '@type': 'Service',
-                  'name': 'Electrical Contractor in Chennai',
-                  'description': 'Government A-Grade licensed high voltage (HT) and low voltage (LT) electrical contracting up to 33kV, substations, transformer setups, and industrial installations.'
+                  'name': 'Light Pole Supplier in Chennai',
+                  'description': 'Design, supply, and structural installation of high mast lighting towers, octagonal street light poles, and outdoor commercial fixtures.'
                 }
               },
               {
                 '@type': 'Offer',
                 'itemOffered': {
-                  '@type': 'Product',
+                  '@type': 'Service',
+                  'name': 'Electrical Components Supplier in Chennai',
+                  'description': 'Certified switchgear, MCBs, RCCBs, distribution boards, armoured cables, and electrical components supplied across Chennai and India.'
+                }
+              },
+              {
+                '@type': 'Offer',
+                'itemOffered': {
+                  '@type': 'Service',
                   'name': 'Light Pitcher Lighting Solutions in Chennai',
-                  'description': 'Architectural and commercial LED troffers, suspended linear profiles, industrial high bays, and energy-efficient lighting systems.'
+                  'description': 'Architectural and commercial LED troffers, suspended linear profiles, industrial high bays, and energy-efficient lighting supply & turnkey installations across Tamil Nadu.'
                 }
               }
             ]

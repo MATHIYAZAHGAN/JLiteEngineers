@@ -1,0 +1,38 @@
+{
+  "$schema": "https://agent-resource-discovery.org/schemas/v1/ai-catalog.json",
+  "name": "JLITE Engineers",
+  "description": "Government A-Grade electrical contractor up to 33kV, electrical engineering consultancy, and Light Pitcher commercial LED lighting manufacturer in Chennai, Tamil Nadu.",
+  "url": "https://www.jliteengineers.com",
+  "version": "1.0.0",
+  "provider": {
+    "name": "JLITE Engineers",
+    "url": "https://www.jliteengineers.com",
+    "contactEmail": "jlite@jliteengineers.com"
+  },
+  "services": [
+    {
+      "id": "electrical-consultancy",
+      "name": "Electrical Consultancy Services in Chennai",
+      "description": "Comprehensive electrical engineering design, load calculations, SLD preparation, and CEIG approvals.",
+      "url": "https://www.jliteengineers.com/electrical-consultant-chennai/"
+    },
+    {
+      "id": "electrical-contracting",
+      "name": "Electrical Contractors in Chennai",
+      "description": "Govt Grade A 33kV electrical contracting, substations, transformer installations, and industrial wiring.",
+      "url": "https://www.jliteengineers.com/electrical-contractors-chennai/"
+    },
+    {
+      "id": "light-pitcher",
+      "name": "Light Pitcher Commercial Lighting",
+      "description": "Commercial LED troffers, industrial high bays, and architectural lighting solutions.",
+      "url": "https://www.jliteengineers.com/light-pitcher-chennai/"
+    }
+  ],
+  "documentation": {
+    "llms": "https://www.jliteengineers.com/llms.txt",
+    "sitemap": "https://www.jliteengineers.com/sitemap.xml",
+    "robots": "https://www.jliteengineers.com/robots.txt"
+  }
+}
+

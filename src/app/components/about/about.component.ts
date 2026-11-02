@@ -1,6 +1,7 @@
 import { Component, signal, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { catchError, of } from 'rxjs';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { environment } from '../../../environments/environment';
 
@@ -129,14 +130,13 @@ export class AboutComponent implements OnInit {
   }
 
   fetchAboutData(): void {
-    this.http.get<AboutData>(`${environment.apiUrl}/cms/about`).subscribe({
+    this.http.get<AboutData>(`${environment.apiUrl}/cms/about`).pipe(
+      catchError(() => of(null))
+    ).subscribe({
       next: (res) => {
         if (res && res.heading) {
           this.aboutData.set(res);
         }
-      },
-      error: () => {
-        // Fallback to default document data
       }
     });
   }

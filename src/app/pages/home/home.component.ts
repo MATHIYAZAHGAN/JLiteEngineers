@@ -7,6 +7,7 @@ import { ProjectsComponent } from '../../components/projects/projects.component'
 import { FeaturesComponent } from '../../components/features/features.component';
 import { ProductsComponent } from '../../components/products/products.component';
 import { ContactComponent } from '../../components/contact/contact.component';
+import { ServiceLocationsComponent } from '../../components/service-locations/service-locations.component';
 import { ElectricalContractorsComponent } from '../../components/electrical-contractors/electrical-contractors.component';
 import { ConsultancyServicesComponent } from '../../components/consultancy-services/consultancy-services.component';
 import { LightPitcherComponent } from '../../components/light-pitcher/light-pitcher.component';
@@ -29,6 +30,7 @@ import { QuoteService } from '../../services/quote.service';
     ElectricalContractorsComponent,
     ConsultancyServicesComponent,
     LightPitcherComponent,
+    ServiceLocationsComponent,
     GetQuoteComponent,
     ProjectsComponent,
     ClientsComponent,

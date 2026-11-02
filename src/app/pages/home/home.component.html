@@ -1,4 +1,4 @@
-<main>
+<div class="homepage-flow">
   <app-hero />
   <app-features />
   <app-about />
@@ -6,11 +6,12 @@
   <app-electrical-contractors />
   <app-consultancy-services />
   <app-light-pitcher />
+  <app-service-locations />
   <app-get-quote *ngIf="quoteService.isOpen()" />
   <app-projects />
   <app-clients />
   <app-policies />
   <app-admin-portal *ngIf="authService.isAdmin()" />
   <app-contact />
-</main>
+</div>
 

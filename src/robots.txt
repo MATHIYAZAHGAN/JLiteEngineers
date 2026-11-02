@@ -4,6 +4,8 @@ Allow: /favicon.ico
 Allow: /favicon.png
 Allow: /assets/
 Allow: /site.webmanifest
+Allow: /llms.txt
+Allow: /ai-catalog.json
 Sitemap: https://www.jliteengineers.com/sitemap.xml
 
 User-agent: Googlebot
@@ -11,6 +13,8 @@ Allow: /
 Allow: /favicon.ico
 Allow: /favicon.png
 Allow: /assets/
+Allow: /llms.txt
+Allow: /ai-catalog.json
 
 User-agent: Googlebot-Image
 Allow: /

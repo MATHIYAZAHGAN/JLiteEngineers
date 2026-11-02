@@ -15,12 +15,17 @@ export const routes: Routes = [
     title: 'Electrical Consultant in Chennai | JLITE Engineers'
   },
   {
-    path: 'electrical-contractor-chennai',
+    path: 'electrical-contractors-chennai',
     loadComponent: () =>
       import('./pages/electrical-contractor-chennai/electrical-contractor-chennai.component').then(
         m => m.ElectricalContractorChennaiComponent
       ),
-    title: 'Electrical Contractor in Chennai | JLITE Engineers'
+    title: 'Electrical Contractors in Chennai | JLite Engineers'
+  },
+  {
+    path: 'electrical-contractor-chennai',
+    redirectTo: 'electrical-contractors-chennai',
+    pathMatch: 'full'
   },
   {
     path: 'light-pitcher-chennai',

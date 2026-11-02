@@ -26,6 +26,7 @@ export class NavbarComponent {
     { label: 'Contractors', id: 'electrical-contractors' },
     { label: 'Consultancy', id: 'consultancy-services' },
     { label: 'Lighting', id: 'light-pitcher' },
+    { label: 'Locations', id: 'service-locations' },
     { label: 'Admin', id: 'admin-portal' },
     { label: 'Contact', id: 'contact' },
   ];

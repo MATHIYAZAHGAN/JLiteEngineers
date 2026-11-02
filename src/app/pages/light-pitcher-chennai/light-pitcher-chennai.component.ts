@@ -121,6 +121,10 @@ export class LightPitcherChennaiComponent implements OnInit {
         '@context': 'https://schema.org',
         '@type': 'Product',
         'name': 'Light Pitcher Lighting Solutions in Chennai',
+        'image': [
+          'https://www.jliteengineers.com/assets/work/Picture37.jpg',
+          'https://www.jliteengineers.com/assets/work/Picture38.jpg'
+        ],
         'brand': {
           '@type': 'Brand',
           'name': 'Light Pitcher by JLITE Engineers'

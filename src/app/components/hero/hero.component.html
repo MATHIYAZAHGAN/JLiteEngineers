@@ -143,6 +143,7 @@
 
       <!-- Main Showcase Product Panel with Floating High-Tech Chips -->
       <div class="relative inline-block z-10 animate-float hero-panel-wrap cursor-pointer max-w-full"
+        style="min-height: 280px; aspect-ratio: 460 / 420;"
         (mouseenter)="onPanelHover($event)">
 
         <!-- Top Floating Spec Chip -->
@@ -164,7 +165,10 @@
 
         <img [src]="heroData().backgroundImage || heroData().imageUrl || 'assets/hero-panel.png'"
           alt="JLITE Engineers Power Your World"
-          style="width: 460px; max-width: 100%; height: auto; object-fit: contain; padding: 6px; background: transparent; border: none; border-radius: 24px;"
+          width="460"
+          height="420"
+          fetchpriority="high"
+          style="width: 460px; max-width: 100%; height: auto; aspect-ratio: 460 / 420; object-fit: contain; padding: 6px; background: transparent; border: none; border-radius: 24px;"
           class="hero-panel-img" #panelImg />
       </div>
     </div>

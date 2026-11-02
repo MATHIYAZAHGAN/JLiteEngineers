@@ -1,0 +1,25 @@
+# JLITE Engineers
+
+> Premier Government A-Grade licensed electrical contractor up to 33kV, electrical engineering consultancy, and Light Pitcher commercial LED lighting manufacturer in Chennai, Tamil Nadu, India.
+
+## Core Capabilities & Services
+- [Home Page](https://www.jliteengineers.com/): Official overview of JLITE Engineers, Govt A-Grade 33kV licensing, product lines, and electrical services.
+- [Electrical Contractors in Chennai](https://www.jliteengineers.com/electrical-contractors-chennai/): Turnkey HT/LT substation installations up to 33kV, transformer erections, main LT switchgear, cable laying, and industrial plant electrification.
+- [Electrical Consultant in Chennai](https://www.jliteengineers.com/electrical-consultant-chennai/): Single-Line Diagram (SLD) preparation, load demand calculations, CEIG statutory liaison approvals, power quality audits, and engineering project management.
+- [Light Pitcher in Chennai](https://www.jliteengineers.com/light-pitcher-chennai/): Commercial & architectural LED lighting catalog, 2x2 modular office troffers, suspended linear fixtures, and industrial UFO high bays.
+- [Service Locations & India-Wide Supply](https://www.jliteengineers.com/#service-locations): Industrial contracting hubs in Chennai and pan-India electrical product & luminaire supply.
+- [Product Catalog](https://www.jliteengineers.com/#products): ISI/CE certified MCBs, RCCBs, distribution boards, smart touch switches, and armoured industrial power cables.
+
+## Corporate & Contact Details
+- **Entity**: M/s. JLITE Electrical Engineer's and Contractor
+- **Head Office**: No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042, Tamil Nadu, India.
+- **Branch Office**: 7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount, Chennai - 600016, Tamil Nadu, India.
+- **Phone**: +91 73581 78174
+- **Email**: jlite@jliteengineers.com
+- **Website**: [https://www.jliteengineers.com/](https://www.jliteengineers.com/)
+- **Licensing**: Government Grade 'A' Electrical Contractor License up to 33kV (Electrical Licensing Board, Government of Tamil Nadu)
+
+## Discoverability & Sitemaps
+- [XML Sitemap](https://www.jliteengineers.com/sitemap.xml): Complete canonical indexable URLs.
+- [AI Catalog](https://www.jliteengineers.com/ai-catalog.json): Machine-readable resource specification for AI agents.
+

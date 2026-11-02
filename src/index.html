@@ -47,6 +47,9 @@
     content="Government A-Grade Licensed 33kV Electrical Contractors &amp; Electrical Consultants in Chennai: HT/LT Sub-Stations, Commercial Luminaires, Switchgear &amp; Industrial Installations.">
   <meta name="twitter:image" content="https://www.jliteengineers.com/assets/brand-logo.png">
 
+  <!-- Preload Critical Above-The-Fold LCP Image to Prevent Layout Shift -->
+  <link rel="preload" as="image" href="assets/hero-panel.png" fetchpriority="high">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -54,7 +57,7 @@
     rel="stylesheet">
 
   <!-- Structured Data: Organization, LocalBusiness, ElectricalContractor, ProfessionalService, FAQPage -->
-  <script type="application/ld+json">
+  <script type="application/ld+json" id="json-ld-schema">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -137,9 +140,9 @@
             {
               "@type": "Offer",
               "itemOffered": {
-                "@type": "Product",
+                "@type": "Service",
                 "name": "Light Pitcher Lighting Solutions in Chennai",
-                "description": "Architectural and commercial LED troffers, suspended linear profiles, industrial high bays, and energy-efficient lighting systems."
+                "description": "Architectural and commercial LED troffers, suspended linear profiles, industrial high bays, and energy-efficient lighting supply & turnkey installations across Tamil Nadu."
               }
             }
           ]
