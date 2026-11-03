@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-resource-discovery.org/schemas/v1/ai-catalog.json",
   "name": "JLITE Engineers",
-  "description": "Government A-Grade electrical contractor up to 33kV, electrical engineering consultancy, and Light Pitcher commercial LED lighting manufacturer in Chennai, Tamil Nadu.",
+  "description": "Government A-Grade electrical contractor up to 33kV, electrical engineering consultancy, and Light Fixtures commercial LED lighting manufacturer in Chennai, Tamil Nadu.",
   "url": "https://www.jliteengineers.com",
   "version": "1.0.0",
   "provider": {

@@ -138,7 +138,7 @@ export class LightFixturesSuppliersChennaiComponent implements OnInit {
         'Explore lighting fixtures from JLite Engineers, including commercial, architectural and decorative lighting solutions. Enquire about product availability and supply to Chennai.',
       canonicalUrl: 'https://www.jliteengineers.com/light-fixtures-suppliers-chennai/',
       keywords:
-        'Light fixtures suppliers in Chennai, Lighting suppliers in Chennai, LED light suppliers in Chennai, Commercial lighting suppliers in Chennai, Architectural lighting suppliers in Chennai, Industrial lighting suppliers in Chennai, LED light fixtures wholesale suppliers in Chennai, Light Pitcher in Chennai, LED lighting supplier in Chennai, 2x2 modular ceiling panel Tamil Nadu',
+        'Light fixtures suppliers in Chennai, Lighting suppliers in Chennai, LED light suppliers in Chennai, Commercial lighting suppliers in Chennai, Architectural lighting suppliers in Chennai, Industrial lighting suppliers in Chennai, LED light fixtures wholesale suppliers in Chennai, Light fixtures in Chennai, LED lighting supplier in Chennai, 2x2 modular ceiling panel Tamil Nadu',
       schema: {
         '@context': 'https://schema.org',
         '@graph': [

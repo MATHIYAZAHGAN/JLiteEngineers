@@ -111,23 +111,23 @@ export class LightPitcherChennaiComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Light Pitcher in Chennai | JLITE Engineers',
+      title: 'Light fixtures in Chennai | JLITE Engineers',
       description:
-        'Explore Light Pitcher lighting products and solutions from JLITE Engineers in Chennai. View available products, specifications and request a quotation.',
+        'Explore Light Fixtures lighting products and solutions from JLITE Engineers in Chennai. View available products, specifications and request a quotation.',
       canonicalUrl: 'https://www.jliteengineers.com/light-pitcher-chennai/',
       keywords:
-        'Light Pitcher in Chennai, Light Pitcher lighting solutions in Chennai, LED lighting supplier in Chennai, commercial LED troffer Chennai, architectural linear lighting Chennai, industrial high bay LED Chennai, 2x2 modular ceiling panel Tamil Nadu',
+        'Light fixtures in Chennai, Light Fixtures lighting solutions in Chennai, LED lighting supplier in Chennai, commercial LED troffer Chennai, architectural linear lighting Chennai, industrial high bay LED Chennai, 2x2 modular ceiling panel Tamil Nadu',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Product',
-        'name': 'Light Pitcher Lighting Solutions in Chennai',
+        'name': 'Light Fixtures Lighting Solutions in Chennai',
         'image': [
           'https://www.jliteengineers.com/assets/work/Picture37.jpg',
           'https://www.jliteengineers.com/assets/work/Picture38.jpg'
         ],
         'brand': {
           '@type': 'Brand',
-          'name': 'Light Pitcher by JLITE Engineers'
+          'name': 'Light Fixtures by JLITE Engineers'
         },
         'description':
           'Commercial and architectural LED luminaires including 2x2 modular troffers, suspended linear profiles, and industrial UFO high bays engineered for high energy efficiency and 50,000-hour operational lifespan in Chennai.',

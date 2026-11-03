@@ -154,7 +154,7 @@ export class ElectricalContractorChennaiComponent implements OnInit {
                 'name': 'Can customers enquire about electrical equipment supply across India?',
                 'acceptedAnswer': {
                   '@type': 'Answer',
-                  'text': 'Yes. While Chennai is our primary market for turnkey on-site electrical contracting, JLite Engineers operates an India-wide supply network providing ISI & CE certified switchgear, MCBs, RCCBs, distribution boxes, smart touch switches, armoured cables, light poles, and Light Pitcher commercial LED fixtures across all states in India.'
+                  'text': 'Yes. While Chennai is our primary market for turnkey on-site electrical contracting, JLite Engineers operates an India-wide supply network providing ISI & CE certified switchgear, MCBs, RCCBs, distribution boxes, smart touch switches, armoured cables, light poles, and Light Fixtures commercial LED fixtures across all states in India.'
                 }
               },
               {

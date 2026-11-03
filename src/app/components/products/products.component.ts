@@ -44,7 +44,7 @@ export class ProductsComponent implements OnInit {
   ]);
   activeCategory = signal('All');
 
-  // Authentic 21-item Light Pitcher Luminaire Collection
+  // Authentic 21-item Light Fixtures Luminaire Collection
   fallbackProducts: Product[] = [
     {
       id: 'lp-1',
@@ -326,7 +326,7 @@ export class ProductsComponent implements OnInit {
   }
 
   fetchCatalog(): void {
-    // Populate with authentic Light Pitcher collection immediately
+    // Populate with authentic Light Fixtures collection immediately
     this.products.set(this.fallbackProducts);
 
     // If backend has products, only accept items with valid light pitcher imagery,

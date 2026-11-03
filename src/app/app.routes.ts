@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
-    title: 'JLITE Engineers | Electrical Consultant & Contractor in Chennai | Light Pitcher'
+    title: 'JLITE Engineers | Electrical Consultant & Contractor in Chennai | Light Fixtures'
   },
   {
     path: 'electrical-consultant-chennai',

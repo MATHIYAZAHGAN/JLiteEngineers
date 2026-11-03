@@ -73,12 +73,12 @@ export class SeoService {
 
   initDefaultSeo(): void {
     this.setPageSeo({
-      title: 'JLITE Engineers | Electrical Consultant & Contractor in Chennai | Light Pitcher',
+      title: 'JLITE Engineers | Electrical Consultant & Contractor in Chennai | Light Fixtures',
       description:
-        'JLITE Engineers is a Govt. A-Grade licensed electrical contractor and electrical consultant in Chennai. Specializing in HT/LT substations up to 33kV, industrial electrical engineering, switchgear supply, and Light Pitcher commercial LED lighting solutions across Tamil Nadu.',
+        'JLITE Engineers is a Govt. A-Grade licensed electrical contractor and electrical consultant in Chennai. Specializing in HT/LT substations up to 33kV, industrial electrical engineering, switchgear supply, and Light Fixtures commercial LED lighting solutions across Tamil Nadu.',
       canonicalUrl: 'https://www.jliteengineers.com/',
       keywords:
-        'electrical contractors in Chennai, Chennai, Electrical consultant in Chennai, Light pole supplier in Chennai, Electrical components supplier in Chennai, Electrical contractor in Chennai, Light Pitcher in Chennai, Electrical consultancy services in Chennai, Electrical engineering consultant in Chennai, Industrial electrical contractor in Chennai, Commercial electrical contractor in Chennai, HT LT electrical contractor in Chennai, Substation installation contractor in Chennai, Transformer installation services in Chennai, Light Pitcher lighting solutions in Chennai, LED lighting supplier in Chennai'
+        'electrical contractors in Chennai, Chennai, Electrical consultant in Chennai, Light pole supplier in Chennai, Electrical components supplier in Chennai, Electrical contractor in Chennai, Light fixtures in Chennai, Electrical consultancy services in Chennai, Electrical engineering consultant in Chennai, Industrial electrical contractor in Chennai, Commercial electrical contractor in Chennai, HT LT electrical contractor in Chennai, Substation installation contractor in Chennai, Transformer installation services in Chennai, Light fixtures suppliers in Chennai, LED lighting supplier in Chennai'
     });
     this.injectLocalBusinessSchema();
   }
@@ -234,7 +234,7 @@ export class SeoService {
                 '@type': 'Offer',
                 'itemOffered': {
                   '@type': 'Service',
-                  'name': 'Light Pitcher Lighting Solutions in Chennai',
+                  'name': 'Light Fixtures in Chennai',
                   'description': 'Architectural and commercial LED troffers, suspended linear profiles, industrial high bays, and energy-efficient lighting supply & turnkey installations across Tamil Nadu.'
                 }
               }
@@ -263,10 +263,10 @@ export class SeoService {
             },
             {
               '@type': 'Question',
-              'name': 'What is Light Pitcher and where can I buy it in Chennai?',
+              'name': 'What commercial and architectural light fixtures are available in Chennai?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Light Pitcher is JLITE Engineers flagship architectural and commercial LED lighting brand in Chennai, offering 2x2 modular workstation troffers, suspended linear luminaires, and industrial high bays with up to 50,000 hours lifespan.'
+                'text': 'JLITE Engineers is a premier light fixtures supplier in Chennai, offering architectural and commercial LED lighting brand in Chennai, offering 2x2 modular workstation troffers, suspended linear luminaires, and industrial high bays with up to 50,000 hours lifespan.'
               }
             },
             {

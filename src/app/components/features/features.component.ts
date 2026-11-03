@@ -38,7 +38,7 @@ export class FeaturesComponent {
 
   workPhotos: WorkPhoto[] = [
     { img: 'assets/work/Picture37.jpg', title: 'Modular Workstation Troffer Lighting in Chennai Commercial Space', tag: 'Commercial Lighting' },
-    { img: 'assets/work/Picture38.jpg', title: 'Conference Hall Architectural Lighting by Light Pitcher Chennai', tag: 'Corporate Fitout' },
+    { img: 'assets/work/Picture38.jpg', title: 'Conference Hall Architectural Lighting by Light Fixtures Chennai', tag: 'Corporate Fitout' },
     { img: 'assets/work/Picture42.jpg', title: 'Solar PV Module Installation & Array', tag: 'Solar Engineering' },
     { img: 'assets/work/Picture43.jpg', title: 'Solar Inverter & High-Voltage Termination', tag: 'Power Systems' },
     { img: 'assets/work/Picture3.jpg',  title: '33KV HT Substation & Transformer Setup by Electrical Contractor in Chennai', tag: 'A-Grade Contracting' },
