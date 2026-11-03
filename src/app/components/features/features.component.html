@@ -146,8 +146,7 @@
           
           <!-- Image Container -->
           <div class="relative overflow-hidden aspect-[4/3] bg-slate-900">
-            <img [src]="photo.img" [alt]="photo.title"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            <img [src]="photo.img" [alt]="photo.title" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                  loading="lazy"/>
             
             <!-- Hover Gold Gradient Overlay with Zoom Icon -->

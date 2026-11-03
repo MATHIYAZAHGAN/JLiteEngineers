@@ -322,7 +322,10 @@ export class ProductsComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.fetchCatalog();
+    this.products.set(this.fallbackProducts);
+    if (typeof window !== 'undefined') {
+      setTimeout(() => this.fetchCatalog(), 1600);
+    }
   }
 
   fetchCatalog(): void {

@@ -43,6 +43,8 @@
 
         <!-- High-Contrast Navy Cart Button -->
         <button (click)="cartService.openCart()"
+          aria-label="View Shopping Cart"
+          title="Shopping Cart"
           style="background: linear-gradient(135deg, #0b1d3a 0%, #1a3060 100%); color: #ffffff; border: 2px solid rgba(184, 134, 11, 0.6); box-shadow: 0 4px 16px rgba(11, 29, 58, 0.4);"
           class="relative flex items-center justify-center gap-1.5 h-9 sm:h-10 px-2.5 sm:px-3.5 rounded-xl font-bold text-xs hover:shadow-xl transition-all duration-200 press flex-shrink-0">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -98,6 +100,7 @@
         <!-- AUTH BUTTON / USER DROPDOWN (DESKTOP & TABLET) -->
         <!-- Case 1: Guest User -> Sign In Button -->
         <button *ngIf="!authService.isLoggedIn()" (click)="openLoginModal()"
+          aria-label="Sign In"
           class="hidden sm:flex items-center justify-center gap-1.5 h-9 sm:h-10 px-3 sm:px-3.5 rounded-xl font-bold text-xs text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 shadow-sm transition-all press whitespace-nowrap flex-shrink-0">
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -110,6 +113,7 @@
         <!-- Case 2: Logged-in User -> Avatar Pill with Dropdown -->
         <div *ngIf="authService.isLoggedIn()" class="relative">
           <button (click)="toggleAccountDropdown()"
+            aria-label="User Account Menu"
             class="flex items-center gap-2 h-9 sm:h-10 px-2.5 sm:px-3 rounded-xl bg-slate-900 hover:bg-slate-950 text-white border border-amber-500/40 shadow-sm transition press flex-shrink-0">
             <div
               class="w-7 h-7 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 font-black text-xs flex items-center justify-center shadow">

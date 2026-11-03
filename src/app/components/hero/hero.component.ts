@@ -41,21 +41,25 @@ export class HeroComponent implements OnInit {
   @ViewChild('panelImg') panelImg!: ElementRef<HTMLImageElement>;
 
   ngOnInit(): void {
-    this.cmsService.getHero().subscribe({
-      next: (data) => {
-        if (data) {
-          this.heroData.set({
-            ...this.heroData(),
-            ...data,
-            badgeText: 'PREMIUM ELECTRICAL SOLUTIONS',
-            title: 'JLITE Engineers Power Your World',
-            highlightText: 'A-Grade Electrical Contractor • Up to 33kV',
-            subtitle: 'A-Grade Electrical Contractor • Up to 33kV',
-            description: 'Manufacturer & Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches & Armoured Cables.'
-          });
-        }
-      }
-    });
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        this.cmsService.getHero().subscribe({
+          next: (data) => {
+            if (data) {
+              this.heroData.set({
+                ...this.heroData(),
+                ...data,
+                badgeText: 'PREMIUM ELECTRICAL SOLUTIONS',
+                title: 'JLITE Engineers Power Your World',
+                highlightText: 'A-Grade Electrical Contractor • Up to 33kV',
+                subtitle: 'A-Grade Electrical Contractor • Up to 33kV',
+                description: 'Manufacturer & Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches & Armoured Cables.'
+              });
+            }
+          }
+        });
+      }, 1200);
+    }
   }
 
   onPanelHover(event: MouseEvent) {

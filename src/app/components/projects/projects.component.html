@@ -131,7 +131,7 @@
              style="box-shadow:var(--sh-md);"
              (click)="openLightbox(galleryImages[0].src)">
           <div style="aspect-ratio:16/10;">
-            <img [src]="galleryImages[0].src" [alt]="galleryImages[0].label"
+            <img [src]="galleryImages[0].src" loading="lazy" decoding="async" [alt]="galleryImages[0].label"
                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
             <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(11,29,58,0.88) 100%);"></div>
             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(11,29,58,0.2);"></div>
@@ -162,8 +162,7 @@
                style="box-shadow:var(--sh-sm);"
                (click)="openLightbox(img.src)">
             <div style="aspect-ratio:4/3;">
-              <img [src]="img.src" [alt]="img.label"
-                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+              <img [src]="img.src" [alt]="img.label" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
               <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(11,29,58,0.5);"></div>
               <div class="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <p class="text-white text-xs font-medium">{{ img.label }}</p>
@@ -188,8 +187,7 @@
                style="box-shadow:var(--sh-sm);"
                (click)="openLightbox(img.src)">
             <div style="aspect-ratio:1/1;">
-              <img [src]="img.src" [alt]="img.label"
-                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+              <img [src]="img.src" [alt]="img.label" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
               <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(11,29,58,0.5);"></div>
               <div class="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <p class="text-white text-xs font-medium">{{ img.label }}</p>
@@ -205,8 +203,7 @@
              style="box-shadow:var(--sh-sm);"
              (click)="openLightbox(img.src)">
           <div style="aspect-ratio:1/1;">
-            <img [src]="img.src" [alt]="img.label"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+            <img [src]="img.src" [alt]="img.label" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(11,29,58,0.55);"></div>
             <div class="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <p class="text-white text-xs font-medium leading-tight">{{ img.label }}</p>
@@ -229,7 +226,7 @@
              style="box-shadow:var(--sh-sm);"
              (click)="openLightbox(galleryImages[6].src)">
           <div style="aspect-ratio:16/7;">
-            <img [src]="galleryImages[6].src" [alt]="galleryImages[6].label"
+            <img [src]="galleryImages[6].src" loading="lazy" decoding="async" [alt]="galleryImages[6].label"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"/>
             <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(11,29,58,0.65) 0%,transparent 55%);"></div>
             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(11,29,58,0.25);"></div>
@@ -244,7 +241,7 @@
              style="box-shadow:var(--sh-sm);"
              (click)="openLightbox(galleryImages[7].src)">
           <div style="aspect-ratio:16/7;" class="hidden sm:block">
-            <img [src]="galleryImages[7].src" [alt]="galleryImages[7].label"
+            <img [src]="galleryImages[7].src" loading="lazy" decoding="async" [alt]="galleryImages[7].label"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(11,29,58,0.5);"></div>
             <div class="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -252,7 +249,7 @@
             </div>
           </div>
           <div style="aspect-ratio:16/9;" class="sm:hidden">
-            <img [src]="galleryImages[7].src" [alt]="galleryImages[7].label"
+            <img [src]="galleryImages[7].src" loading="lazy" decoding="async" [alt]="galleryImages[7].label"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(11,29,58,0.5);"></div>
           </div>
@@ -267,8 +264,7 @@
              style="box-shadow:var(--sh-sm);"
              (click)="openLightbox(img.src)">
           <div style="aspect-ratio:4/3;">
-            <img [src]="img.src" [alt]="img.label"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+            <img [src]="img.src" [alt]="img.label" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:rgba(11,29,58,0.55);"></div>
             <div class="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <p class="text-white text-xs font-medium leading-tight">{{ img.label }}</p>

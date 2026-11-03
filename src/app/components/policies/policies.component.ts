@@ -29,8 +29,11 @@ export class PoliciesComponent implements OnInit, OnDestroy {
   constructor() {
     // Automatically reload content whenever activePolicyTab changes
     effect(() => {
+      const open = this.policyService.isPolicyOpen();
       const currentTab = this.policyService.activePolicyTab();
-      this.loadPolicy(currentTab);
+      if (open) {
+        this.loadPolicy(currentTab);
+      }
     }, { allowSignalWrites: true });
   }
 

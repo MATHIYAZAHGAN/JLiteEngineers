@@ -15,7 +15,7 @@ export class KeepAliveService {
     // Immediate ping on app startup, then recurring ping every 3 minutes
     const interval = environment.renderKeepAliveIntervalMs || 180000;
     
-    timer(0, interval).subscribe(() => {
+    timer(6000, interval).subscribe(() => {
       this.pingBackend();
     });
   }

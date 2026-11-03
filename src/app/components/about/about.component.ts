@@ -150,7 +150,11 @@ export class AboutComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.fetchAboutData();
+    if (typeof window !== 'undefined') {
+      setTimeout(() => this.fetchAboutData(), 1400);
+    } else {
+      this.fetchAboutData();
+    }
   }
 
   fetchAboutData(): void {
