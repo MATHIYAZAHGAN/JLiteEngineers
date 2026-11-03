@@ -52,36 +52,41 @@ export class AboutComponent implements OnInit {
     ],
     stats: [
       {
-        label: 'Products',
-        value: '500+',
-        icon: 'check-circle'
+        label: 'Years Experience',
+        value: '12+',
+        icon: 'calendar'
       },
       {
-        label: 'Max Rating',
-        value: '15kV',
+        label: 'Max Voltage Rating',
+        value: '33kV',
         icon: 'zap'
       },
       {
-        label: 'Clients',
-        value: '50K+',
+        label: 'Projects Delivered',
+        value: '500+',
+        icon: 'award'
+      },
+      {
+        label: 'Client Retention',
+        value: '99.4%',
         icon: 'users'
       }
     ],
     features: [
       {
-        title: 'Expert Team',
-        description: 'Certified professionals with extensive experience',
-        icon: 'award'
+        title: "Govt. Grade 'A' Licensed",
+        description: 'Authorised by Tamil Nadu Electrical Licensing Board for HV/MV/LV works up to 33kV.',
+        icon: 'license'
       },
       {
-        title: 'Quality Materials',
-        description: 'We use only premium, certified materials',
-        icon: 'shield'
+        title: 'CEIG Approvals & Statutory Liaison',
+        description: 'Seamless statutory clearances with the Chief Electrical Inspector to Government.',
+        icon: 'approval'
       },
       {
-        title: '24/7 Support',
-        description: 'Round-the-clock customer support',
-        icon: 'phone'
+        title: 'Turnkey EPC Capabilities',
+        description: 'Design, procurement, erection, testing, and commissioning under single-point responsibility.',
+        icon: 'turnkey'
       }
     ],
     isActive: true,
@@ -92,9 +97,28 @@ export class AboutComponent implements OnInit {
 
   get maxRating(): string {
     const stat = this.aboutData().stats.find(s => 
-      s.label.toLowerCase().includes('max rating') || s.label.toLowerCase().includes('rating')
+      s.label.toLowerCase().includes('max voltage') || s.label.toLowerCase().includes('voltage') || s.label.toLowerCase().includes('rating')
     );
-    return stat ? stat.value : '15kV';
+    return stat ? stat.value : '33kV';
+  }
+
+  getStatIcon(s: AboutStat): string {
+    if (s.icon && s.icon.trim()) return s.icon;
+    const lbl = (s.label || '').toLowerCase();
+    if (lbl.includes('year') || lbl.includes('exp')) return 'calendar';
+    if (lbl.includes('volt') || lbl.includes('rating') || lbl.includes('kv')) return 'zap';
+    if (lbl.includes('project') || lbl.includes('deliver') || lbl.includes('product')) return 'award';
+    if (lbl.includes('retention') || lbl.includes('client') || lbl.includes('happy')) return 'users';
+    return 'award';
+  }
+
+  getFeatureIcon(feature: AboutFeature): string {
+    if (feature.icon && feature.icon.trim()) return feature.icon;
+    const t = (feature.title || '').toLowerCase();
+    if (t.includes('license') || t.includes('grade') || t.includes('govt') || t.includes('award') || t.includes('expert')) return 'license';
+    if (t.includes('ceig') || t.includes('approval') || t.includes('liaison') || t.includes('statutory') || t.includes('shield') || t.includes('quality')) return 'approval';
+    if (t.includes('turnkey') || t.includes('epc') || t.includes('capabilit') || t.includes('support') || t.includes('team')) return 'turnkey';
+    return 'license';
   }
 
   companyFacts = [

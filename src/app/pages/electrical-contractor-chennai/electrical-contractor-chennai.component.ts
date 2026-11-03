@@ -18,9 +18,9 @@ export class ElectricalContractorChennaiComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Electrical Contractors in Chennai | JLite Engineers',
+      title: 'Electrical Contractor in Chennai | JLite Engineers',
       description:
-        'Looking for electrical contractors in Chennai? Explore JLite Engineers\' electrical engineering, contracting and product supply capabilities. Contact our team to discuss your project requirements.',
+        'Searching for an electrical contractor in Chennai? Explore JLite Engineers\' electrical installation, contracting and maintenance capabilities for eligible industrial and commercial projects.',
       canonicalUrl: 'https://www.jliteengineers.com/electrical-contractors-chennai/',
       keywords:
         'Electrical contractors in Chennai, Chennai, Electrical consultant in Chennai, Light pole supplier in Chennai, Electrical components supplier in Chennai, Electrical contractor Chennai, Industrial electrical contractors in Chennai, Electrical installation contractors in Chennai, HT LT electrical contractor in Chennai, Substation installation contractor in Chennai, Transformer installation services in Chennai',

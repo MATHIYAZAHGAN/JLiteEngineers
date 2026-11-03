@@ -40,6 +40,7 @@ export class SeoService {
       url.includes('electrical-consultant-chennai') ||
       url.includes('electrical-contractor-chennai') ||
       url.includes('electrical-contractors-chennai') ||
+      url.includes('light-fixtures-suppliers-chennai') ||
       url.includes('light-pitcher-chennai')
     ) {
       return;
@@ -47,21 +48,21 @@ export class SeoService {
 
     // Dynamic section-based and query-intent-based internal SEO
     if (url.includes('#consultancy') || url.includes('intent=consultant')) {
-      this.setTitle('Electrical Consultant in Chennai | JLITE Engineers');
+      this.setTitle('Electrical Consultant in Chennai | JLite Engineers');
       this.setMetaDescription(
-        'Expert electrical engineering consultancy in Chennai. SLD preparation, load calculation, power quality audits, and statutory CEIG approvals.'
+        'Looking for an electrical consultant in Chennai? Explore JLite Engineers\' electrical engineering consultancy, design and project support services.'
       );
       this.setCanonicalUrl('https://www.jliteengineers.com/#consultancy-services');
     } else if (url.includes('#contractor') || url.includes('intent=contractor')) {
-      this.setTitle('Electrical Contractor in Chennai | Govt. A-Grade 33kV | JLITE Engineers');
+      this.setTitle('Electrical Contractor in Chennai | JLite Engineers');
       this.setMetaDescription(
-        "Govt. Grade 'A' licensed electrical contractor in Chennai executing HT/LT substations up to 33kV, transformer erections, and industrial installations."
+        'Searching for an electrical contractor in Chennai? Explore JLite Engineers\' electrical installation, contracting and maintenance capabilities.'
       );
       this.setCanonicalUrl('https://www.jliteengineers.com/#electrical-contractors');
     } else if (url.includes('#light-pitcher') || url.includes('#lighting') || url.includes('intent=lighting')) {
-      this.setTitle('Light Pitcher in Chennai | Commercial LED Luminaires | JLITE Engineers');
+      this.setTitle('Light Fixtures Suppliers in Chennai | JLite Engineers');
       this.setMetaDescription(
-        'Explore Light Pitcher lighting solutions in Chennai: modular office troffers, industrial high bays, and architectural linear LED lighting.'
+        'Explore lighting fixtures from JLite Engineers, including commercial, architectural and decorative lighting solutions. Enquire about product availability and supply to Chennai.'
       );
       this.setCanonicalUrl('https://www.jliteengineers.com/#light-pitcher');
     } else if (url === '/' || url.startsWith('/#')) {

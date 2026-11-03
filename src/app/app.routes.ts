@@ -12,7 +12,7 @@ export const routes: Routes = [
       import('./pages/electrical-consultant-chennai/electrical-consultant-chennai.component').then(
         m => m.ElectricalConsultantChennaiComponent
       ),
-    title: 'Electrical Consultant in Chennai | JLITE Engineers'
+    title: 'Electrical Consultant in Chennai | JLite Engineers'
   },
   {
     path: 'electrical-contractors-chennai',
@@ -20,7 +20,7 @@ export const routes: Routes = [
       import('./pages/electrical-contractor-chennai/electrical-contractor-chennai.component').then(
         m => m.ElectricalContractorChennaiComponent
       ),
-    title: 'Electrical Contractors in Chennai | JLite Engineers'
+    title: 'Electrical Contractor in Chennai | JLite Engineers'
   },
   {
     path: 'electrical-contractor-chennai',
@@ -28,12 +28,17 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'light-pitcher-chennai',
+    path: 'light-fixtures-suppliers-chennai',
     loadComponent: () =>
-      import('./pages/light-pitcher-chennai/light-pitcher-chennai.component').then(
-        m => m.LightPitcherChennaiComponent
+      import('./pages/light-fixtures-suppliers-chennai/light-fixtures-suppliers-chennai.component').then(
+        m => m.LightFixturesSuppliersChennaiComponent
       ),
-    title: 'Light Pitcher in Chennai | JLITE Engineers'
+    title: 'Light Fixtures Suppliers in Chennai | JLite Engineers'
+  },
+  {
+    path: 'light-pitcher-chennai',
+    redirectTo: 'light-fixtures-suppliers-chennai',
+    pathMatch: 'full'
   },
   {
     path: '**',

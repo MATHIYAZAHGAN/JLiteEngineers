@@ -27,44 +27,61 @@
       </p>
     </div>
 
-    <!-- Feature Cards - Premium Light Theme with Vibrant Gold -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+    <!-- Feature Cards - Compact Executive Layout with Crystal Clear Icons -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4.5">
       <div *ngFor="let f of features; let i = index" appScrollReveal [stagger]="i * 80"
-           class="group press p-5 sm:p-6 flex flex-col gap-3.5 sm:gap-4 rounded-2xl transition-all duration-400 relative overflow-hidden" 
-           style="background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(10, 22, 40, 0.06), 0 1px 3px rgba(10, 22, 40, 0.03);"
-           onmouseenter="this.style.borderColor='rgba(245, 158, 11, 0.5)'; this.style.boxShadow='0 12px 32px rgba(245, 158, 11, 0.18), 0 4px 12px rgba(245, 158, 11, 0.1)'; this.style.transform='translateY(-6px)';"
-           onmouseleave="this.style.borderColor='#e2e8f0'; this.style.boxShadow='0 4px 12px rgba(10, 22, 40, 0.06), 0 1px 3px rgba(10, 22, 40, 0.03)'; this.style.transform='translateY(0)';">
+           class="group p-4 sm:p-5 flex flex-col gap-2.5 sm:gap-3 rounded-xl transition-all duration-300 relative overflow-hidden bg-white border border-slate-200/90 hover:border-amber-400/80 shadow-xs hover:shadow-md"
+           onmouseenter="this.style.transform='translateY(-4px)';"
+           onmouseleave="this.style.transform='translateY(0)';">
         
         <!-- Top gold accent bar (visible on hover) -->
-        <div class="absolute top-0 left-0 right-0 h-1 transition-opacity duration-400 opacity-0 group-hover:opacity-100"
+        <div class="absolute top-0 left-0 right-0 h-1 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
              style="background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%);"></div>
         
-        <div class="w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-400 flex-shrink-0"
-             style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3), 0 2px 8px rgba(245, 158, 11, 0.15);">
-          <svg *ngIf="f.icon === 'certified'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-          <svg *ngIf="f.icon === 'smart'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-          <svg *ngIf="f.icon === 'warranty'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-          <svg *ngIf="f.icon === 'delivery'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <!-- Crystal Clear Icon with ZERO background color -->
+        <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-start text-amber-500 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+          <svg *ngIf="f.icon === 'certified'" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/>
+            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+            <polyline points="9 8 11 10 15 6"/>
+          </svg>
+          <svg *ngIf="f.icon === 'smart'" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+            <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+            <circle cx="12" cy="20" r="1.5" fill="currentColor"/>
+          </svg>
+          <svg *ngIf="f.icon === 'warranty'" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <svg *ngIf="f.icon === 'delivery'" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13" rx="2"/>
+            <path d="M16 8h4l3 5v3h-7V8z"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
         </div>
+
         <div>
-          <h3 class="font-heading font-bold text-lg mb-3 group-hover:text-transparent group-hover:bg-clip-text transition-all duration-400" 
-              style="color: #0a1628;"
-              onmouseenter="this.style.background='linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)'; this.style.webkitBackgroundClip='text'; this.style.webkitTextFillColor='transparent';"
-              onmouseleave="this.style.background='none'; this.style.webkitTextFillColor='#0a1628';">{{ f.title }}</h3>
-          <p class="font-body text-sm leading-relaxed" style="color: #64748b;">{{ f.desc }}</p>
+          <h3 class="font-heading font-extrabold text-[1rem] sm:text-[1.05rem] mb-1.5 text-slate-900 group-hover:text-amber-600 transition-colors">
+            {{ f.title }}
+          </h3>
+          <p class="font-body text-xs sm:text-[0.82rem] leading-relaxed text-slate-600 font-normal">
+            {{ f.desc }}
+          </p>
         </div>
       </div>
     </div>
 
-    <!-- Trust Bar - Enhanced with Vibrant Gold -->
-    <div appScrollReveal [stagger]="200" class="mt-12 sm:mt-16 pt-8 sm:pt-12 flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-10"
-         style="border-top:2px solid #e2e8f0;">
-      <div *ngFor="let t of trustItems" class="flex items-center gap-2.5 sm:gap-3 group cursor-default" style="color:#64748b;">
-        <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300" 
-             style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);">
-          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="font-body text-xs sm:text-sm font-semibold group-hover:text-navy-deep transition-colors duration-300">{{ t }}</span>
+    <!-- Trust Bar - Clean Crystal Line Art -->
+    <div appScrollReveal [stagger]="200" class="mt-10 sm:mt-12 pt-6 sm:pt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8"
+         style="border-top: 1px solid #e2e8f0;">
+      <div *ngFor="let t of trustItems" class="flex items-center gap-2 group cursor-default text-slate-600">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-500 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span class="font-body text-xs sm:text-sm font-semibold group-hover:text-amber-600 transition-colors duration-200">{{ t }}</span>
       </div>
     </div>
 
