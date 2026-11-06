@@ -95,7 +95,7 @@ export class PoliciesComponent implements OnInit, OnDestroy {
         this.isLoading.set(false);
         // Only update the page title when the policy panel is actually open
         if (this.isOpen()) {
-          this.seoService.setTitle(`${policy.title} | JLite Engineers Compliance`);
+          this.seoService.setTitle(`${policy.title} | JLite Compliance`);
         }
       },
       error: () => {
@@ -105,13 +105,13 @@ export class PoliciesComponent implements OnInit, OnDestroy {
         this.isLoading.set(false);
         // Only update the page title when the policy panel is actually open
         if (this.isOpen()) {
-          this.seoService.setTitle(`${fallback.title} | JLite Engineers Compliance`);
+          this.seoService.setTitle(`${fallback.title} | JLite Compliance`);
         }
       }
     });
   }
 
   restoreDefaultTitle(): void {
-    this.seoService.setTitle('JLite Engineers | Govt. A-Grade Electrical Contractors & Switchgear Suppliers');
+    this.seoService.setTitle('JLite | Govt. A-Grade Electrical Contractors & Switchgear Suppliers');
   }
 }

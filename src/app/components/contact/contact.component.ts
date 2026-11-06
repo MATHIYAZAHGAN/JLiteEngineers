@@ -87,7 +87,7 @@ export class ContactComponent {
       {
         email: 'jlite@jliteengineers.com',
         to_email: 'jlite@jliteengineers.com',
-        to_name: 'JLite Engineers',
+        to_name: 'JLite',
         from_name: this.form.name,
         from_email: this.form.email,
         subject: this.form.subject || 'New Enquiry from JLite Website',
@@ -109,7 +109,7 @@ export class ContactComponent {
   }
 
   contactInfo = [
-    { icon: 'company', label: 'Company', value: "M/s. JLITE Electrical Engineer's and Contractor." },
+    { icon: 'company', label: 'Company', value: "M/s. JLITE." },
     { icon: 'map', label: 'Head Office', value: 'No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042.' },
     { icon: 'map', label: 'Branch Office', value: '7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount, Chennai - 600016.' },
     { icon: 'phone', label: 'Phone', value: '+91 73581 78174' },

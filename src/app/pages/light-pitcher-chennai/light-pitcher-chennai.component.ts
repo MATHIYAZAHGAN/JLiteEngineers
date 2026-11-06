@@ -111,9 +111,9 @@ export class LightPitcherChennaiComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Light fixtures in Chennai | JLITE Engineers',
+      title: 'Light fixtures in Chennai | JLite',
       description:
-        'Explore Light Fixtures lighting products and solutions from JLITE Engineers in Chennai. View available products, specifications and request a quotation.',
+        'Explore Light Fixtures lighting products and solutions from JLITE in Chennai. View available products, specifications and request a quotation.',
       canonicalUrl: 'https://www.jliteengineers.com/light-pitcher-chennai/',
       keywords:
         'Light fixtures in Chennai, Light Fixtures lighting solutions in Chennai, LED lighting supplier in Chennai, commercial LED troffer Chennai, architectural linear lighting Chennai, industrial high bay LED Chennai, 2x2 modular ceiling panel Tamil Nadu',
@@ -127,7 +127,7 @@ export class LightPitcherChennaiComponent implements OnInit {
         ],
         'brand': {
           '@type': 'Brand',
-          'name': 'Light Fixtures by JLITE Engineers'
+          'name': 'Light Fixtures by JLite'
         },
         'description':
           'Commercial and architectural LED luminaires including 2x2 modular troffers, suspended linear profiles, and industrial UFO high bays engineered for high energy efficiency and 50,000-hour operational lifespan in Chennai.',
@@ -140,7 +140,7 @@ export class LightPitcherChennaiComponent implements OnInit {
           'availability': 'https://schema.org/InStock',
           'seller': {
             '@type': 'LocalBusiness',
-            'name': 'JLITE Engineers',
+            'name': 'JLite',
             'address': {
               '@type': 'PostalAddress',
               'streetAddress': 'No.338, Vijaya Nagar, 6th Main Road, Velachery',

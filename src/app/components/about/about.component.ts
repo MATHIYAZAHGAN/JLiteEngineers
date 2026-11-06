@@ -43,9 +43,9 @@ export class AboutComponent implements OnInit {
   // Default data populated with exact MongoDB DB Document structure
   aboutData = signal<AboutData>({
     slug: 'main-about',
-    heading: 'About JLITE Engineers',
+    heading: 'About JLITE',
     subheading: 'Excellence in Electrical Engineering',
-    content: 'JLITE Engineers is a leading provider of electrical contracting and lighting solutions. With years of experience and a commitment to quality, we deliver innovative solutions for all your electrical needs.',
+    content: 'JLITE is a leading provider of electrical contracting and lighting solutions. With years of experience and a commitment to quality, we deliver innovative solutions for all your electrical needs.',
     images: [
       'assets/Picture1.jpg',
       'assets/Picture2.jpg'

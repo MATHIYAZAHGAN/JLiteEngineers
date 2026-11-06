@@ -16,7 +16,7 @@
       <div class="flex items-center gap-3">
         <div
           class="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-amber-400/80 flex items-center justify-center shadow-lg flex-shrink-0">
-          <img src="assets/brand-logo.png" alt="JLite Engineers"
+          <img src="assets/brand-logo.png" alt="JLite"
             class="w-full h-full object-cover transform scale-[1.33]" />
         </div>
         <div>
@@ -342,7 +342,7 @@
             <input type="checkbox" [(ngModel)]="registerData.acceptTerms" name="acceptTerms"
               class="auth-checkbox mt-0.5">
             <span class="auth-text-muted text-[0.74rem]">
-              I agree to JLite Engineers
+              I agree to JLite
               <strong class="auth-link-gold underline cursor-pointer hover:text-amber-300"
                 (click)="viewPolicy('terms-and-conditions', $event)">Terms of Service</strong>
               and
@@ -375,7 +375,7 @@
       <div *ngIf="!authService.isLoggedIn() && authService.authModalTab() === 'forgot-password'">
         <form (ngSubmit)="onForgotPassword()" class="space-y-4">
           <p class="auth-text-muted text-xs leading-relaxed">
-            Enter your email address associated with your JLite Engineers account. We will send you secure password
+            Enter your email address associated with your JLite account. We will send you secure password
             reset instructions.
           </p>
 

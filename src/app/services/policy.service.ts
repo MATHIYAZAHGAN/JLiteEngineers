@@ -107,7 +107,7 @@ export class PolicyService {
           title: 'Privacy Policy & Data Protection',
           lastUpdated: dateStr,
           contentMarkdown: `1. Introduction & Scope
-JLite Engineers Pvt. Ltd. ("we", "us", or "our"), operating under Government of Tamil Nadu Electrical Licensing Board A-Grade License (ESA No: 33kV-IND), is dedicated to protecting your privacy and confidential data. This Privacy Policy governs the collection, processing, and safeguarding of information gathered via our e-commerce platform, engineering inquiry portal, and related services in accordance with the Information Technology Act, 2000, the Digital Personal Data Protection (DPDP) Act, 2023, and Reserve Bank of India (RBI) payment guidelines.
+JLite Pvt. Ltd. ("we", "us", or "our"), operating under Government of Tamil Nadu Electrical Licensing Board A-Grade License (ESA No: 33kV-IND), is dedicated to protecting your privacy and confidential data. This Privacy Policy governs the collection, processing, and safeguarding of information gathered via our e-commerce platform, engineering inquiry portal, and related services in accordance with the Information Technology Act, 2000, the Digital Personal Data Protection (DPDP) Act, 2023, and Reserve Bank of India (RBI) payment guidelines.
 
 2. Information We Collect
 • Personal Identification: Name, official email address, mobile phone number, and physical billing/shipping addresses.
@@ -117,7 +117,7 @@ JLite Engineers Pvt. Ltd. ("we", "us", or "our"), operating under Government of 
 
 3. Payment Gateway & Financial Security
 All online financial transactions are encrypted and processed through RBI-authorized payment aggregators (including PhonePe Payment Gateway). 
-• JLite Engineers NEVER captures, stores, or logs card numbers, CVVs, expiry dates, net-banking credentials, or UPI PINs on its servers.
+• JLite NEVER captures, stores, or logs card numbers, CVVs, expiry dates, net-banking credentials, or UPI PINs on its servers.
 • Payment processing adheres to PCI-DSS Level 1 compliance standards.
 
 4. How We Use Collected Data
@@ -137,7 +137,7 @@ Your personal information is retained only as long as necessary for business, ta
 
 7. Grievance Officer & Contact
 In compliance with the Information Technology Act 2000 and DPDP Act 2023:
-Grievance Officer: Legal & Compliance Desk, JLite Engineers Pvt. Ltd.
+Grievance Officer: Legal & Compliance Desk, JLite Pvt. Ltd.
 Address (Head Office): No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai – 600042, Tamil Nadu, India.
 Branch Office: 7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount, Chennai – 600016, Tamil Nadu, India.
 Email: jlite@jliteengineers.com | Tel: +91 73581 78174`
@@ -150,10 +150,10 @@ Email: jlite@jliteengineers.com | Tel: +91 73581 78174`
           title: 'Terms & Conditions of Service',
           lastUpdated: dateStr,
           contentMarkdown: `1. Acceptance of Terms
-By accessing the JLite Engineers website (jliteengineers.com), purchasing industrial electrical switchgear, or requesting engineering contracting services, you acknowledge that you have read, understood, and agreed to these Terms & Conditions.
+By accessing the JLite website (jliteengineers.com), purchasing industrial electrical switchgear, or requesting engineering contracting services, you acknowledge that you have read, understood, and agreed to these Terms & Conditions.
 
 2. Company Status & Engineering Authority
-JLite Engineers Pvt. Ltd. is an authorized Govt. A-Grade Electrical Contractor certified for up to 33kV high-voltage (HT) and medium/low-voltage (LT) infrastructure projects, electrical design, statutory CEIG approvals, and equipment supply.
+JLite Pvt. Ltd. is an authorized Govt. A-Grade Electrical Contractor certified for up to 33kV high-voltage (HT) and medium/low-voltage (LT) infrastructure projects, electrical design, statutory CEIG approvals, and equipment supply.
 
 3. Pricing, Invoicing & GST
 • All displayed prices are quoted in Indian Rupees (INR) and are subject to statutory Goods & Services Tax (GST) as applicable under Indian law.
@@ -165,10 +165,10 @@ JLite Engineers Pvt. Ltd. is an authorized Govt. A-Grade Electrical Contractor c
 • Commercial & Turnkey Contracting: Milestone-based payments specified in formal engineering contracts.
 
 5. Technical Safety & Installation Disclaimer
-High-voltage electrical switchgears, transformers, MCBs, MCCBs, and distribution panels must be installed strictly by certified A-Grade licensed electricians in accordance with IS/IEC standards and National Electrical Code (NEC) guidelines. JLite Engineers is not liable for hazards resulting from unauthorized modifications or amateur installations.
+High-voltage electrical switchgears, transformers, MCBs, MCCBs, and distribution panels must be installed strictly by certified A-Grade licensed electricians in accordance with IS/IEC standards and National Electrical Code (NEC) guidelines. JLite is not liable for hazards resulting from unauthorized modifications or amateur installations.
 
 6. Intellectual Property
-All logos, technical drawings, CAD layouts, custom component schematics, and branding displayed on this platform are the exclusive intellectual property of JLite Engineers Pvt. Ltd. and are protected under Indian Copyright and Trademark law.
+All logos, technical drawings, CAD layouts, custom component schematics, and branding displayed on this platform are the exclusive intellectual property of JLite Pvt. Ltd. and are protected under Indian Copyright and Trademark law.
 
 7. Governing Law & Dispute Resolution
 These Terms are governed by and construed under the laws of the Republic of India. Any legal dispute or proceeding arising out of or related to our products or services shall be subject to the exclusive jurisdiction of the competent courts in Chennai, Tamil Nadu.`
@@ -210,7 +210,7 @@ Upon inspection approval:
           title: 'Shipping & Delivery Policy',
           lastUpdated: dateStr,
           contentMarkdown: `1. Pan-India Delivery Coverage
-JLite Engineers delivers certified electrical components, switchgears, and industrial panels across all major industrial belts, metropolitan cities, and regional commercial centers across India.
+JLite delivers certified electrical components, switchgears, and industrial panels across all major industrial belts, metropolitan cities, and regional commercial centers across India.
 
 2. Dispatch Timelines
 • Standard In-Stock Products (MCBs, RCCBs, Contactors, LED Luminaires, Distribution Boards): Dispatched from our Chennai fulfillment hub within 24 to 48 business hours.

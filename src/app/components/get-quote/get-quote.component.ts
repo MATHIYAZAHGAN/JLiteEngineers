@@ -137,7 +137,7 @@ export class GetQuoteComponent {
       const templateParams = {
         email: 'jlite@jliteengineers.com',
         to_email: 'jlite@jliteengineers.com',
-        to_name: 'JLite Engineers',
+        to_name: 'JLite',
         from_name: this.form.name,
         from_email: this.form.email,
         phone: this.form.phone,

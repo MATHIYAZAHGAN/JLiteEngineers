@@ -15,7 +15,7 @@ export class HeroComponent implements OnInit {
   heroData = signal<HeroData>({
     slug: 'main-hero',
     badgeText: 'PREMIUM ELECTRICAL SOLUTIONS',
-    title: 'JLITE Engineers Power Your World',
+    title: 'JLITE Power Your World',
     highlightText: 'A-Grade Electrical Contractor • Up to 33kV',
     subtitle: 'A-Grade Electrical Contractor • Up to 33kV',
     description: 'Manufacturer & Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches & Armoured Cables.',
@@ -50,7 +50,7 @@ export class HeroComponent implements OnInit {
                 ...this.heroData(),
                 ...data,
                 badgeText: 'PREMIUM ELECTRICAL SOLUTIONS',
-                title: 'JLITE Engineers Power Your World',
+                title: 'JLITE Power Your World',
                 highlightText: 'A-Grade Electrical Contractor • Up to 33kV',
                 subtitle: 'A-Grade Electrical Contractor • Up to 33kV',
                 description: 'Manufacturer & Direct Supplier of ISI/CE Certified Switchgear, MCBs, RCCBs, DB Boxes, Smart Touch Switches & Armoured Cables.'

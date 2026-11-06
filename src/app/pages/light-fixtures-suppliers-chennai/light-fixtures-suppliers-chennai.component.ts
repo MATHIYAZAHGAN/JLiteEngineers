@@ -133,9 +133,9 @@ export class LightFixturesSuppliersChennaiComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Light Fixtures Suppliers in Chennai | JLite Engineers',
+      title: 'Light Fixtures Suppliers in Chennai | JLite',
       description:
-        'Explore lighting fixtures from JLite Engineers, including commercial, architectural and decorative lighting solutions. Enquire about product availability and supply to Chennai.',
+        'Explore lighting fixtures from JLite, including commercial, architectural and decorative lighting solutions. Enquire about product availability and supply to Chennai.',
       canonicalUrl: 'https://www.jliteengineers.com/light-fixtures-suppliers-chennai/',
       keywords:
         'Light fixtures suppliers in Chennai, Lighting suppliers in Chennai, LED light suppliers in Chennai, Commercial lighting suppliers in Chennai, Architectural lighting suppliers in Chennai, Industrial lighting suppliers in Chennai, LED light fixtures wholesale suppliers in Chennai, Light fixtures in Chennai, LED lighting supplier in Chennai, 2x2 modular ceiling panel Tamil Nadu',
@@ -168,7 +168,7 @@ export class LightFixturesSuppliersChennaiComponent implements OnInit {
           {
             '@type': ['LocalBusiness', 'ProfessionalService'],
             '@id': 'https://www.jliteengineers.com/light-fixtures-suppliers-chennai/#supplier',
-            'name': 'JLite Engineers - Light Fixtures Suppliers in Chennai',
+            'name': 'JLite - Light Fixtures Suppliers in Chennai',
             'url': 'https://www.jliteengineers.com/light-fixtures-suppliers-chennai/',
             'telephone': '+917358178174',
             'email': 'jlite@jliteengineers.com',

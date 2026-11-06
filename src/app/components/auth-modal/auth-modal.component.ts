@@ -189,7 +189,7 @@ export class AuthModalComponent implements OnInit, OnDestroy {
     }).subscribe({
       next: (res) => {
         this.isLoading.set(false);
-        this.successMessage.set('Account created successfully! Welcome to JLite Engineers.');
+        this.successMessage.set('Account created successfully! Welcome to JLite.');
         setTimeout(() => {
           this.authService.closeAuthModal();
           this.clearMessages();

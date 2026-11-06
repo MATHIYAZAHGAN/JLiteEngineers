@@ -18,9 +18,9 @@ export class ElectricalConsultantChennaiComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Electrical Consultant in Chennai | JLite Engineers',
+      title: 'Electrical Consultant in Chennai | JLite',
       description:
-        'Looking for an electrical consultant in Chennai? Explore JLite Engineers\' electrical engineering consultancy, design and project support services. Contact us to discuss your requirements.',
+        'Looking for an electrical consultant in Chennai? Explore JLite\' electrical engineering consultancy, design and project support services. Contact us to discuss your requirements.',
       canonicalUrl: 'https://www.jliteengineers.com/electrical-consultant-chennai/',
       keywords:
         'Electrical consultant in Chennai, Electrical consultancy services in Chennai, Electrical engineering consultant in Chennai, CEIG approval consultant Chennai, single line diagram electrical design Chennai, electrical load calculation Tamil Nadu, industrial electrical consultancy Chennai, electrical safety audit Chennai, thermography audit Chennai, transformer consultant Chennai',
@@ -53,11 +53,11 @@ export class ElectricalConsultantChennaiComponent implements OnInit {
           {
             '@type': ['ProfessionalService', 'Service'],
             '@id': 'https://www.jliteengineers.com/electrical-consultant-chennai/#service',
-            'name': 'JLite Engineers - Electrical Consultant in Chennai',
+            'name': 'JLite - Electrical Consultant in Chennai',
             'serviceType': 'Electrical Engineering Consultancy & CEIG Approvals',
             'provider': {
               '@type': 'LocalBusiness',
-              'name': 'JLite Engineers',
+              'name': 'JLite',
               'url': 'https://www.jliteengineers.com',
               'telephone': '+917358178174',
               'email': 'jlite@jliteengineers.com',
@@ -91,7 +91,7 @@ export class ElectricalConsultantChennaiComponent implements OnInit {
                 'name': 'What does an electrical consultant in Chennai do?',
                 'acceptedAnswer': {
                   '@type': 'Answer',
-                  'text': 'An electrical consultant designs the entire electrical power distribution architecture for your facility. At JLite Engineers, our consultancy covers load calculations, transformer and generator sizing, single-line diagrams (SLD), fault level analysis, statutory CEIG drawing approvals, bill of quantities (BOQ), and safety compliance under Tamil Nadu Electrical Inspectorate guidelines.'
+                  'text': 'An electrical consultant designs the entire electrical power distribution architecture for your facility. At JLite, our consultancy covers load calculations, transformer and generator sizing, single-line diagrams (SLD), fault level analysis, statutory CEIG drawing approvals, bill of quantities (BOQ), and safety compliance under Tamil Nadu Electrical Inspectorate guidelines.'
                 }
               },
               {
@@ -120,7 +120,7 @@ export class ElectricalConsultantChennaiComponent implements OnInit {
               },
               {
                 '@type': 'Question',
-                'name': 'Where can we meet JLite Engineers in Chennai?',
+                'name': 'Where can we meet JLite in Chennai?',
                 'acceptedAnswer': {
                   '@type': 'Answer',
                   'text': 'You can visit our Head Office at No.338, Vijaya Nagar, 6th Main Road, Velachery, Chennai - 600042, or our Branch Office at 7/23 A3, 2nd Floor, Police Officer Road, St Thomas Mount, Chennai - 600016. Our engineers also conduct on-site project walkthroughs across Chennai and industrial corridors.'
